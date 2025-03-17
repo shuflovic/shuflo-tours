@@ -1,4 +1,7 @@
 body {
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
     font-family: sans-serif;
     margin: 0;
     padding: 0;
