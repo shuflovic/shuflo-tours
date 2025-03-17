@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue */
+    /* background-color: rgba(0, 123, 255, 0.5);  Semi-transparent blue */
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -30,7 +30,7 @@ main {
 }
 
 .content-section {
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    /*background-color: rgba(255, 255, 255, 0.5);  Semi-transparent white */
     padding: 20px;
     margin-bottom: 0; /* Remove bottom margin */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
