@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    color: white;
+    color: darkblue;
     text-align: center;
     padding: 20px 0;
     background-color: rgba(0, 0, 0, 0.3); /*added a semi transparent black to header*/
