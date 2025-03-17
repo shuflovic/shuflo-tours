@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Fallback color */
+    background-color: #f4f4f4;
     color: #333;
     background-image: url("background.jpg");
     background-size: cover;
@@ -11,30 +11,36 @@ body {
 }
 
 header {
-    /* background-color: rgba(0, 123, 255, 0.5);  Semi-transparent blue */
     color: white;
     text-align: center;
     padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.3); /*added a semi transparent black to header*/
+}
+
+.motto {
+    font-style: italic;
+    margin-top: 10px;
+    color: #ddd; /* Light gray color for the motto */
 }
 
 main {
-    width: 90%; /* Increase width to fill more of the screen */
-    max-width: 1200px; /* Adjust max width as needed */
+    width: 90%;
+    max-width: 1200px;
     margin: 20px auto;
 }
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns, equal width */
-    gap: 10px; /* Space between grid items */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 .content-section {
-    /*background-color: rgba(255, 255, 255, 0.5);  Semi-transparent white */
     padding: 20px;
-    margin-bottom: 0; /* Remove bottom margin */
+    margin-bottom: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.7); /*adding a light color to content sections*/
 }
 
 .trip-list {
@@ -60,6 +66,9 @@ main {
 .gallery-images img {
     max-width: 200px;
     height: auto;
+    filter: brightness(1.1); /* Slightly brighten the images */
+    border-radius: 8px; /* Optional: Rounded corners for images */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);/*optinal: add a shadow to the images*/
 }
 
 footer {
