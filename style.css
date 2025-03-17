@@ -19,6 +19,7 @@ header {
 
 .motto {
     font-style: italic;
+    color: darkblue;
     margin-top: 10px;
     color: #ddd; /* Light gray color for the motto */
 }
