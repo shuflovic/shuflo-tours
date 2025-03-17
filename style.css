@@ -1,80 +1,80 @@
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    background-image: url("background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 header {
-    color: darkblue;
-    text-align: center;
-    padding: 20px 0;
-    background-color: rgba(0, 0, 0, 0.3); /*added a semi transparent black to header*/
+  color: darkblue;
+  text-align: center;
+  padding: 20px 0;
+  /*background-color: rgba(0, 0, 0, 0.1); added a semi transparent black to header*/
 }
 
 .motto {
-    font-style: italic;
-    color: darkblue;
-    margin-top: 10px;
-    color: #ddd; /* Light gray color for the motto */
+  font-style: italic;
+  color: darkblue;
+  margin-top: 10px;
+  
 }
 
 main {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 
 .content-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .content-section {
-    padding: 20px;
-    margin-bottom: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.7); /*adding a light color to content sections*/
+  padding: 20px;
+  margin-bottom: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.4); /*adding a light color to content sections*/
 }
 
 .trip-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .trip-item {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 15px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 15px;
 }
 
 .gallery-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .gallery-images img {
-    max-width: 200px;
-    height: auto;
-    filter: brightness(1.1); /* Slightly brighten the images */
-    border-radius: 8px; /* Optional: Rounded corners for images */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);/*optinal: add a shadow to the images*/
+  max-width: 200px;
+  height: auto;
+  filter: brightness(1.1); /* Slightly brighten the images */
+  border-radius: 8px; /* Optional: Rounded corners for images */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);/*optinal: add a shadow to the images*/
 }
 
 footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: rgba(51, 51, 51, 0.5);
-    color: white;
+  text-align: center;
+  padding: 10px 0;
+  background-color: rgba(51, 51, 51, 0.5);
+  color: white;
 }
