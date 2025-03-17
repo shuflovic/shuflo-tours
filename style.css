@@ -78,3 +78,18 @@ footer {
   background-color: rgba(51, 51, 51, 0.5);
   color: white;
 }
+/* Media query for mobile devices (screen width 768px or less) */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+
+    main {
+        width: 95%; /* Adjust width for mobile */
+    }
+
+    .gallery-images img {
+        max-width: 100%; /* Make images take full width on mobile */
+    }
+
+}
