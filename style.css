@@ -74,9 +74,8 @@ main {
 
 footer {
   text-align: center;
-  padding: 10px 0;
-  background-color: aliceblue;
-  color: white;
+  padding: 5px 0;
+ 
 }
 /* Media query for mobile devices (screen width 768px or less) */
 @media (max-width: 768px) {
