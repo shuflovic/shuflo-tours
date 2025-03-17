@@ -41,7 +41,7 @@ main {
   margin-bottom: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.6); /*adding a light color to content sections*/
+  background-color: rgba(255, 255, 255, 0.4); /*adding a light color to content sections*/
 }
 
 .trip-list {
@@ -75,7 +75,7 @@ main {
 footer {
   text-align: center;
   padding: 10px 0;
-  background-color: rgba(51, 51, 51, 0.5);
+  background-color: aliceblue;
   color: white;
 }
 /* Media query for mobile devices (screen width 768px or less) */
@@ -94,18 +94,28 @@ footer {
 
 }
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  background-coror: aliceblue;
+  width: 100%; /* Tabuľka sa roztiahne na celú šírku kontajnera */
+  border-collapse: collapse; /* Zlúči okraje buniek */
+  margin-bottom: 10px; /* Pridá medzeru pod tabuľku */
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  border: 1px solid #ddd; /* Pridá okraje buniek */
+  padding: 8px; /* Pridá vnútorné odsadenie buniek */
+  text-align: left; /* Zarovná text v bunkách doľava */
+  background-color: aliceblue;
 }
 
+
 th {
-  background-color: lightblue;
+  background-color: lightblue; /* Pridá svetlosivé pozadie pre hlavičku tabuľky */
+  font-weight: bold; /* Tučné písmo pre hlavičku tabuľky */
+}
+
+table, th, td {
+    font-size: 1em;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+    border-collapse: collapse;
 }
