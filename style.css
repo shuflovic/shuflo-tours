@@ -4,57 +4,35 @@ body {
     padding: 0;
     background-color: #f4f4f4; /* Fallback color */
     color: #333;
-    background-image: url("background.jpg"); /* Add this line */
-    background-size: cover; /* Optional, but recommended */
-    background-repeat: no-repeat; /* Optional, but recommended */
-    background-attachment: fixed; /* Optional, for fixed background */
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 header {
-    background-color: #007bff;
+    background-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue */
     color: white;
     text-align: center;
     padding: 20px 0;
 }
 
-nav {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
 main {
-    width: 80%;
-    max-width: 1000px;
+    width: 90%; /* Increase width to fill more of the screen */
+    max-width: 1200px; /* Adjust max width as needed */
     margin: 20px auto;
 }
 
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns, equal width */
+    gap: 10px; /* Space between grid items */
+}
+
 .content-section {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Remove bottom margin */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -86,6 +64,6 @@ main {
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.5);
     color: white;
 }
