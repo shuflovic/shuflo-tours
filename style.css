@@ -88,7 +88,7 @@ footer {
     }
 
     .gallery-images img {
-        max-width: 100%; /* Make images take full width on mobile */
+        ax-width: 100%; /* Make images take full width on mobile */
     }
 
 }
