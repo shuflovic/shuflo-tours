@@ -1,7 +1,7 @@
 export function checkpointMessage(airport) {
-    const shoppingList = shoppingListText.value;
-    const emailBody = "stastlivo sme dorazili";
+
+    const messageBody = "stastlivo sme dorazili";
    
-    const whatsappLink = `https://wa.me/+421917809193?text=${encodeURIComponent(emailBody)}`;
+    const whatsappLink = `https://wa.me/+421917809193?text=${encodeURIComponent(messageBody)}`;
     window.open(whatsappLink, '_blank'); // Open in a new tab
 }
