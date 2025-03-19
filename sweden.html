@@ -196,5 +196,17 @@
     <footer>
         <p>&copy; 2025 Shuflo Tours</p>
     </footer>
+
+        <script type="module">
+        import { checkpointMessage } from './message.js'; // Adjust path if needed
+
+        // Add event listener to the button
+        const button = document.getElementById('whatsappButton');
+        button.addEventListener('click', () => {
+            checkpointMessage('Oslo'); // Pass the airport name or variable
+        });
+            
+    </script>
+    
 </body>
 </html>
