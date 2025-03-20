@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk-en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweden - May 2025</title>
-    <ink rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -55,18 +55,18 @@
                 </tr>
             </tbody>
         </table>
-       <button id="whatsappButton" title="check point = send whatsapp message to shuflo, že ste v dorazili on time na letisko">checkpoint-1</button><br>
+       <button class="whatsappButton" title="check point = send whatsapp message to shuflo, že ste v dorazili on time na letisko">checkpoint-1</button><br>
 
             <h3>Flights</h3>
 <strong>Outbound:</strong> Wizzair - Krakow to Oslo - 13:05 - 15:20<br>
-    <button id="whatsappButton" title="check point = send whatsapp  message to shuflo - eagle has landed!!">checkpoint-2</button><br><br>
+    <button class="whatsappButton" title="check point = send whatsapp  message to shuflo - eagle has landed!!">checkpoint-2</button><br><br>
                 
 <strong>Return:</strong> Wizzair - Oslo to Krakow - 15:55 - 18:20<br>
-        <button id="whatsappButton" title="check point = send whatsapp  message to shuflo - eagle has landed !!">checkpoint-7</button><br><br>
+        <button class="whatsappButton" title="check point = send whatsapp  message to shuflo - eagle has landed !!">checkpoint-7</button><br><br>
 
             <h3>Car Rental</h3>
             <p>Rented car at Oslo Airport</p>
-    <button id="whatsappButton" title="check point = send whatsapp  message to shuflo, že máte auto a vyrážate">checkpoint-3</button>
+    <button class="whatsappButton" title="check point = send whatsapp  message to shuflo, že máte auto a vyrážate">checkpoint-3</button>
 
 <hr>
     
@@ -78,7 +78,7 @@
 
     <a href="https://sk.mapy.cz/s/budatabaca">robova zakladna</a><br>
     
-    <button id="whatsappButton" title="check point = send whatsapp  message to shuflo, že ste na mieste cinu a otvarate pivo">checkpoint-4</button>
+    <button class="whatsappButton" title="check point = send whatsapp  message to shuflo, že ste na mieste cinu a otvarate pivo">checkpoint-4</button>
 
 <hr>
     
@@ -150,7 +150,7 @@
 
     partia dva, v podstate to iste co partia jedna,.. len o den neskor, zaklad je nezabudnut odovzdat auto,..<br>
     
-    <button id="whatsappButton" title="check point = send whatsapp  message to shuflo, že si doma a ze si pripraveny na dalsi vylet">checkpoint-8</button>
+    <button class="whatsappButton" title="check point = send whatsapp  message to shuflo, že si doma a ze si pripraveny na dalsi vylet">final check point !</button>
 <hr>
     <h2>Been There, Done That</h2>
     <table class="checklist">
@@ -217,11 +217,9 @@
     </table><hr>
     
     <h2>Additional Notes</h2>
-    <p>zatiaľ ma ništ nenapadá</p>
+   <p>rybarsky listok si mozete kupit priamo od Roba alebo aj na tomto <a href="https://www.ifiske.se/en/fishing-permit-lomsen-lilleken-skalsjon-stor-och-lill-tvallen-mfl.htm">linku</a> - 75 SEK na tri dni </p>
 <hr>
-   <p>rybarsky listok plus link na jeho kupu</p>
-<hr>
-    <p><h2>peňáze,peňáze, peňáze,.. a koľko to celé bude koštuvať?? </h2>
+    <h2>peňáze,peňáze, peňáze,.. a koľko to celé bude koštuvať?? </h2>
         <p>z domu na letisko a spat = je to</p>
         <p>vlak konsvinger - airport =</p>
         <p>letenky = 45 na osobu spiatocna,.. ak to teda neposeriete a nekupite si za 60,..</p>
@@ -243,7 +241,7 @@
         import { checkpointMessage } from './message.js'; // Adjust path if needed
 
         // Add event listener to the button
-        const button = document.getElementById('whatsappButton');
+        const button = document.querySelectorAll('whatsappButton');
         button.addEventListener('click', () => {
             checkpointMessage('Oslo'); // Pass the airport name or variable
         });
