@@ -86,8 +86,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Day</th>
-                        <th>Action</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
             <tbody>
@@ -120,10 +120,10 @@
         <table>
             <thead>
                 <tr>
-                    <th>Start</th>
-                    <th>Finish</th>
-                    <th>Who</th>
-                    <th>Action</th>
+                    <th scope="col">Start</th>
+                    <th scope="col">Finish</th>
+                    <th scope="col">Who</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -227,7 +227,6 @@
         <p>ubytko = Hulvat, Kapec, Jusuf - 4 noci, kazdy po 93 eur ; Bindo, Peter I. - tri noci, obaja po 60 eur (euro chyba,.. to sa dohodnete dako)</p>
         <p>ostatne = rybarsky listok, nie ze budete pytliacit a narobite hanbu robovi (a mne) </p>
         <p>takze vsetko spolu cca 300 evrikov</p>
-    </p>
 <hr>
             <h2>Participants / Účastníci zájazdu</h2>
                     <p>Hulvát, Kapec, Jusuf, Binďo, Peter I.</p>
@@ -241,10 +240,12 @@
         import { checkpointMessage } from './message.js'; // Adjust path if needed
 
         // Add event listener to the button
-        const button = document.querySelectorAll('.whatsappButton');
-        button.addEventListener('click', () => {
-            checkpointMessage('Oslo'); // Pass the airport name or variable
-        });
+const buttons = document.querySelectorAll('.whatsappButton');
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        checkpointMessage('Oslo'); // Adjust parameter as needed
+    });
+});
             
     </script>
     
