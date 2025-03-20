@@ -180,56 +180,52 @@
         </thead>
         <tbody>
             <tr>
-                <td>Chase a moose</td>
-                <td><input type="checkbox"></td>
+                <td>nahanal som losicu po lese</td>
+                <td><input id="losica" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Jump naked into the lake</td>
-                <td><input type="checkbox"></td>
+                <td>jebol som sa nahy do jazera</td>
+                <td><input id="kupanie" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Catch a monster fish</td>
-                <td><input type="checkbox"></td>
+                <td>vytiahol som stuku z vody</td>
+                <td><input id="rybacka" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Make a fire</td>
-                <td><input type="checkbox"></td>
+                <td>poradny ohen som urobev</td>
+                <td><input id="ohen" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Chop wood for Robert</td>
-                <td><input type="checkbox"></td>
+                <td>za furik dreva som pre roba narubal</td>
+                <td><input id="drevo" type="checkbox"></td>
             </tr>
             <tr>
-                <td>take a kayak to the end of small tvallen lake</td>
-                <td><input type="checkbox"></td>
+                <td>na kajaku som bol az na uplnom konci</td>
+                <td><input id="kajak" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Have a pizza at turkey place</td>
-                <td><input type="checkbox"></td>
+                <td>giganticka pizza u turka bola</td>
+                <td><input id="pizza" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Have a sauna</td>
-                <td><input type="checkbox"></td>
+                <td>svedska sauna na jazere</td>
+                <td><input id="sauna" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Take a photo with vajčiak</td>
-                <td><input type="checkbox"></td>
+                <td>chytil som vajciaka za gule</td>
+                <td><input id="vajciak" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Walk around big tvällen</td>
-                <td><input type="checkbox"></td>
+                <td>obehol som tvalen tam aj spat</td>
+                <td><input id="walk" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Drink a beer</td>
-                <td><input type="checkbox"></td>
+                <td>dake pivo som popil</td>
+                <td><input id="pivo" type="checkbox"></td>
             </tr>
             <tr>
-                <td>Drink a beer</td>
-                <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-                <td>Drink a beer</td>
-                <td><input type="checkbox"></td>
+                <td>a srandu z bindasa si robil</td>
+                <td><input id="bindo" type="checkbox"></td>
             </tr>
         </tbody>
     </table><hr>
@@ -247,6 +243,52 @@ buttons.forEach(button => {
         checkpointMessage('Oslo'); // Adjust parameter as needed
     });
 });
+
+            // Save checklist state to localStorage
+function saveChecklist() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checklist = {};
+
+    checkboxes.forEach(checkbox => {
+        checklist[checkbox.id] = checkbox.checked;
+    });
+
+    localStorage.setItem('checklist', JSON.stringify(checklist));
+}
+
+// Load checklist state from localStorage
+function loadChecklist() {
+    const checklist = JSON.parse(localStorage.getItem('checklist')) || {};
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = checklist[checkbox.id] || false;
+    });
+}
+
+// Update summary
+function updateSummary() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const total = checkboxes.length;
+    const completed = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+    document.getElementById('summary').textContent = `${completed}/${total} tasks completed`;
+}
+
+// Event listener to track changes
+function setupListeners() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            saveChecklist();
+            updateSummary();
+        });
+    });
+}
+
+// Initialize the checklist
+loadChecklist();
+updateSummary();
+setupListeners();
             
     </script>
     
