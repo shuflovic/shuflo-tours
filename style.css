@@ -65,6 +65,8 @@ main {
 .whatsappButton{
   color: white;
   background-color: darkgrey;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .gallery-images img {
