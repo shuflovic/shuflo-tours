@@ -62,6 +62,11 @@ main {
   gap: 10px;
 }
 
+.whatsappButton{
+  color: white;
+  background-color: darkgrey;
+}
+
 .gallery-images img {
   max-width: 200px;
   height: auto;
@@ -73,7 +78,7 @@ main {
 footer {
   text-align: center;
   padding: 5px 0;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: lightblue;
   border-radius: 10px;
 }
 /* Media query for mobile devices (screen width 768px or less) */
