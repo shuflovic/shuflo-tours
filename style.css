@@ -67,6 +67,7 @@ main {
   background-color: darkgrey;
   border-radius: 5px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .gallery-images img {
