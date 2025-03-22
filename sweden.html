@@ -338,16 +338,31 @@ loadChecklist();
 updateSummary();
 setupListeners();
 
-const styleDisplay = () => {
+const hide1 = document.getElementById('hide1');
+const hide2 = document.getElementById('hide2');
+            
+const styleDisplay1 = () => {
   if (hide1.style.display === 'none') {
     hide1.style.display = 'blok';
+    hide1.style.display = 'none';
   } else {
     hide1.style.display = 'none';
   }
 };
 
+const styleDisplay2 = () => {
+  if (hide2.style.display === 'none') {
+    hide2.style.display = 'blok';
+    hide1.style.display = 'none';
+  } else {
+    hide2.style.display = 'none';
+  }
+};
+            
 // Adding the event listener to the hide1Button
-hide1Button.addEventListener('click', styleDisplay);
+hide1Button.addEventListener('click', styleDisplay1);
+hide2Button.addEventListener('click', styleDisplay);
+            
             
     </script>
     
