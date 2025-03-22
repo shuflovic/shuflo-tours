@@ -8,6 +8,14 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.button1 {
+  background-color: darkblue;
+  color: white;
+}
+.button2 {
+  background-color: darkred;
+  color: white;
+}
 
 header {
   text-align: center;
