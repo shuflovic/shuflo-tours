@@ -274,7 +274,7 @@ toto zmagnem až keď som doma so ženou,.. <button class="whatsappButton" title
                 <td><input id="bindo" type="checkbox"></td>
             </tr>
             <tr>
-                <td></td>
+                <td>score</td>
                 <td><div id="summary">summary</div></td>
             </tr>
         </tbody>
@@ -322,7 +322,7 @@ function updateSummary() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const total = checkboxes.length;
     const completed = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-    document.getElementById('summary').textContent = `${completed}/${total} tasks completed`;
+    document.getElementById('summary').textContent = `${completed}/${total}`;
 }
 
 // Event listener to track changes
@@ -343,6 +343,9 @@ setupListeners();
 
 const hide1 = document.getElementById('hide1');
 const hide2 = document.getElementById('hide2');
+
+hide1.style.display = 'none';
+hide2.style.display = 'none';
             
 const styleDisplay1 = () => {
   if (hide1.style.display === 'none') {
