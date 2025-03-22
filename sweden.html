@@ -336,11 +336,16 @@ loadChecklist();
 updateSummary();
 setupListeners();
 
-    const styleDisplay();        
-    hide1Button.addEventListener('onclick'),{
-    if (hide1.style.display = 'none')
-    {hide1.style.display = 'flex';}
-    else {hide1.style.display = 'none'});
+const styleDisplay = () => {
+  if (hide1.style.display === 'none') {
+    hide1.style.display = 'flex';
+  } else {
+    hide1.style.display = 'none';
+  }
+};
+
+// Adding the event listener to the hide1Button
+hide1Button.addEventListener('click', styleDisplay);
             
     </script>
     
