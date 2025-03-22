@@ -12,14 +12,14 @@ body {
   background-color: darkblue;
   color: white;
   border-radius: 5px;
-  padding: 5px;
+  padding: 8px;
   cursor: pointer;
 }
 .button2 {
   background-color: darkred;
   color: white;
   border-radius: 5px;
-  padding: 5px;
+  padding: 8px;
   cursor: pointer;
 }
 
