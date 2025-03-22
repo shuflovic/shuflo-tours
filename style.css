@@ -11,10 +11,16 @@ body {
 .button1 {
   background-color: darkblue;
   color: white;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
 }
 .button2 {
   background-color: darkred;
   color: white;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
 }
 
 header {
