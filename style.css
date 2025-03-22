@@ -15,11 +15,8 @@ header {
   /*background-color: rgba(0, 0, 0, 0.1); added a semi transparent black to header*/
 }
 
-#hide1 {
-  display: none;
-}
-#hide2 {
-  display: none;
+#hide1, #hide2 {
+    display: none;
 }
 
 .motto {
