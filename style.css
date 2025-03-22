@@ -87,7 +87,7 @@ main {
 footer {
   text-align: center;
   padding: 5px 0;
-  background-color: lightblue;
+  background-color: aliceblue;
   border-radius: 10px;
 }
 /* Media query for mobile devices (screen width 768px or less) */
