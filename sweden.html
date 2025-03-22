@@ -343,8 +343,8 @@ const hide2 = document.getElementById('hide2');
             
 const styleDisplay1 = () => {
   if (hide1.style.display === 'none') {
-    hide1.style.display = 'blok';
-    hide1.style.display = 'none';
+    hide1.style.display = 'block';
+    hide2.style.display = 'none';
   } else {
     hide1.style.display = 'none';
   }
@@ -352,7 +352,7 @@ const styleDisplay1 = () => {
 
 const styleDisplay2 = () => {
   if (hide2.style.display === 'none') {
-    hide2.style.display = 'blok';
+    hide2.style.display = 'block';
     hide1.style.display = 'none';
   } else {
     hide2.style.display = 'none';
@@ -361,7 +361,7 @@ const styleDisplay2 = () => {
             
 // Adding the event listener to the hide1Button
 hide1Button.addEventListener('click', styleDisplay1);
-hide2Button.addEventListener('click', styleDisplay);
+hide2Button.addEventListener('click', styleDisplay2);
             
             
     </script>
