@@ -14,10 +14,10 @@ header {
   padding: 20px 0;
   /*background-color: rgba(0, 0, 0, 0.1); added a semi transparent black to header*/
 }
-.hide1{
+hide1{
   display: none;
 }
-.hide2{
+hide2{
   display: none;
 }
 
