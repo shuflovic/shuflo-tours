@@ -34,8 +34,7 @@ header {
 }
 
 .motto {
-  font-style: italic;
-  color: darkblue;
+  font-style: italic, bold;
   margin-top: 10px;
   
 }
