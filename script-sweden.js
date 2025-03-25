@@ -1,13 +1,13 @@
 import { checkpointMessage } from './message.js'; 
 
-const buttons = document.querySelectorAll('.whatsappButton');
+const buttons = document.querySelectorAll('.whatsappButton'); // Declare first
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const titleText = button.getAttribute('title');
-        console.log(`Title Text: ${titleText}`);
-        checkpointMessage(titleText); // Adjust parameter as needed
+        checkpointMessage(titleText);
     });
 });
+
 
 function saveChecklist() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
