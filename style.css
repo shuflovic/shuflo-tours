@@ -142,3 +142,8 @@ table, th, td {
     vertical-align: top;
     border-collapse: collapse;
 }
+
+.penaze {
+  background-color: aliceblue;
+  border-radius: 8px;
+}
