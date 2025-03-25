@@ -3,7 +3,7 @@ import { checkpointMessage } from './message.js';
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        const titleText = button.getAttribute('title')
+        const titleText = button.getAttribute('title');
         checkpointMessage(titleText); // Adjust parameter as needed
     });
 });
