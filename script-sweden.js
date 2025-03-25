@@ -1,8 +1,9 @@
 import { checkpointMessage } from './message.js'; 
 
-const titleText = button.getAttribute('title')
+
 buttons.forEach(button => {
     button.addEventListener('click', () => {
+        const titleText = button.getAttribute('title')
         checkpointMessage(titleText); // Adjust parameter as needed
     });
 });
