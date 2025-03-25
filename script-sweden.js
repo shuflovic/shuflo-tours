@@ -1,6 +1,7 @@
 import { checkpointMessage } from './message.js'; 
+
 document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.whatsappButton'); // Declare buttons
+    const buttons = document.querySelectorAll('.whatsappButton');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const titleText = button.getAttribute('title');
