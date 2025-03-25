@@ -145,5 +145,6 @@ table, th, td {
 
 .penaze {
   background-color: aliceblue;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 5px;
 }
