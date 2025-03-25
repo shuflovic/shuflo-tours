@@ -123,9 +123,9 @@ table {
 }
 
 th, td {
-  border: 1px solid #ddd; /* Pridá okraje buniek */
-  padding: 8px; /* Pridá vnútorné odsadenie buniek */
-  text-align: left; /* Zarovná text v bunkách doľava */
+  border: 1px solid #ddd; 
+  padding: 8px;
+  text-align: center; 
   background-color: aliceblue;
 }
 
