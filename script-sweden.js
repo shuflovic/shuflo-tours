@@ -4,6 +4,7 @@ const buttons = document.querySelectorAll('.whatsappButton');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const titleText = button.getAttribute('title');
+        console.log(`Title Text: ${titleText}`);
         checkpointMessage(titleText); // Adjust parameter as needed
     });
 });
