@@ -1,13 +1,12 @@
+import { checkpointMessage } from './message.js'; 
 
-        // Add event listener to the button
 const buttons = document.querySelectorAll('.whatsappButton');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        checkpointMessage('Oslo'); // Adjust parameter as needed
+        checkpointMessage(); // Adjust parameter as needed
     });
 });
 
-            // Save checklist state to localStorage
 function saveChecklist() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const checklist = {};
@@ -19,7 +18,6 @@ function saveChecklist() {
     localStorage.setItem('checklist', JSON.stringify(checklist));
 }
 
-// Load checklist state from localStorage
 function loadChecklist() {
     const checklist = JSON.parse(localStorage.getItem('checklist')) || {};
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -29,7 +27,6 @@ function loadChecklist() {
     });
 }
 
-// Update summary
 function updateSummary() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const total = checkboxes.length;
@@ -37,7 +34,6 @@ function updateSummary() {
     document.getElementById('summary').textContent = `${completed}/${total}`;
 }
 
-// Event listener to track changes
 function setupListeners() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
