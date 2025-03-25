@@ -1,12 +1,14 @@
 import { checkpointMessage } from './message.js'; 
-
-const buttons = document.querySelectorAll('.whatsappButton'); // Declare first
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        const titleText = button.getAttribute('title');
-        checkpointMessage(titleText);
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.whatsappButton'); // Declare buttons
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const titleText = button.getAttribute('title');
+            checkpointMessage(titleText);
+        });
     });
 });
+
 
 
 function saveChecklist() {
