@@ -150,6 +150,10 @@ table, th, td {
 }
 
  nav {
+   position:fixed;
+   top: 0;
+   width: 100%;
+   z-idex: 1000;
             background-color: aliceblue;
             padding: 5px;
             border-radius: 10px;
