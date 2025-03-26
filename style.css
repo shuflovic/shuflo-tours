@@ -133,7 +133,7 @@ footer {
 table {
   width: 100%; /* Tabuľka sa roztiahne na celú šírku kontajnera */
   border-collapse: collapse; /* Zlúči okraje buniek */
-  margin-bottom: 10px; /* Pridá medzeru pod tabuľku */
+  margin-bottom: 8px; /* Pridá medzeru pod tabuľku */
 }
 
 th, td {
@@ -163,7 +163,7 @@ table, th, td {
             padding: 10px;
             position: fixed;
             top: 0;
-            width: 100%;
+           
             z-index: 1000;
           border-radius:10px;
         }
