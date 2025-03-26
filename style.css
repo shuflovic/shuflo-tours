@@ -24,13 +24,14 @@ body {
 header {
   text-align: center;
   padding: 20px 0;
-
+}
 #hide1, #hide2 {
     display: none;
 }
 
 .motto {
-  font-style: italic, bold;
+  font-style: italic;
+  font-weight: bold;
   margin-top: 10px;  
 }
 
