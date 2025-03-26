@@ -104,7 +104,8 @@ footer {
 /* Media query for mobile devices (screen width 768px or less) */
 @media (max-width: 768px) {
     .content-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr;
+    }
       .menu {
                 display: none;
                 flex-direction: column;
@@ -117,7 +118,7 @@ footer {
             .menu-toggle {
                 display: block;
             }
-    }
+    
 
     main {
         width: 95%; /* Adjust width for mobile */
@@ -128,6 +129,7 @@ footer {
     }
 
 }
+
 table {
   width: 100%; /* Tabuľka sa roztiahne na celú šírku kontajnera */
   border-collapse: collapse; /* Zlúči okraje buniek */
