@@ -80,3 +80,7 @@ const styleDisplay2 = () => {
 hide1Button.addEventListener('click', styleDisplay1);
 hide2Button.addEventListener('click', styleDisplay2);
           
+function toggleMenu(){
+    const menu = document.querySelector('.menu');
+    menu.style.display = menu.style.displey === 'block' ? 'none': 'block';
+}
