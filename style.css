@@ -2,8 +2,8 @@ body {
   font-family: sans-serif;
   margin: 10px;
   padding: 10px;
-  background-color: #f4f4f4;
-  background-image: url("background1.jpg");
+  background-color: #F2F4F4 ;
+  /*background-image: url("background1.jpg");*/
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
