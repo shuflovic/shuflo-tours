@@ -165,7 +165,11 @@ table, th, td {
             top: 0;
             width: 100%;
             z-index: 1000;
+          border-radius:10px;
         }
+nav a {
+  color: black;
+}
         .menu-toggle {
             display: none;
             cursor: pointer;
