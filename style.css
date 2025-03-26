@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
   margin: 10px;
-  padding: 10px;
+  padding: 50px;
   background-color: #ABB2B9;
   /*background-image: url("background1.jpg");*/
   background-size: cover;
@@ -151,15 +151,16 @@ table, th, td {
 
  nav {
    position:fixed;
+   margin-top: 5px;
    top: 0;
-   width: 100%;
+   width: 765px;
    z-idex: 1000;
-            background-color: aliceblue;
-            padding: 5px;
-            border-radius: 10px;
-            color: black;
-   align-text: center;
-   content-align: center;
+  background-color: aliceblue;
+  padding: 5px;
+  border-radius: 10px;
+  color: black;
+  align-text: center;
+  content-align: center;
         }
         nav a {
           color: black;  
