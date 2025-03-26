@@ -80,24 +80,11 @@ const styleDisplay2 = () => {
 hide1Button.addEventListener('click', styleDisplay1);
 hide2Button.addEventListener('click', styleDisplay2);
           
-/*function toggleMenu(){
+function toggleMenu() {
     const menu = document.querySelector('.menu');
-    menu.style.display = menu.style.display === 'block' ? 'none': 'block';
-}*/
-
-   document.addEventListener('DOMContentLoaded', () => {
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        };
-});
-   
-       /* function toggleMenu() {
-    const menu = document.querySelector('.menu');
-    if (menu.style.display === 'block') {
-        menu.style.display = 'none';
-    } else {
-        menu.style.display = 'block';
-    }
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
-*/
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggleButton = document.querySelector('.menu-toggle');
+    menuToggleButton.addEventListener('click', toggleMenu);
+});
