@@ -85,8 +85,13 @@ hide2Button.addEventListener('click', styleDisplay2);
     menu.style.display = menu.style.display === 'block' ? 'none': 'block';
 }*/
 
-
+   
         function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+   
+       /* function toggleMenu() {
     const menu = document.querySelector('.menu');
     if (menu.style.display === 'block') {
         menu.style.display = 'none';
@@ -94,3 +99,4 @@ hide2Button.addEventListener('click', styleDisplay2);
         menu.style.display = 'block';
     }
 }
+*/
