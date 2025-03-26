@@ -82,5 +82,5 @@ hide2Button.addEventListener('click', styleDisplay2);
           
 function toggleMenu(){
     const menu = document.querySelector('.menu');
-    menu.style.display = menu.style.displey === 'block' ? 'none': 'block';
+    menu.style.display = menu.style.display === 'block' ? 'none': 'block';
 }
