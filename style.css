@@ -213,4 +213,6 @@ button:hover a{
 }
 .menu-btn.active {
   background-color: darkblue;
+  color: white;
+  transform: scale(1.05);
 }
