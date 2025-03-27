@@ -26,10 +26,14 @@ body {
 }
 
 .button2:hover {
-  background-color: red;
+  background-color: crimson;
 }
 
-.button1:hover, button2:hover {
+.button1:hover {
+  background-color: blue;
+}
+
+.button1:hover, .button2:hover {
   transform: scale(1.05);
 }
 
