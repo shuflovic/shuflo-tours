@@ -25,6 +25,10 @@ body {
   cursor: pointer;
 }
 
+.button2:hover {
+  background-color: red;
+}
+
 .button1:hover, button2:hover {
   transform: scale(1.05);
 }
