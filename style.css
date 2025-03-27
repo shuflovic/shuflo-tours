@@ -5,6 +5,9 @@ body {
   padding:10px;
   background-color: #ABB2B9;
 }
+.split {
+  max-width: 75%;
+}
 
 .button1 {
   background-color: darkblue;
