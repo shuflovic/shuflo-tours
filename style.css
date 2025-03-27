@@ -114,11 +114,11 @@ footer {
                 display: none;
                 flex-direction: column;
                 background-color: aliceblue;
-                position: relative;
-                top: 75px;
+                position: absolute;
+                top: 60px;
                 width: 95%;
                 cursor: pointer;
-      margin-right: 10px;
+                margin-right: 10px;
             }
       
     .menu-toggle {
