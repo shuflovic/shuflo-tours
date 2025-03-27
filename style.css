@@ -6,7 +6,7 @@ body {
   background-color: #ABB2B9;
 }
 .split {
-  max-width: 75%;
+  width: 75%;
 }
 
 .button1 {
@@ -159,13 +159,18 @@ table, th, td {
 nav {       background-color: aliceblue;
             padding: 10px;
             position: fixed;
-            top: 5px;
-            right: 5px;
+            top: 10px;
+            right: 10px;
             z-index: 1000;
-          width: 25%;
-          border-radius:10px;
+            width: 25%;
+            border-radius:10px;
     }
 
 nav a {
   color: black;
+}
+button {
+  border: 0;
+  padding: 5px;
+  border-radius: 10px;
 }
