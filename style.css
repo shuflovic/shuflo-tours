@@ -180,6 +180,6 @@ button {
   border-radius: 10px;
 }
 button:hover {
-    transform: scale(1.1);
-    background-color: darkgrey;
+    transform: scale(1.05);
+    background-color: lightblue;
 }
