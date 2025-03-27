@@ -80,14 +80,19 @@ main {
 
 .whatsappButton{
   color: white;
-  background-color: darkgrey;
+  background-color: grey;
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;
   border: 0;
 }
 .whatsappButton:hover{
-  transition: scale(1.1);
+  transform: scale(1.1);
+  background-color: darkgrey;
+}
+.whatsappButton:active{
+  transform: scale(1.1);
+  background-color: black;
 }
 
 
@@ -173,4 +178,8 @@ button {
   border: 0;
   padding: 5px;
   border-radius: 10px;
+}
+button:hover {
+    transform: scale(1.1);
+    background-color: darkgrey;
 }
