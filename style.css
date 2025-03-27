@@ -84,7 +84,12 @@ main {
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;
+  border: 0;
 }
+.whatsappButton:hover{
+  transition: scale(1.1);
+}
+
 
 .gallery-images img {
   max-width: 200px;
