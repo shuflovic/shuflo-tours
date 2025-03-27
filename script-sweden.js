@@ -88,3 +88,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggleButton = document.querySelector('.menu-toggle');
     menuToggleButton.addEventListener('click', toggleMenu);
 });
+
+
+    document.addEventListener("scroll", () => {
+        const buttons = document.querySelectorAll(".menu-btn");
+        const sections = document.querySelectorAll("section");
+        let currentSection = "";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - document.querySelector("nav").offsetHeight; // Adjust for fixed menu height
+            const sectionHeight = section.offsetHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute("id");
+            }
+        });
+
+        buttons.forEach((button) => {
+            const link = button.querySelector("a");
+            const target = link.getAttribute("href").substring(1); // Remove '#' from href
+            
+            if (target === currentSection) {
+                button.classList.add("active");
+            } else {
+                button.classList.remove("active");
+            }
+        });
+    });
