@@ -135,6 +135,9 @@ footer {
     main {
         width: 95%; /* Adjust width for mobile */
     }
+  nav a {
+    text-decoration: none;
+  }
 }
 
 table {
@@ -177,6 +180,7 @@ nav {
 
 nav a {
   color: black;
+  text-decoration: none;
 }
 button {
   border: 0;
