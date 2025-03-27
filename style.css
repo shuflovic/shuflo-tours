@@ -120,7 +120,7 @@ footer {
         grid-template-columns: 1fr;
     }
     .menu {
-                display: none;
+                /*display: none;*/
                 flex-direction: column;
                 position: absolute;
                 top: 60px;
