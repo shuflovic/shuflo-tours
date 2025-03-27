@@ -122,7 +122,6 @@ footer {
     .menu {
                 display: none;
                 flex-direction: column;
-                background-color: aliceblue;
                 position: absolute;
                 top: 60px;
                 width: 95%;
