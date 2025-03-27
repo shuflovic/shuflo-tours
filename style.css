@@ -162,7 +162,7 @@ nav {       background-color: aliceblue;
             top: 5px;
             right: 5px;
             z-index: 1000;
-          max-width: 25%;
+          width: 25%;
           border-radius:10px;
     }
 
