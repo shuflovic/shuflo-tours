@@ -90,16 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-    document.addEventListener("scroll", () => {
+        document.addEventListener("scroll", () => {
         const buttons = document.querySelectorAll(".menu-btn");
         const sections = document.querySelectorAll("section");
+        const navHeight = document.querySelector("nav").offsetHeight; // Fixed menu height
         let currentSection = "";
 
         sections.forEach((section) => {
-            const sectionTop = section.offsetTop - document.querySelector("nav").offsetHeight; // Adjust for fixed menu height
+            const sectionTop = section.getBoundingClientRect().top; // Position relative to viewport
             const sectionHeight = section.offsetHeight;
 
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            // Use navHeight to buffer the detection area
+            if (sectionTop < navHeight && sectionTop + sectionHeight > navHeight) {
                 currentSection = section.getAttribute("id");
             }
         });
