@@ -165,7 +165,7 @@ table, th, td {
     border-collapse: collapse;
 }
 
-nav {       background-color: aliceblue;
+nav {       
             padding: 10px;
             position: fixed;
             top: 10px;
@@ -173,7 +173,7 @@ nav {       background-color: aliceblue;
             z-index: 1000;
             width: 20%;
             border-radius:10px;
-     text-align: center;
+           text-align: center;
     }
 
 nav a {
@@ -184,8 +184,11 @@ button {
   padding: 5px;
   border-radius: 10px;
   margin:3px;
+  background-color: lightblue;
+  
 }
 button:hover {
     transform: scale(1.05);
-    background-color: lightblue;
+    background-color: darkblue;
+    color: white;
 }
