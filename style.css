@@ -195,3 +195,6 @@ button:hover {
     background-color: darkblue;
     color: white;
 }
+button:hover a{
+  color: inherit;
+}
