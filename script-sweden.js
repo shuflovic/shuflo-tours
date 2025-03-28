@@ -123,7 +123,7 @@ document.querySelectorAll(".menu-btn a").forEach(anchor => {
 
 
 
-/*  const kmenuButtons = document.querySelectorAll('.menu-btn');
+const kmenuButtons = document.querySelectorAll('.menu-btn');
 kmenuButtons.forEach(button => {
     button.addEventListener('click', function(){
     button.classList.add('active');
@@ -131,5 +131,5 @@ kmenuButtons.forEach(button => {
         button.classList.remove('active');
     },1000);
 });
-});  */
+}) 
 
