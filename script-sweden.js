@@ -90,31 +90,43 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-         document.addEventListener("scroll", () => {
-        const buttons = document.querySelectorAll(".menu-btn");
-        const sections = document.querySelectorAll("section");
-        const navHeight = document.querySelector("nav").offsetHeight; // Fixed menu height
-        let currentSection = "";
+    document.addEventListener("scroll", () => {
+    const buttons = document.querySelectorAll(".menu-btn");
+    const sections = document.querySelectorAll("section");
+    const navHeight = document.querySelector("nav").offsetHeight;
+    let currentSection = "";
 
-        sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top; // Top position relative to viewport
-            const sectionHeight = section.offsetHeight;
-            const sectionMid = sectionTop + sectionHeight / 2; // Midpoint of the section
+    // Find the current section based on scroll position
+    sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionBottom = section.getBoundingClientRect().bottom;
+        
+        // Check if section is at least partially in view
+        if (sectionTop <= navHeight + 50 && sectionBottom > navHeight) {
+            currentSection = section.getAttribute("id");
+        }
+    });
 
-            // Check if the section's midpoint is within the viewport, adjusted for nav height
-            if (sectionMid > navHeight && sectionMid < window.innerHeight) {
-                currentSection = section.getAttribute("id");
-            }
-        });
+    // Update active button states
+    buttons.forEach((button) => {
+        const link = button.querySelector("a");
+        const target = link.getAttribute("href").substring(1);
+        
+        button.classList.toggle("active", target === currentSection);
+    });
+});
 
-        buttons.forEach((button) => {
-            const link = button.querySelector("a");
-            const target = link.getAttribute("href").substring(1); // Remove '#' from href
-            
-            if (target === currentSection) {
-                button.classList.add("active");
-            } else {
-                button.classList.remove("active");
-            }
+// Smooth scrolling for button clicks
+document.querySelectorAll(".menu-btn a").forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+        const navHeight = document.querySelector("nav").offsetHeight;
+        
+        window.scrollTo({
+            top: targetSection.offsetTop - navHeight,
+            behavior: "smooth"
         });
     });
+});
