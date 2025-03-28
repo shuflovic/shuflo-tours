@@ -205,14 +205,14 @@ button {
 }
 button:hover {
     transform: scale(1.05);
-    background-color: darkblue;
+    background-color: blue;
     color: white;
 }
 button:hover a{
   color: inheri;
 }
 .menu-btn.active {
-  background-color: darkblue;
+  background-color: blue;
   color: white;
   transform: scale(1.05);
 }
