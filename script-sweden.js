@@ -90,18 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-        document.addEventListener("scroll", () => {
+         document.addEventListener("scroll", () => {
         const buttons = document.querySelectorAll(".menu-btn");
         const sections = document.querySelectorAll("section");
         const navHeight = document.querySelector("nav").offsetHeight; // Fixed menu height
         let currentSection = "";
 
         sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top; // Position relative to viewport
+            const sectionTop = section.getBoundingClientRect().top; // Top position relative to viewport
             const sectionHeight = section.offsetHeight;
+            const sectionMid = sectionTop + sectionHeight / 2; // Midpoint of the section
 
-            // Use navHeight to buffer the detection area
-            if (sectionTop < navHeight && sectionTop + sectionHeight > navHeight) {
+            // Check if the section's midpoint is within the viewport, adjusted for nav height
+            if (sectionMid > navHeight && sectionMid < window.innerHeight) {
                 currentSection = section.getAttribute("id");
             }
         });
