@@ -209,9 +209,10 @@ button:hover {
     color: white;
 }
 button:hover a{
-  color: inheri;
+  color: inherit;
 }
-.menu-btn.active {
+.menu-btn.active,
+.menu-btn.active a {
   background-color: blue;
   color: white;
   transform: scale(1.05);
