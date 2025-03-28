@@ -122,3 +122,14 @@ document.querySelectorAll(".menu-btn a").forEach(anchor => {
 });
 
 });
+
+/*  const kmenuButtons = document.querySelectorAll('.menu-btn');
+kmenuButtons.forEach(button => {
+    button.addEventListener('click', function(){
+    button.classList.add('active');
+    setTimeout(function(){
+        button.classList.remove('active');
+    },1000);
+});
+});  */
+
