@@ -130,3 +130,16 @@ document.querySelectorAll(".menu-btn a").forEach(anchor => {
         });
     });
 });
+
+const menuButtons = document.querySelectorAll(.menu-btn);
+menuButtons.forEach(button => {
+    button.addEventListener('click', function(){
+        button.classList.add('active');
+        setTimeout(function(){
+            button.classList.remove('active');
+        },1000);
+    });
+});
+    }
+    
+}
