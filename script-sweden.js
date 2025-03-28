@@ -121,7 +121,7 @@ document.querySelectorAll(".menu-btn a").forEach(anchor => {
     });
 });
 
-);
+
 
 /*  const kmenuButtons = document.querySelectorAll('.menu-btn');
 kmenuButtons.forEach(button => {
