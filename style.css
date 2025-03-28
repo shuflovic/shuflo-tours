@@ -209,7 +209,7 @@ button:hover {
     color: white;
 }
 button:hover a{
-  color: inherit;
+  color: inheri;
 }
 .menu-btn.active {
   background-color: darkblue;
