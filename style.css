@@ -68,7 +68,7 @@ main {
 }
 
 .content-section {
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -84,7 +84,7 @@ main {
 .trip-item {
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 15px;
   text-decoration: none;
   border-radius: 15px;
 }
@@ -124,7 +124,7 @@ main {
 footer {
   text-align: center;
   padding: 5px 0;
-  background-color: aliceblue;
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 10px;
 }
 
@@ -163,7 +163,7 @@ th, td {
   border: 1px solid #ddd; 
   padding: 8px;
   text-align: center; 
-  background-color: aliceblue;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 
