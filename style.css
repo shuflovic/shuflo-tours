@@ -75,6 +75,14 @@ main {
   background-color: rgba(255, 255, 255, 0.4); /*adding a light color to content sections*/
 }
 
+.content-section:hover {
+    transform:scale(1.03);
+}
+
+.trip-item:hover {
+    transform:scale(1.03);
+}
+
 .trip-list {
   display: flex;
   flex-wrap: wrap;
