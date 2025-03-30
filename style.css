@@ -123,14 +123,16 @@ main {
 .whatsappButton{
   background-color: lightblue;
   border-radius: 5px;
+  color: black;
   padding: 5px;
   cursor: pointer;
-  border: 0;
+  border: 1px solid white;
 }
 .whatsappButton:hover{
   transform: scale(1.05);
   color: white;
-  background-color: darkblue;
+  background-color: black;
+  border: 1px solid white;
 }
 .whatsappButton:active{
   transform: scale(1.05);
