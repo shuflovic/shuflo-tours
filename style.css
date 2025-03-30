@@ -42,7 +42,7 @@ body {
 }
 
 .button1:hover {
-  background-color: blue;
+  background-color: #3498DB;
 }
 
 .button1:hover, .button2:hover {
@@ -235,8 +235,8 @@ nav a {
 }
 
 #kam a, #info a, #ako a {
-   text-decoration: none;
-  color: blue;
+  text-decoration: none;
+  color: #3498DB;
 }
 button {
   border: 0;
@@ -251,7 +251,7 @@ button {
  }
 button:hover {
     transform: scale(1.05);
-    background-color: darkgrey;
+    background-color: #3498DB;
     color: white;
 }
 button:hover a{
@@ -259,7 +259,7 @@ button:hover a{
 }
 .menu-btn.active,
 .menu-btn.active a {
-  background-color: darkgrey;
+  background-color: #3498DB;
   color: white;
   transform: scale(1.05);
 }
