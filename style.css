@@ -5,7 +5,7 @@ body {
   padding:10px;
   background-color: black;
   color: white;
-  font-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  ont-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 }
 .split {
   width: 75%;
@@ -82,7 +82,7 @@ main {
   margin-bottom: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  ackground-color: rgba(255, 255, 255, 0.1);
   text-align: center;
   overflow: auto;
   max-height: 300px;
