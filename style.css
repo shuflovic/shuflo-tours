@@ -1,4 +1,5 @@
-       body {
+body {
+               font-size: 0.9em;
   font-family: sans-serif;
   margin: 0;
   padding-top: 5px;
@@ -197,12 +198,12 @@ th, td {
 
 
 th {
-  background-color: grey; /* Pridá svetlosivé pozadie pre hlavičku tabuľky */
+  background-color: #3498DB;
   font-weight: bold; /* Tučné písmo pre hlavičku tabuľky */
 }
 
 table, th, td {
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: normal;
     text-align: left;
     vertical-align: top;
@@ -233,18 +234,21 @@ nav a {
   font-weight: bold;
 }
 
-#kam a, #info a {
+#kam a, #info a, #ako a {
    text-decoration: none;
+  color: blue;
 }
 button {
   border: 0;
   padding: 5px;
   border-radius: 10px;
   margin:3px;
-  background-color: grey;
+  background-color: aliceblue;
   color: white;
-  
-}
+  }
+ button a{
+     color: black;
+ }
 button:hover {
     transform: scale(1.05);
     background-color: darkgrey;
