@@ -129,7 +129,7 @@ kmenuButtons.forEach(button => {
         button.classList.add('active');
     setTimeout(function(){
         button.classList.remove('active');
-    }, 3000);
+    }, 1000);
 });
 });
 
