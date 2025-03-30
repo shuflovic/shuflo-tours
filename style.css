@@ -1,5 +1,5 @@
 body {
-               font-size: 0.95em;
+  font-size: 0.95em;
   font-family: sans-serif;
   margin: 0;
   padding-top: 5px;
@@ -11,10 +11,6 @@ body {
 .split {
   width: 75%;
   text-align: center;
-}
-.icon {
-  height: 15px;
-  width: 15px;
 }
 
 .icon1 {
@@ -75,10 +71,11 @@ main {
 .content-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 
 .content-section {
+  font-size: 0,95em;
   padding: 8px;
   margin-bottom: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -92,7 +89,7 @@ main {
 }
 
 .content-section:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     transform:scale(1.03);
 }
 
