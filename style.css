@@ -48,7 +48,7 @@ body {
 header {
   text-align: center;
   padding: 20px 0;
-  color: aliceblue;
+  color: lightblue;
 }
 #hide1, #hide2 {
     display: none;
@@ -58,7 +58,7 @@ header {
   font-style: italic;
   font-weight: bold;
   margin-top: 10px;  
-  coror: white;
+  coror: lightblue;
 }
 
 main {
@@ -104,7 +104,7 @@ main {
 }
 
 .trip-item {
-  background-color: aliceblue;
+  background-color: lightblue;
   padding: 8px 10px;
   text-decoration: none;
   border-radius: 15px;
@@ -240,7 +240,7 @@ button {
   padding: 5px;
   border-radius: 10px;
   margin:3px;
-  background-color: aliceblue;
+  background-color: lightblue;
   color: white;
   }
  button a{
