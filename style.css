@@ -1,4 +1,4 @@
-body {
+       body {
   font-family: sans-serif;
   margin: 0;
   padding-top: 5px;
@@ -106,8 +106,7 @@ main {
 }
 
 .trip-item {
-  /*background-color: grey;*/
-  color: white;
+  background-color: aliceblue;
   padding: 8px 10px;
   text-decoration: none;
   border-radius: 15px;
@@ -151,7 +150,7 @@ main {
 footer {
   text-align: center;
   padding: 5px 0;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.01);
   border-radius: 10px;
   border: 1px solid white;
   color: white;
@@ -230,7 +229,7 @@ nav a {
 
 .content-section a {
   text-decoration: none;
-  color: white;
+  color: black;
   font-weight: bold;
 }
 
@@ -243,7 +242,7 @@ button {
   border-radius: 10px;
   margin:3px;
   background-color: grey;
-  color:white;
+  color: white;
   
 }
 button:hover {
