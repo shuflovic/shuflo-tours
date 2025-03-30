@@ -1,4 +1,4 @@
-body {
+kontaktbody {
   font-family: sans-serif;
   margin: 0;
   padding-top: 5px;
@@ -106,11 +106,12 @@ main {
 }
 
 .trip-item {
-  background-color: grey;
+  /*background-color: grey;*/
   color: white;
-  padding: 8px 15px;
+  padding: 8px 10px;
   text-decoration: none;
   border-radius: 15px;
+  border: 1px solid white;
 }
 
 .gallery-images {
@@ -222,10 +223,13 @@ nav {
 nav a {
   
   text-decoration: none;
+  color: white;
 }
 
 .content-section a {
   text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
 #kam a, #info a {
