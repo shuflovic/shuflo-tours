@@ -1,5 +1,3 @@
-import { checkpointMessage } from './message.js'; 
-
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.whatsappButton');
     buttons.forEach(button => {
@@ -9,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-
 
 function saveChecklist() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -58,7 +54,7 @@ const hide2 = document.getElementById('hide2');
 
 hide1.style.display = 'none';
 hide2.style.display = 'none';
-            
+
 const styleDisplay1 = () => {
   if (hide1.style.display === 'none') {
     hide1.style.display = 'block';
@@ -76,11 +72,11 @@ const styleDisplay2 = () => {
     hide2.style.display = 'none';
   }
 };
-            
-hide1Button.addEventListener('click', styleDisplay1);
-hide2Button.addEventListener('click', styleDisplay2);
-          
-    document.addEventListener("scroll", () => {
+
+document.getElementById('hide1Button').addEventListener('click', styleDisplay1);
+document.getElementById('hide2Button').addEventListener('click', styleDisplay2);
+
+document.addEventListener("scroll", () => {
     const buttons = document.querySelectorAll(".menu-btn");
     const sections = document.querySelectorAll("section");
     const navHeight = document.querySelector("nav").offsetHeight;
@@ -90,7 +86,7 @@ hide2Button.addEventListener('click', styleDisplay2);
     sections.forEach((section) => {
         const sectionTop = section.getBoundingClientRect().top;
         const sectionBottom = section.getBoundingClientRect().bottom;
-        
+
         // Check if section is at least partially in view
         if (sectionTop <= navHeight + 50 && sectionBottom > navHeight) {
             currentSection = section.getAttribute("id");
@@ -101,7 +97,7 @@ hide2Button.addEventListener('click', styleDisplay2);
     buttons.forEach((button) => {
         const link = button.querySelector("a");
         const target = link.getAttribute("href").substring(1);
-        
+
         button.classList.toggle("active", target === currentSection);
     });
 });
@@ -113,32 +109,10 @@ document.querySelectorAll(".menu-btn a").forEach(anchor => {
         const targetId = this.getAttribute("href").substring(1);
         const targetSection = document.getElementById(targetId);
         const navHeight = document.querySelector("nav").offsetHeight;
-        
+
         window.scrollTo({
             top: targetSection.offsetTop - navHeight,
             behavior: "smooth"
         });
-    });
-});
 
-
-
-const kmenuButtons = document.querySelectorAll('.menu-btn');
-kmenuButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        button.classList.add('active');
-    setTimeout(function(){
-        button.classList.remove('active');
-    }, 1000);
-});
-});
-
-/*const kmenuButtons = document.querySelectorAll('.menu-btn');
-kmenuButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        button.classList.add('active');
-        setTimeout(function() {
-            button.classList.remove('active');
-        }, 1000);
-    });
-});*/
+ ▋
