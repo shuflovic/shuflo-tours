@@ -115,4 +115,26 @@ document.querySelectorAll(".menu-btn a").forEach(anchor => {
             behavior: "smooth"
         });
 
- ▋
+        // Remove active class from all buttons
+        document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+
+        // Add active class to the clicked button
+        this.parentElement.classList.add('active');
+    });
+});
+
+// Handle click event to add and remove active class
+const kmenuButtons = document.querySelectorAll('.menu-btn');
+kmenuButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        kmenuButtons.forEach(btn => btn.classList.remove('active'));
+
+        // Add active class to the clicked button
+        button.classList.add('active');
+        
+        setTimeout(function() {
+            button.classList.remove('active');
+        }, 1000);
+    });
+});
