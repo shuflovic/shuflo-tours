@@ -82,6 +82,7 @@ main {
   border-radius: 10px;
   ackground-color: rgba(255, 255, 255, 0.1);
   text-align: center;
+  content-align: center;
   overflow: auto;
   /*max-height: 300px;*/
   border: 1px solid white;
