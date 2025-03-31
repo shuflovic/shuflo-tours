@@ -132,9 +132,5 @@ kmenuButtons.forEach(button => {
 
         // Add active class to the clicked button
         button.classList.add('active');
-        
-        setTimeout(function() {
-            button.classList.remove('active');
-        }, 1000);
     });
 });
