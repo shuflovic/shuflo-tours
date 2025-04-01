@@ -72,6 +72,7 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
+  content-align: center;
 }
 
 .content-section {
@@ -89,7 +90,7 @@ main {
   color: white
 }
 
-.mail {
+.kmail {
  color: aliceblue;
 }
 
