@@ -75,7 +75,7 @@ main {
   content-align: center;
 }
 
-.content-section {
+.content-section,.kcontent-section {
   font-size: 0,95em;
   padding: 8px;
   margin-bottom: 0;
@@ -93,6 +93,11 @@ main {
 
 
 .content-section:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform:scale(1.02);
+}
+
+.kcontent-section:hover {
     background-color: rgba(255, 255, 255, 0.05);
     transform:scale(1.02);
 }
@@ -234,10 +239,12 @@ nav a {
   color: black;
   font-weight: bold;
 }
-
-.kmail a {
- color: aliceblue;
+.kcontent-section a {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: bold;
 }
+
 #kam a, #info a, #ako a {
   text-decoration: none;
   color: #3498DB;
