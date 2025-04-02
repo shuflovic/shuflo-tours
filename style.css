@@ -83,7 +83,7 @@ main {
   border-radius: 10px;
   ackground-color: rgba(255, 255, 255, 0.1);
   text-align: center;
-  content-align: center;
+  align-content: center;
   overflow: auto;
   /*max-height: 300px;*/
   border: 1px solid white;
@@ -114,10 +114,10 @@ main {
 
 .trip-item {
   background-color: lightblue;
-  padding: 8px 10px;
+  padding: 6px 8px;
   text-decoration: none;
   border-radius: 15px;
-  border: 1px solid white;
+  border: 1px solid aliceblue;
 }
 
 .gallery-images {
