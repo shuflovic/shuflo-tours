@@ -42,7 +42,7 @@ body {
 }
 
 .button1:hover, .button2:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 header {
@@ -267,14 +267,20 @@ button {
 button a{
      color: black;
  }
-button:hover, {
-    transform: scale(1.05);
+
+button:hover {
+    transform: scale(1.03);
     background-color: #3498DB;
     color: white;
 }
+
 button:hover a{
   color: inherit;
 }
+.menu-btn:hover{
+  background-color: #3498DB;
+}
+
 .menu-btn.active,
 .menu-btn.active a {
   background-color: #3498DB;
