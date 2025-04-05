@@ -35,13 +35,11 @@ body {
 
 .button2:hover {
   background-color: crimson;
+  transform: scale(1.03);
 }
 
 .button1:hover {
   background-color: #3498DB;
-}
-
-.button1:hover, .button2:hover {
   transform: scale(1.03);
 }
 
@@ -58,14 +56,13 @@ header {
   font-style: italic;
   font-weight: bold;
   margin-top: 10px;  
-  coror: lightblue;
+  color: lightblue;
 }
 
 main {
   width: 95%;
   max-width: 1200px;
   margin: 20px auto;
-  color: aliceblue;
 }
 
 .content-grid {
@@ -83,7 +80,7 @@ main {
   background-color: rgba(255, 255, 255, 0.05);
   text-align: center;
   overflow: auto;
-  border: 1px solid white;
+  border: 1px solid aliceblue;
   color: white;
 }
 
@@ -94,14 +91,14 @@ main {
 
 .kcontent-section:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    transform:scale(1.02);
+    transform: scale(1.02);
 }
 
 .trip-item:hover {
-  transform:scale(1.03);
+  transform: scale(1.03);
   background-color: #3498DB;
   color: aliceblue;
-  border: 0;
+  border: 0
 }
 
 .trip-list {
@@ -117,11 +114,12 @@ main {
   text-decoration: none;
   border-radius: 15px;
   border: 0;
+  font-size: 0,95em;
 }
 
-.blink-button:hover {
-  color: black;
-  background-color: aliceblue;
+.blink-button a:hover {
+  color: white;
+  background-color: #3498DB;
 }
 
 .blink-button {
