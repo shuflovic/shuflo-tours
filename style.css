@@ -111,13 +111,26 @@ main {
   justify-content: center;
 }
 
-.trip-item {
+.trip-item, .blink-button {
   background-color: lightblue;
   padding: 4px 6px;
   text-decoration: none;
   border-radius: 15px;
   border: 1px solid aliceblue;
 }
+
+.blink-button {
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
 
 .gallery-images {
   display: flex;
