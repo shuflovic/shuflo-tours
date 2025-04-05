@@ -78,7 +78,6 @@ main {
 .content-section,.kcontent-section {
   font-size: 0,95em;
   padding: 8px;
-  margin-bottom: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   ackground-color: rgba(255, 255, 255, 0.1);
@@ -88,8 +87,8 @@ main {
   /*max-height: 300px;*/
   border: 1px solid white;
   color: white
-  display: flex;
   margin: auto;
+  min-width: 450px;
 }
 
 
@@ -116,7 +115,7 @@ main {
 
 .trip-item {
   background-color: lightblue;
-  padding: 6px 8px;
+  padding: 4px 6px;
   text-decoration: none;
   border-radius: 15px;
   border: 1px solid aliceblue;
