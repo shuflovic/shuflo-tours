@@ -100,6 +100,7 @@ main {
 
 .trip-item:hover {
     transform:scale(1.03);
+  background-color: #1F83C5;
 }
 
 .trip-list {
@@ -172,7 +173,7 @@ main {
 footer {
   text-align: center;
   padding: 5px 0;
-  background-color: rgba(255, 255, 255, 0.01);
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   border: 1px solid white;
   color: white;
@@ -234,7 +235,7 @@ table, th, td {
 nav {       
             padding: 10px;
             position: fixed;
-  color: white;
+            color: white;
             top: 10px;
             right: 10px;
             z-index: 1000;
@@ -271,7 +272,7 @@ button {
   background-color: lightblue;
   color: white;
   }
- button a{
+button a{
      color: black;
  }
 button:hover, {
