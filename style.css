@@ -80,14 +80,12 @@ main {
   padding: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  ackground-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
   text-align: center;
-  align-content: center;
   overflow: auto;
   /*max-height: 300px;*/
   border: 1px solid white;
   color: white;
-  margin: auto;
 }
 
 
