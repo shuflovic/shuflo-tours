@@ -83,24 +83,25 @@ main {
   background-color: rgba(255, 255, 255, 0.05);
   text-align: center;
   overflow: auto;
-  /*max-height: 300px;*/
   border: 1px solid white;
   color: white;
 }
 
 .content-section:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
     transform:scale(1.02);
 }
 
 .kcontent-section:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
     transform:scale(1.02);
 }
 
 .trip-item:hover {
-    transform:scale(1.03);
-  background-color: #1F83C5;
+  transform:scale(1.03);
+  background-color: #3498DB;
+  color: aliceblue;
+  border: 0;
 }
 
 .trip-list {
@@ -115,7 +116,7 @@ main {
   padding: 4px 6px;
   text-decoration: none;
   border-radius: 15px;
-  border: 1px solid aliceblue;
+  border: 0;
 }
 
 .blink-button:hover {
@@ -159,15 +160,6 @@ main {
 .whatsappButton:active{
   transform: scale(1.05);
   background-color: black;
-}
-
-
-.gallery-images img {
-  max-width: 200px;
-  height: auto;
-  filter: brightness(1.1); /* Slightly brighten the images */
-  border-radius: 8px; /* Optional: Rounded corners for images */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);/*optinal: add a shadow to the images*/
 }
 
 footer {
