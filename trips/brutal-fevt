@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="sk-en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brutal Fevt - vol.1</title>
+    <link rel="stylesheet" href="GHMstyles.css">
+
+    <img src="pictures/balaton.jpg"><br><br>
+  
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="5636488393" data-style="standard" data-from-embed="false"></div>
+    
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="5641446526" data-style="standard" data-from-embed="false"></div>
+  
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="5646068333" data-style="standard" data-from-embed="false"></div>
+    
+ 
+<script src="https://strava-embeds.com/embed.js"></script>
+    
+</body>
+</html>
