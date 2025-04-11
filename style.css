@@ -8,6 +8,9 @@ body {
   color: white;
   ont-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 }
+#direct-members-list {
+  dislplay: none;
+}
 .split {
   width: 75%;
   text-align: center;
