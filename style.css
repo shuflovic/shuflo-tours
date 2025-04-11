@@ -17,6 +17,16 @@ body {
   color: white;
 }
 
+#develop {
+  background-color: aliceblue;
+  color: black;
+}
+#develop:hover {
+  background-color: lightblue;
+  color: white;
+  transform: scale(1.03);
+}
+
 .split {
   width: 75%;
   text-align: center;
