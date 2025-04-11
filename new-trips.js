@@ -13,9 +13,9 @@ function loadTrips() {
         // Create a new button for each trip
         const tripButton = document.createElement('button');
         tripButton.className = 'blink-button';
-        tripButton.style.display = 'flex';
+        /*tripButton.style.display = 'flex';
         tripButton.style.justifyContent = 'space-between';
-        tripButton.style.alignItems = 'center';
+        tripButton.style.alignItems = 'center';*/
 
         // Create a link element for the trip
         const tripLink = document.createElement('a');
@@ -26,11 +26,12 @@ function loadTrips() {
         // Create a delete button for the trip
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
-        deleteButton.style.marginLeft = '10px';
-        deleteButton.style.backgroundColor = 'red';
+        deleteButton.style.marginLeft = '8px';
+        deleteButton.style.backgroundColor = 'salmon';
         deleteButton.style.color = 'white';
         deleteButton.style.border = 'none';
         deleteButton.style.cursor = 'pointer';
+        deleteButton.style.fontSize = '0.9em';
 
         // Add delete functionality
         deleteButton.addEventListener('click', () => {
