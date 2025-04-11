@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Create New Trip</h1>
+        <h1>Create a new trip</h1>
     </header>
     <main>
         <section class="content-section">
@@ -22,15 +22,14 @@
                 <label for="trip-location">Location:</label><br>
                 <input type="text" id="trip-location" name="trip-location" placeholder="e.g., Oslo, Norway" required><br><br>
 
-                <label for="trip-participants">Participants:</label><br>
-                <input type="text" id="trip-participants" name="trip-participants" placeholder="e.g., John, Jane, Doe" required><br><br>
+                <label for="trip-participants">Max Nr. of Participants:</label><br>
+                <input type="text" id="trip-participants" name="trip-participants" placeholder="how many people can join"><br><br>
 
                 <label for="trip-notes">Notes:</label><br>
                 <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br><br>
 
                 <button type="submit" id="submit-button">Submit</button>
             </form>
-        </section>
         <section id="participation">
     <h2>Participation - Invitations</h2>
 
@@ -62,7 +61,9 @@
     <ul id="selected-participants-list">
         <!-- Dynamically populated -->
     </ul>
-</section>
+</section>    
+        </section>
+        
         <section>
             <p>After submission, the trip will be temporarily saved in your browser's local storage.</p>
         </section>
