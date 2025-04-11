@@ -8,9 +8,15 @@ body {
   color: white;
   ont-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 }
-#direct-members-list {
-  dislplay: none;
+.submit {
+  background-color: aliceblue;
+  color: black;
 }
+.submit:hover {
+  background-color: lightblue;
+  color: white;
+}
+
 .split {
   width: 75%;
   text-align: center;
