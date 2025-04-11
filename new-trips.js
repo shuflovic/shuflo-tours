@@ -1,9 +1,9 @@
-// Function to load trips from local storage and display them
+// Update the loadTrips function to append trips to #trip-list
 function loadTrips() {
-    const tripsSection = document.getElementById('trips'); // Get the Upcoming Trips section
+    const tripList = document.getElementById('trip-list'); // Get the trips list container
 
-    if (!tripsSection) {
-        console.error('Element with id "trips" not found.');
+    if (!tripList) {
+        console.error('Element with id "trip-list" not found.');
         return;
     }
 
@@ -13,17 +13,13 @@ function loadTrips() {
         // Create a new button for each trip
         const tripButton = document.createElement('button');
         tripButton.className = 'blink-button';
-        /*tripButton.style.display = 'flex';
-        tripButton.style.justifyContent = 'space-between';
-        tripButton.style.alignItems = 'center';*/
-
-// Create a link element for the trip
-const tripLink = document.createElement('a');
-tripLink.className = 'trip-item';
-// Dynamically generate the link based on the trip title
-tripLink.href = `${trip.title.toLowerCase().replace(/\s+/g, '-')}.html`; // Converts "Sweden Trip" to "sweden-trip.html"
-tripLink.textContent = `${trip.title} - ${trip.dates}`;
-
+        
+        // Create a link element for the trip
+        const tripLink = document.createElement('a');
+        tripLink.className = 'trip-item';
+        tripLink.href = `${trip.title.toLowerCase().replace(/\s+/g, '-')}.html`; // Dynamically generate the trip link
+        tripLink.textContent = `${trip.title} - ${trip.dates}`;
+        
         // Create a delete button for the trip
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
@@ -43,8 +39,8 @@ tripLink.textContent = `${trip.title} - ${trip.dates}`;
         tripButton.appendChild(tripLink);
         tripButton.appendChild(deleteButton);
 
-        // Append the button directly to the trips section
-        tripsSection.appendChild(tripButton);
+        // Append the button directly to the trips list
+        tripList.appendChild(tripButton);
     });
 }
 
@@ -64,16 +60,16 @@ function deleteTrip(index) {
 
 // Function to reload trips (clears and re-renders the trips list)
 function reloadTrips() {
-    const tripsSection = document.getElementById('trips'); // Get the Upcoming Trips section
-
-    if (!tripsSection) {
-        console.error('Element with id "trips" not found.');
+    const tripList = document.getElementById('trip-list'); // Get the container for trips list
+    
+    if (!tripList) {
+        console.error('Element with id "trip-list" not found.');
         return;
     }
-
-    // Clear existing buttons
-    tripsSection.innerHTML = '';
-
+    
+    // Clear only the trips list, leaving the header (h2) intact
+    tripList.innerHTML = '';
+    
     // Reload the trips
     loadTrips();
 }
