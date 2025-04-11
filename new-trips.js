@@ -17,11 +17,12 @@ function loadTrips() {
         tripButton.style.justifyContent = 'space-between';
         tripButton.style.alignItems = 'center';*/
 
-        // Create a link element for the trip
-        const tripLink = document.createElement('a');
-        tripLink.className = 'trip-item';
-        tripLink.href = `#`; // Placeholder link
-        tripLink.textContent = `${trip.title} - ${trip.dates}`;
+// Create a link element for the trip
+const tripLink = document.createElement('a');
+tripLink.className = 'trip-item';
+// Dynamically generate the link based on the trip title
+tripLink.href = `${trip.title.toLowerCase().replace(/\s+/g, '-')}.html`; // Converts "Sweden Trip" to "sweden-trip.html"
+tripLink.textContent = `${trip.title} - ${trip.dates}`;
 
         // Create a delete button for the trip
         const deleteButton = document.createElement('button');
