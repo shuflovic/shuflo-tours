@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sk-en">
 <head>
@@ -9,42 +8,71 @@
 </head>
 <body>
     <header>
-        <h1>vytvor nový výlet</h1>
+        <h1>Create Your Trip</h1>
     </header>
     <main>
         <section class="content-section">
             <form id="trip-form">
-                <label for="trip-title">názov (bez toho sa nepohneme)</label><br>
-                <input type="text" id="trip-title" name="trip-title" placeholder="tutok napíš ako sa to bude volať" required><br><br>
+                <label for="trip-title">Trip Title:</label><br>
+                <input type="text" id="trip-title" name="trip-title" placeholder="e.g., Adventure to Norway" required><br><br>
 
-                <label for="trip-dates">kedy to bude?</label><br>
-                <input type="text" id="trip-dates" name="trip-dates" placeholder="pridaj dátum" required><br><br>
+                <label for="trip-dates">Dates:</label><br>
+                <input type="text" id="trip-dates" name="trip-dates" placeholder="e.g., 15/06/2025 - 20/06/2025" required><br><br>
 
-                <label for="trip-location">kam sa vyberieme?</label><br>
+                <label for="trip-location">Location:</label><br>
                 <input type="text" id="trip-location" name="trip-location" placeholder="e.g., Oslo, Norway" required><br><br>
 
-                <label for="trip-participants">účastníci zájazdu</label><br>
+                <label for="trip-participants">Participants:</label><br>
                 <input type="text" id="trip-participants" name="trip-participants" placeholder="e.g., John, Jane, Doe" required><br><br>
 
-                <label for="trip-notes">doplňujúce info</label><br>
+                <label for="trip-notes">Notes:</label><br>
                 <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br><br>
 
                 <button type="submit" id="submit-button">Submit</button>
             </form>
         </section>
         <section>
-            <p>After submission, the trip will be added to the "Upcoming Trips" section on the main page.</p>
+            <p>After submission, the trip will be temporarily saved in your browser's local storage.</p>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Shuflo Tours</p>
     </footer>
     <script>
+        // Handle form submission
         document.getElementById('trip-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent the default form submission
 
-            // This is placeholder logic for development.
-            alert('Trip submitted! This will be implemented later with server-side functionality.');
+            // Get form data
+            const title = document.getElementById('trip-title').value;
+            const dates = document.getElementById('trip-dates').value;
+            const location = document.getElementById('trip-location').value;
+            const participants = document.getElementById('trip-participants').value;
+            const notes = document.getElementById('trip-notes').value;
+
+            // Create a trip object
+            const newTrip = {
+                title: title,
+                dates: dates,
+                location: location,
+                participants: participants,
+                notes: notes
+            };
+
+            // Retrieve existing trips from local storage
+            const existingTrips = JSON.parse(localStorage.getItem('trips')) || [];
+
+            // Add the new trip to the list
+            existingTrips.push(newTrip);
+
+            // Save the updated list back to local storage
+            localStorage.setItem('trips', JSON.stringify(existingTrips));
+
+            // Provide feedback to the user
+            alert('Trip successfully saved!');
+
+            // Optionally reset the form
+            document.getElementById('trip-form').reset();
         });
     </script>
 </body>
