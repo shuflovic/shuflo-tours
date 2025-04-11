@@ -7,31 +7,27 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
-        <h1>Create a new trip</h1>
-    </header>
     <main>
         <section class="content-section">
+            <h1>Create a new trip</h1><br>
             <form id="trip-form">
                 <label for="trip-title">Trip Title:</label><br>
-                <input type="text" id="trip-title" name="trip-title" placeholder="e.g., Adventure to Norway" required><br><br>
+                <input type="text" id="trip-title" name="trip-title" placeholder="we need a proper name for the trip here!!" required><br><br>
 
-                <label for="trip-dates">Dates:</label><br>
-                <input type="text" id="trip-dates" name="trip-dates" placeholder="e.g., 15/06/2025 - 20/06/2025" required><br><br>
+                <label for="trip-dates">When we will go?</label><br>
+                <input type="text" id="trip-dates" name="trip-dates" placeholder="entry dates here" required><br><br>
 
-                <label for="trip-location">Location:</label><br>
-                <input type="text" id="trip-location" name="trip-location" placeholder="e.g., Oslo, Norway" required><br><br>
+                <label for="trip-location">Location of the trip:</label><br>
+                <input type="text" id="trip-location" name="trip-location" placeholder="entry location" required><br><br>
 
-                <label for="trip-participants">Max Nr. of Participants:</label><br>
-                <input type="text" id="trip-participants" name="trip-participants" placeholder="how many people can join"><br><br>
+                <label for="trip-participants">Max number of participants:</label><br>
+                <input type="text" id="trip-participants" name="trip-participants" placeholder="how many people can join?"><br><br>
 
                 <label for="trip-notes">Notes:</label><br>
                 <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br><br>
-
-                
-            
+       
         <section id="participation">
-    <h2>Participation - Invitations</h2>
+    <h2>Let's invite some people</h2>
 
     <label for="invitation-category">Select Invitation Category:</label>
     <select id="invitation-category">
@@ -60,8 +56,8 @@
     <ul id="selected-participants-list">
         <!-- Dynamically populated -->
     <!--</ul>-->
-</section>    
-                <button type="submit" id="submit-button">Submit</button>
+</section>    <br>
+                <button type="submit" id="submit-button" class="submit">Submit</button>
                 </form>
         </section>
         
