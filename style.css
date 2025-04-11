@@ -294,3 +294,7 @@ button:hover a{
   color: white;
   transform: scale(1.05);
 }
+a:hover {
+font-size: 1.1em;
+  
+}
