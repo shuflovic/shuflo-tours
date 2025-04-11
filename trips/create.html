@@ -1,1 +1,51 @@
 
+<!DOCTYPE html>
+<html lang="sk-en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Trip</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>Create Your Trip</h1>
+    </header>
+    <main>
+        <section class="content-section">
+            <form id="trip-form">
+                <label for="trip-title">Trip Title:</label><br>
+                <input type="text" id="trip-title" name="trip-title" placeholder="e.g., Adventure to Norway" required><br><br>
+
+                <label for="trip-dates">Dates:</label><br>
+                <input type="text" id="trip-dates" name="trip-dates" placeholder="e.g., 15/06/2025 - 20/06/2025" required><br><br>
+
+                <label for="trip-location">Location:</label><br>
+                <input type="text" id="trip-location" name="trip-location" placeholder="e.g., Oslo, Norway" required><br><br>
+
+                <label for="trip-participants">Participants:</label><br>
+                <input type="text" id="trip-participants" name="trip-participants" placeholder="e.g., John, Jane, Doe" required><br><br>
+
+                <label for="trip-notes">Notes:</label><br>
+                <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br><br>
+
+                <button type="submit" id="submit-button">Submit</button>
+            </form>
+        </section>
+        <section>
+            <p>After submission, the trip will be added to the "Upcoming Trips" section on the main page.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Shuflo Tours</p>
+    </footer>
+    <script>
+        document.getElementById('trip-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // This is placeholder logic for development.
+            alert('Trip submitted! This will be implemented later with server-side functionality.');
+        });
+    </script>
+</body>
+</html>
