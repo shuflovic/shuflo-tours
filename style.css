@@ -21,16 +21,17 @@ body {
 }
 
 #develop {
-  background-color: aliceblue;
+  background-color: lightblue;
   color: black;
 }
 #develop:hover {
-  background-color: lightblue;
+  background-color: #3498DB;
   color: aliceblue;
   transform: scale(1.03);
 }
 #develop a {
   color: black;
+  font-size: 0,95em;
 }
 #develop a:hover {
   color: aliceblue;
