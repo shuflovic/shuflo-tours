@@ -8,6 +8,9 @@ body {
   color: white;
   ont-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 }
+.kmail a {
+  color: #3498DB;
+}
 .submit {
   background-color: aliceblue;
   color: black;
