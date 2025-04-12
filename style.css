@@ -26,8 +26,14 @@ body {
 }
 #develop:hover {
   background-color: lightblue;
-  color: white;
+  color: aliceblue;
   transform: scale(1.03);
+}
+#develop a {
+  color: black;
+}
+#develop a:hover {
+  color: aliceblue;
 }
 
 .split {
