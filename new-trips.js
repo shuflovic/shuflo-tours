@@ -12,7 +12,7 @@ function loadTrips() {
     trips.forEach((trip, index) => {
         // Create a new button for each trip
         const tripButton = document.createElement('button');
-        ripButton.className = 'blink-button';
+        tripButton.className = 'blink-button';
         
         // Create a link element for the trip
         const tripLink = document.createElement('a');
