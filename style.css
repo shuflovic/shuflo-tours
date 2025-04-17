@@ -9,7 +9,7 @@ body {
   ont-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 }
 input, textarea, select {
-            width: 100%;
+            width: 75%;
             padding: 8px;
             margin-top: 5px;
             margin-bottom: 15px;
@@ -325,6 +325,39 @@ button:hover a{
   transform: scale(1.05);
 }
 a:hover {
-font-size: 1.1em;
-  
+font-size: 1.1em;  
 }
+.preview-section {
+            background-color: black;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 30px;
+            color: aliceblue;
+        }
+        .preview-title {
+            color: aliceblue;
+            margin-bottom: 15px;
+        }
+        .preview-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: darkblue;
+        }
+        .preview-item {
+            background-color: white;
+            border-radius: 4px;
+            padding: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            flex-grow: 1;
+        }
+        .preview-label {
+            font-weight: bold;
+            color: black;
+            font-size: 0.9em;
+        }
+        .preview-value {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
