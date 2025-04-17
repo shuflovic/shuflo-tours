@@ -18,7 +18,7 @@ function loadTrips() {
         const tripLink = document.createElement('a');
         tripLink.className = 'trip-item';
         tripLink.href = `${trip.title.toLowerCase().replace(/\s+/g, '-')}.html`; // Dynamically generate the trip link
-        tripLink.textContent = `${trip.title} - ${trip.start-date}`;
+        tripLink.textContent = `${trip.title} - ${trip.startDate}`;
         
         // Create a delete button for the trip
         const deleteButton = document.createElement('button');
