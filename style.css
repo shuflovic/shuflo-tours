@@ -17,17 +17,25 @@ input, textarea, select {
             border-radius: 4px;
             box-sizing: border-box;
         }
+.createButton {
+  background-color: lightblue;
+}
+.createButton:hover {
+  color: aliceblue;
+  background-color: #3498DB;
+  transform: scale(1.03);
+}
 
 .kmail a {
   color: #3498DB;
 }
 .submit {
-  background-color: aliceblue;
-  color: black;
+  background-color: lightblue;
 }
 .submit:hover {
-  background-color: lightblue;
+  background-color: #3498DB;
   color: white;
+  transform: scale(1.03);
 }
 
 #develop {
