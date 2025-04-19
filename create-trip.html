@@ -96,7 +96,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Define direct members
-            const directMembers = ['Shuflo', 'Bindas', 'Jusuf', 'Hulvat', 'Kapec', 'Peter I.'];
+            const directMembers = JSON.parse(localStorage.getItem('members')) || [];
             
             // Get form elements
             const tripForm = document.getElementById('trip-form');
