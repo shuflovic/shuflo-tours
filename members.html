@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Members</title>
+</head>
+<body>
+    <h1>Register Members</h1>
+    <form id="registerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <button type="submit">Register</button>
+    </form>
+
+    <h2>Registered Members</h2>
+    <ul id="membersList"></ul>
+
+    <script>
+        // Function to save a member to Local Storage
+        function saveMember(name, email) {
+            const members = JSON.parse(localStorage.getItem('members')) || [];
+            members.push({ name, email });
+            localStorage.setItem('members', JSON.stringify(members));
+        }
+
+        // Function to load members from Local Storage
+        function loadMembers() {
+            const members = JSON.parse(localStorage.getItem('members')) || [];
+            const membersList = document.getElementById('membersList');
+            membersList.innerHTML = ''; // Clear the list
+            members.forEach(member => {
+                const li = document.createElement('li');
+                li.textContent = `${member.name} (${member.email})`;
+                membersList.appendChild(li);
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent page reload
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            saveMember(name, email);
+            loadMembers();
+
+            // Clear the form
+            event.target.reset();
+        });
+
+        // Load members on page load
+        document.addEventListener('DOMContentLoaded', loadMembers);
+    </script>
+</body>
+</html>
