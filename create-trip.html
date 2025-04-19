@@ -94,10 +94,10 @@
     </footer>
     
     <script>
-       document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Fetch direct members dynamically from Local Storage
     const directMembers = JSON.parse(localStorage.getItem('members')) || [];
-    
+
     // Get form elements
     const tripForm = document.getElementById('trip-form');
     const tripTitle = document.getElementById('trip-title');
@@ -106,20 +106,20 @@
     const tripLocation = document.getElementById('trip-location');
     const tripParticipants = document.getElementById('trip-participants');
     const tripNotes = document.getElementById('trip-notes');
-    
+
     // Get preview elements
     const previewTitle = document.getElementById('preview-title');
     const previewStartDate = document.getElementById('preview-start-date');
     const previewEndDate = document.getElementById('preview-end-date');
     const previewNotes = document.getElementById('preview-notes');
-    
+
     // Get participant-related elements
     const selectedParticipantsList = document.getElementById('selected-participants-list');
     const addParticipantButton = document.getElementById('add-participant');
     const invitationCategory = document.getElementById('invitation-category');
     const directMembersList = document.getElementById('direct-members-list');
     const directMembersContainer = document.getElementById('direct-members-container');
-    
+
     // Populate the direct members list
     if (directMembersList) {
         directMembers.forEach(member => {
@@ -128,31 +128,31 @@
             checkbox.type = 'checkbox';
             checkbox.value = member.email; // Use email or a unique identifier
             checkbox.id = `member-${member.name.toLowerCase().replace(' ', '-')}`;
-            
+
             const label = document.createElement('label');
             label.htmlFor = checkbox.id;
             label.textContent = ` ${member.name}`; // Display the name
-            
+
             listItem.appendChild(checkbox);
             listItem.appendChild(label);
             directMembersList.appendChild(listItem);
         });
     }
-    
+
     // Show/hide direct members list based on selection
     if (invitationCategory) {
         invitationCategory.addEventListener('change', () => {
-            directMembersContainer.style.display = 
+            directMembersContainer.style.display =
                 invitationCategory.value === 'direct-members' ? 'block' : 'none';
         });
     }
-    
+
     // Handle adding participants
     if (addParticipantButton) {
         addParticipantButton.addEventListener('click', () => {
             const selectedCategory = invitationCategory.value;
             const selectedParticipants = [];
-    
+
             if (selectedCategory === 'all') {
                 // Add all direct members
                 directMembers.forEach(member => {
@@ -172,7 +172,7 @@
                     }
                 });
             }
-    
+
             // Add selected participants to the list
             selectedParticipants.forEach(participant => {
                 const listItem = document.createElement('li');
@@ -181,95 +181,109 @@
             });
         });
     }
-    
+
     // Helper function to check if a participant is already added
     function isParticipantAlreadyAdded(name) {
         const existingParticipants = selectedParticipantsList.querySelectorAll('li');
         return Array.from(existingParticipants).some(participant => participant.textContent === name);
     }
+
+    // Function to format dates for display
+    function formatDate(dateString) {
+        if (!dateString) return '--';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    // Update preview as user types
+    if (tripTitle) {
+        tripTitle.addEventListener('input', () => {
+            previewTitle.textContent = tripTitle.value || '--';
+        });
+    } else {
+        console.error("Element with id 'trip-title' not found.");
+    }
+
+    if (tripStartDate) {
+        tripStartDate.addEventListener('input', () => {
+            previewStartDate.textContent = formatDate(tripStartDate.value);
+        });
+    }
+
+    if (tripEndDate) {
+        tripEndDate.addEventListener('input', () => {
+            previewEndDate.textContent = formatDate(tripEndDate.value);
+        });
+    }
+
+    if (tripNotes) {
+        tripNotes.addEventListener('input', () => {
+            previewNotes.textContent = tripNotes.value || '--';
+        });
+    }
+
+    // Handle form submission
+    if (tripForm) {
+        tripForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const title = tripTitle.value;
+            const startDate = tripStartDate.value;
+            const endDate = tripEndDate.value;
+            const location = tripLocation.value;
+            const participants = tripParticipants.value;
+            const notes = tripNotes.value;
+
+            // Collect selected participants
+            const selectedParticipants = [];
+            const participantElements = selectedParticipantsList.querySelectorAll('li');
+            participantElements.forEach(element => {
+                selectedParticipants.push(element.textContent);
+            });
+
+            // Create a trip object
+            const newTrip = {
+                title: title,
+                startDate: startDate,
+                endDate: endDate,
+                location: location,
+                maxParticipants: participants,
+                notes: notes,
+                invitedParticipants: selectedParticipants
+            };
+
+            // Retrieve existing trips from local storage
+            const existingTrips = JSON.parse(localStorage.getItem('trips')) || [];
+
+            // Add the new trip to the list
+            existingTrips.push(newTrip);
+
+            // Save the updated list back to local storage
+            localStorage.setItem('trips', JSON.stringify(existingTrips));
+
+            // Provide feedback to the user
+            alert('Trip successfully saved!');
+
+            // Optionally reset the form
+            tripForm.reset();
+            previewTitle.textContent = '--';
+            previewStartDate.textContent = '--';
+            previewEndDate.textContent = '--';
+            previewNotes.textContent = '--';
+
+            // Clear selected participants list
+            selectedParticipantsList.innerHTML = '';
+        });
+    } else {
+        console.error("Element with id 'trip-form' not found.");
+    }
 });
-            
-            // Function to format dates for display
-            function formatDate(dateString) {
-                if (!dateString) return '--';
-                const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                });
-            }
-            
-            // Update preview as user types
-            tripTitle.addEventListener('input', () => {
-                previewTitle.textContent = tripTitle.value || '--';
-            });
-            
-            tripStartDate.addEventListener('input', () => {
-                previewStartDate.textContent = formatDate(tripStartDate.value);
-            });
-            
-            tripEndDate.addEventListener('input', () => {
-                previewEndDate.textContent = formatDate(tripEndDate.value);
-            });
-            tripNotes.addEventListener('input', () => {
-                previewNotes.textContent = tripNotes.value || '--';
-            });
-            
-            // Handle form submission
-            tripForm.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
-
-                // Get form data
-                const title = tripTitle.value;
-                const startDate = tripStartDate.value;
-                const endDate = tripEndDate.value;
-                const location = tripLocation.value;
-                const participants = tripParticipants.value;
-                const notes = tripNotes.value;
-                
-                // Collect selected participants
-                const selectedParticipants = [];
-                const participantElements = selectedParticipantsList.querySelectorAll('li');
-                participantElements.forEach(element => {
-                    selectedParticipants.push(element.textContent);
-                });
-
-                // Create a trip object
-                const newTrip = {
-                    title: title,
-                    startDate: startDate,
-                    endDate: endDate,
-                    location: location,
-                    maxParticipants: participants,
-                    notes: notes,
-                    invitedParticipants: selectedParticipants
-                };
-
-                // Retrieve existing trips from local storage
-                const existingTrips = JSON.parse(localStorage.getItem('trips')) || [];
-
-                // Add the new trip to the list
-                existingTrips.push(newTrip);
-
-                // Save the updated list back to local storage
-                localStorage.setItem('trips', JSON.stringify(existingTrips));
-
-                // Provide feedback to the user
-                alert('Trip successfully saved!');
-
-                // Optionally reset the form
-                tripForm.reset();
-                previewTitle.textContent = '--';
-                previewStartDate.textContent = '--';
-                previewEndDate.textContent = '--';
-                previewNotes.textContent = '--';
-                
-                // Clear selected participants list
-                selectedParticipantsList.innerHTML = '';
-            });
-        
-    </script>
+</script>
 </body>
 </html>
