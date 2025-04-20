@@ -71,10 +71,19 @@
                     <div class="preview-label">Start Date</div>
                     <div id="preview-start-date" class="preview-value">--</div>
                 </div>
+                
                 <div class="preview-item">
                     <div class="preview-label">End Date</div>
                     <div id="preview-end-date" class="preview-value">--</div>
                 </div>
+
+                
+                <div class="preview-item">
+                    <div class="preview-label">Itinerary</div>
+                    <div id="preview-itinerary" class="preview-value">--</div>
+                </div>
+
+                
                 <div class="preview-item">
                     <div class="preview-label">Notes</div>
                     <div id="preview-notes" class="preview-value">--</div>
@@ -106,12 +115,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const tripLocation = document.getElementById('trip-location');
     const tripParticipants = document.getElementById('trip-participants');
     const tripNotes = document.getElementById('trip-notes');
+    const tripItinerary = document.getElementById('trip-itinerary');
 
     // Get preview elements
     const previewTitle = document.getElementById('preview-title');
     const previewStartDate = document.getElementById('preview-start-date');
     const previewEndDate = document.getElementById('preview-end-date');
     const previewNotes = document.getElementById('preview-notes');
+    const previewItinerary = document.getElementById('preview-itinerary');
 
     // Get participant-related elements
     const selectedParticipantsList = document.getElementById('selected-participants-list');
@@ -239,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const location = tripLocation.value;
             const participants = tripParticipants.value;
             const notes = tripNotes.value;
+            const itinerary = tripItinerary.value;
 
             // Collect selected participants
             const selectedParticipants = [];
@@ -276,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
             previewStartDate.textContent = '--';
             previewEndDate.textContent = '--';
             previewNotes.textContent = '--';
+            previewItinerary.textContent = '--';
 
             // Clear selected participants list
             selectedParticipantsList.innerHTML = '';
