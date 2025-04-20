@@ -238,6 +238,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+if (tripItinerary) {
+        tripItinerary.addEventListener('input', () => {
+            previewItinerary.textContent = tripItinerary.value || '--';
+        });
+}
+    
+
     // Handle form submission
     if (tripForm) {
         tripForm.addEventListener('submit', function (event) {
