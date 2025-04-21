@@ -17,8 +17,6 @@
             // Open the default email client with the information
             window.location.href = `mailto:shuflo.tours@gmail.com?subject=${subject}&body=${body}`;
             
-            // Provide feedback to user
-            alert('trochu trpezlivosti, mail bude ready skôr ako povieš borievkový koláč,.. nezabudni ho poslať');
         });
     }
 
