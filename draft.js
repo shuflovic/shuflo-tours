@@ -9,16 +9,16 @@
             
             // Format the email body
             const subject = encodeURIComponent("New Trip Request: " + (document.getElementById('trip-title').value || "Untitled Trip"));
-            const body = encodeURIComponent("Hi Shuflo,\n\nI hope you are doing well,..\n\ni would like to add a trip to your beautiful and very usefull website,.. here are some details:\n\n" + 
+            const body = encodeURIComponent("Hi Shuflo,\n\nI hope you are doing well,..\n\ni would like to add a trip to your beautiful and very useful website,.. here are some details:\n\n" + 
                                             getPlainTextPreview() + 
-                                            "\n\nthanks a lot\n\nPS: and here is HTML code to make it easier for you to pretend you are real coder:)\n\n" + 
+                                            "\nthanks a lot\n\nPS: and here is HTML code to make it easier for you to pretend you are a real coder:)\n\n" + 
                                             previewSectionHTML);
             
             // Open the default email client with the information
             window.location.href = `mailto:shuflo.tours@gmail.com?subject=${subject}&body=${body}`;
             
             // Provide feedback to user
-            alert('mail bude ready skôr ako povieš borievkový koláč');
+            alert('trochu trpezlivosti, mail bude ready skôr ako povieš borievkový koláč,.. nezabudni ho poslať');
         });
     }
 
