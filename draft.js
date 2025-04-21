@@ -17,7 +17,7 @@ if (draftButton) {
         window.location.href = `mailto:shuflo.tours@gmail.com?subject=${subject}&body=${body}`;
         
         // Provide feedback to user
-        alert('but trpezlivy, mail bude hotovy skor ako povies borievkovy kolac');
+        alert('Draft email prepared with preview information. Your default email client should open now.');
     });
 }
 
