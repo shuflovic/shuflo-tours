@@ -74,9 +74,9 @@ function reloadTrips() {
     loadTrips();
 }
 
-document.addEventListener('DOMContentLoaded', loadTrips);
-
 document.addEventListener('DOMContentLoaded', () => {
+    // First load trips
+    loadTrips();
     // Fetch direct members dynamically from Local Storage
     const directMembers = JSON.parse(localStorage.getItem('members')) || [];
 
