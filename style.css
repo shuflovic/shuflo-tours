@@ -29,10 +29,10 @@ input, textarea, select {
 .kmail a {
   color: #3498DB;
 }
-.submit {
+.submit, #submit {
   background-color: lightblue;
 }
-.submit:hover {
+.submit:hover, #submit:hover {
   background-color: #3498DB;
   color: white;
   transform: scale(1.03);
