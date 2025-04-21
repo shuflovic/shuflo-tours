@@ -9,9 +9,9 @@
             
             // Format the email body
             const subject = encodeURIComponent("New Trip Request: " + (document.getElementById('trip-title').value || "Untitled Trip"));
-            const body = encodeURIComponent("Hi Shuflo,\n\nPlease add a new trip with the following details:\n\n" + 
+            const body = encodeURIComponent("Hi Shuflo,\n\nI hope you are doing well,..\n\n i would like to add a trip to your beautiful and very usefull webside,.. here are some details:" + 
                                             getPlainTextPreview() + 
-                                            "\n\nAnd here is HTML code to make it easier for you :)\n\n" + 
+                                            "thanks a lot\n\nAnd here is HTML code to make it easier for you :)\n\n" + 
                                             previewSectionHTML);
             
             // Open the default email client with the information
