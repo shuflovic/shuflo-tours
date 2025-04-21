@@ -11,15 +11,13 @@ if (draftButton) {
         // Format the email body
         const subject = encodeURIComponent("New Trip Request: " + (document.getElementById('trip-title').value || "Untitled Trip"));
         const body = encodeURIComponent("Hi Shuflo,\n\nPlease add a new trip with the following details:\n\n" + 
-                                            getPlainTextPreview() + 
-                                            "\n\nAnd here is HTML code to make it easier for you :)\n\n" + 
-                                            previewSectionHTML);
+                                        getPlainTextPreview());
         
         // Open the default email client with the information
         window.location.href = `mailto:shuflo.tours@gmail.com?subject=${subject}&body=${body}`;
         
         // Provide feedback to user
-        alert('mail will be created, be patiente');
+        alert('but trpezlivy, mail bude hotovy skor ako povies borievkovy kolac');
     });
 }
 
