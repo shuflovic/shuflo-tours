@@ -24,7 +24,7 @@ document.getElementById('updateMap').addEventListener('click', function() {
     const mapCode = document.getElementById('mapInput').value.trim();
     
     if (mapCode !== "") {
-        let newMapURL = `https://mapy.com/s/${mapCode}`;
+        let newMapURL = `${mapCode}`;
         document.getElementById('preview-mapycom').src = newMapURL;
     } else {
         alert("Please enter a valid map code.");
