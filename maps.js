@@ -1,4 +1,4 @@
-document.getElementById('add-map').addEventListener('click', function() {
+/*document.getElementById('add-map').addEventListener('click', function() {
     document.getElementById('mapModal').style.display = 'block';
 });
 
@@ -18,7 +18,7 @@ document.getElementById('confirmMap').addEventListener('click', function() {
     } else {
         alert("Please enter a valid map embed code.");
     }
-});
+});*/
 
 document.getElementById('updateMap').addEventListener('click', function() {
     const mapCode = document.getElementById('mapInput').value.trim();
