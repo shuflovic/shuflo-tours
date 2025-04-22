@@ -23,6 +23,9 @@
                 <label for="trip-location">Location of the trip:</label><br>
                 <input type="text" id="trip-location" name="trip-location" placeholder="Enter location" required><br>
 
+                <label for="trip-mapycom">Add a map from mapy.com:</label><br>
+                <input type="text" id="trip-location" name="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>
+
                 <label for="trip-participants">Max number of participants:</label><br>
                 <input type="number" id="trip-participants" name="trip-participants" placeholder="How many people can join?" min="1"><br>
 
@@ -32,8 +35,8 @@
                 <label for="trip-notes">Notes:</label><br>
                 <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br>
                 
-       <button type="button" id="add-map" style="color:black" class="createButton">add map</button>
-        <!-- Modal for entering map embed code -->
+       <!--<button type="button" id="add-map" style="color:black" class="createButton">add map</button>
+         Modal for entering map embed code 
 <div id="mapModal" class="modal">
     <div class="modal-content">
         <h2>Insert Code from Mapy.com</h2>
@@ -43,7 +46,7 @@
             <button type="button" id="cancelMap">Cancel</button>
         </div>
     </div>
-</div>        
+</div>        -->
                 
                 
                 
@@ -110,7 +113,14 @@
                 <p>confirmed participants</p><br>
                 <button>i am in!</button>
             </div><br>
+
+                <div class="preview-item">
+                    <div class="preview-label">Itinerary</div>
+                    <div id="preview-mapycom" class="preview-value"><iframe style="border:none" src="&--&" width="300" height="280" frameborder="0"></iframe></div>
+                </div>
+            
             <iframe style="border:none" src="https://mapy.com/s/begenohepo" width="400" height="280" frameborder="0"></iframe>
+            
         </section>
         
         <section>
@@ -134,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tripLocation = document.getElementById('trip-location');
     const tripParticipants = document.getElementById('trip-participants');
     const tripNotes = document.getElementById('trip-notes');
+    const tripNotes = document.getElementById('trip-mapycom');
     const tripItinerary = document.getElementById('trip-itinerary');
 
     // Get preview elements
@@ -142,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewEndDate = document.getElementById('preview-end-date');
     const previewNotes = document.getElementById('preview-notes');
     const previewItinerary = document.getElementById('preview-itinerary');
+    const previewItinerary = document.getElementById('preview-mapycom');
 
     // Get participant-related elements
     const selectedParticipantsList = document.getElementById('selected-participants-list');
@@ -262,6 +274,11 @@ if (tripItinerary) {
             previewItinerary.textContent = tripItinerary.value || '--';
         });
 }
+    if (tripMapycom) {
+        tripMapycom.addEventListener('input', () => {
+            previewMapycom.textContent = tripMapycom.value || '--';
+        });
+}
     
 
     // Handle form submission
@@ -277,6 +294,7 @@ if (tripItinerary) {
             const participants = tripParticipants.value;
             const notes = tripNotes.value;
             const itinerary = tripItinerary.value;
+            const mapycom = tripItinerary.value;
 
             // Collect selected participants
             const selectedParticipants = [];
@@ -293,6 +311,7 @@ if (tripItinerary) {
                 location: location,
                 maxParticipants: participants,
                 notes: notes,
+                mapycom: mapycom,
                 invitedParticipants: selectedParticipants
             };
 
@@ -315,6 +334,7 @@ if (tripItinerary) {
             previewEndDate.textContent = '--';
             previewNotes.textContent = '--';
             previewItinerary.textContent = '--';
+            previeMapycom.textContent = '--';
 
             // Clear selected participants list
             selectedParticipantsList.innerHTML = '';
