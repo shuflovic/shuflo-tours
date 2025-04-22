@@ -23,8 +23,11 @@
                 <label for="trip-location">Location of the trip:</label><br>
                 <input type="text" id="trip-location" name="trip-location" placeholder="Enter location" required><br>
 
-                <label for="trip-mapycom">Add a map from mapy.com:</label><br>
-                <input type="text" id="trip-mapycom" name="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>
+                <input type="text" id="mapInput" placeholder="Enter map code">
+<button id="updateMap">Update Map</button>
+
+                <!--<label for="trip-mapycom">Add a map from mapy.com:</label><br>
+                <input type="text" id="trip-mapycom" name="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>-->
 
                 <label for="trip-participants">Max number of participants:</label><br>
                 <input type="number" id="trip-participants" name="trip-participants" placeholder="How many people can join?" min="1"><br>
@@ -117,14 +120,7 @@
 <div class="preview-item">
     <div class="preview-label">Mapy.com</div>
     <iframe id="preview-mapycom" style="border:none" src="https://mapy.com/s/begenohepo" width="300" height="280" frameborder="0"></iframe>
-</div>
-
-<input type="text" id="mapInput" placeholder="Enter map code">
-<button id="updateMap">Update Map</button>
-
-            
-            <!--<iframe style="border:none" src="https://mapy.com/s/begenohepo" width="400" height="280" frameborder="0"></iframe>-->
-            
+</div>            
         </section>
         
         <section>
