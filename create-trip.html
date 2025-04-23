@@ -27,7 +27,7 @@
 <label for="trip-mapycom">Add a map from mapy.com:</label><br>
                 
                 <input type="text" id="mapInput" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>
-                <button type="button" id="updateMap">Update Map</button>
+                <button type="button" id="updateMap">Update Map</button><br>
 <!--<input type="text" id="trip-mapycom" name="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>-->
 
                 <label for="trip-participants">Max number of participants:</label><br>
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tripLocation = document.getElementById('trip-location');
     const tripParticipants = document.getElementById('trip-participants');
     const tripNotes = document.getElementById('trip-notes');
-    const tripNotes = document.getElementById('trip-mapycom');
+    const tripMapycom = document.getElementById('trip-mapycom');
     const tripItinerary = document.getElementById('trip-itinerary');
 
     // Get preview elements
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewEndDate = document.getElementById('preview-end-date');
     const previewNotes = document.getElementById('preview-notes');
     const previewItinerary = document.getElementById('preview-itinerary');
-    const previewItinerary = document.getElementById('preview-mapycom');
+    const previewMapycom = document.getElementById('preview-mapycom');
 
     // Get participant-related elements
     const selectedParticipantsList = document.getElementById('selected-participants-list');
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!dateString) return '--';
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', {
-            weekday: 'long',
+            weekday: 'short',
             year: 'numeric',
             month: 'long',
             day: 'numeric'
