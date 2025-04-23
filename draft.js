@@ -25,6 +25,8 @@
         const title = document.getElementById('preview-title').textContent;
         const startDate = document.getElementById('preview-start-date').textContent;
         const endDate = document.getElementById('preview-end-date').textContent;
+        const location = document.getElementById('preview-location').textContent;
+        const mapycom = document.getElementById('preview-mapycom').textContent;
         const itinerary = document.getElementById('preview-itinerary').textContent;
         const notes = document.getElementById('preview-notes').textContent;
         
@@ -32,6 +34,8 @@
         let textContent = "Trip Title: " + title + "\n";
         textContent += "Start Date: " + startDate + "\n";
         textContent += "End Date: " + endDate + "\n";
+        textContent += "Location: " + location + "\n";
+        textContent += "mapy.com: " + mapycom + "\n";
         textContent += "Itinerary: " + itinerary + "\n";
         textContent += "Notes: " + notes + "\n";
         
