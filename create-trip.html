@@ -157,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewTitle = document.getElementById('preview-title');
     const previewStartDate = document.getElementById('preview-start-date');
     const previewEndDate = document.getElementById('preview-end-date');
+    const previewLocation = document.getElementById('preview-location');
+    const previewMapycom = document.getElementById('preview-mapycom');
     const previewNotes = document.getElementById('preview-notes');
     const previewItinerary = document.getElementById('preview-itinerary');
     const previewMapycom = document.getElementById('preview-mapycom');
@@ -269,6 +271,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+        if (tripLocation) {
+        tripLocation.addEventListener('input', () => {
+            previewLocation.textContent = tripLocation.value || '--';
+        });
+    }
+    
     if (tripNotes) {
         tripNotes.addEventListener('input', () => {
             previewNotes.textContent = tripNotes.value || '--';
