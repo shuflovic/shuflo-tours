@@ -112,6 +112,11 @@
                     <div id="preview-itinerary" class="preview-value">--</div>
                 </div>
 
+                <div class="preview-item">
+                    <div class="preview-label">Max Participants</div>
+                    <div id="preview-participants" class="preview-value">--</div>
+                </div>
+
                 
                 <div class="preview-item">
                     <div class="preview-label">Notes</div>
@@ -122,7 +127,7 @@
             </div><br>
 
 <div class="preview-item">
-    <div class="preview-label">Mapy.comm</div>
+    <div class="preview-label">Mapy.com</div>
      <div id="preview-mapycom" class="preview-value">--</div>
    <!-- <iframe id="preview-mapycom" style="border:none" src="https://mapy.com/" width="300" height="280" frameborder="0"></iframe>--> 
 </div>            
@@ -159,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewLocation = document.getElementById('preview-location');
     const previewNotes = document.getElementById('preview-notes');
     const previewItinerary = document.getElementById('preview-itinerary');
+    const previewParticipants = document.getElementById('preview-participants');
     const previewMapycom = document.getElementById('preview-mapycom');
 
     // Get participant-related elements
@@ -291,7 +297,11 @@ if (tripItinerary) {
             previewMapycom.textContent = tripMapycom.value || '--';
         });
 }
-    
+    if (tripParticipants) {
+        tripParticipants.addEventListener('input', () => {
+            previewParticipants.textContent = tripParticipants.value || '--';
+        });
+}
 
     // Handle form submission
     if (tripForm) {
@@ -312,7 +322,7 @@ if (tripItinerary) {
             const selectedParticipants = [];
             const participantElements = selectedParticipantsList.querySelectorAll('li');
             participantElements.forEach(element => {
-                selectedParticipants.push(element.textContent);
+            selectedParticipants.push(element.textContent);
             });
 
             // Create a trip object
@@ -321,7 +331,7 @@ if (tripItinerary) {
                 startDate: startDate,
                 endDate: endDate,
                 location: location,
-                maxParticipants: participants,
+                maxParticipants: maxParticipants,
                 notes: notes,
                 mapycom: mapycom,
                 invitedParticipants: selectedParticipants
@@ -345,8 +355,9 @@ if (tripItinerary) {
             previewStartDate.textContent = '--';
             previewEndDate.textContent = '--';
             previewNotes.textContent = '--';
+            previewParticipants.textContent = '--';
             previewItinerary.textContent = '--';
-            previeMapycom.textContent = '--';
+            previewMapycom.textContent = '--';
 
             // Clear selected participants list
             selectedParticipantsList.innerHTML = '';
