@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Another Page Using Supabase</title>
+  <!-- First load the Supabase library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  
+  <!-- Then load your config file -->
+  <script src="supabase-config.js"></script>
+</head>
+<body>
+  <h1>Another Page Using Supabase</h1>
+  
+  <!-- Your HTML content here -->
+  
+  <div id="membersList"></div>
+  
+  <script>
+    // The supabaseClient is already available from the config file
+    
+    // Example: Fetch members from your database
+    async function fetchMembers() {
+      const { data, error } = await supabaseClient
+        .from('members')
+        .select('*');
+      
+      if (error) {
+        console.error('Error fetching members:', error.message);
+        return;
+      }
+      
+      // Display members
+      const membersList = document.getElementById('membersList');
+      membersList.innerHTML = '<h2>Members List</h2>';
+      
+      if (data.length === 0) {
+        membersList.innerHTML += '<p>No members found.</p>';
+      } else {
+        const list = document.createElement('ul');
+        data.forEach(member => {
+          const item = document.createElement('li');
+          item.textContent = `${member.name} (${member.email})`;
+          list.appendChild(item);
+        });
+        membersList.appendChild(list);
+      }
+    }
+    
+    // Call the function when page loads
+    document.addEventListener('DOMContentLoaded', fetchMembers);
+  </script>
+</body>
+</html>
