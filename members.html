@@ -17,23 +17,21 @@
     <br>
     <button type="submit">Submit</button>
   </form>
-
   <script>
     // Include the Supabase URL and Anon Key
     const SUPABASE_URL = 'https://rigsljqkzlnemypqjlbk.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZ3NsanFremxuZW15cHFqbGJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NjI5NTUsImV4cCI6MjA2MTIzODk1NX0.hNdNu9fHGQfdh4WdMFx_SQAVjXvQutBIud3D5CkM9uY'; // Replace with your actual Anon Key
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+    
+    // Create the Supabase client correctly
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    
     document.getElementById('memberForm').addEventListener('submit', async (event) => {
       event.preventDefault();
-
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
-
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from('members') // Replace `members` with your actual table name
         .insert([{ name, email }]);
-
       if (error) {
         console.error('Error inserting data:', error.message);
         alert('Error saving member. Please try again.');
