@@ -10,31 +10,28 @@
   <h1>Members Form</h1>
   <form id="memberForm">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" name="name" required><br>
     <br>
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" required><br>
     <br>
     <button type="submit">Submit</button>
   </form>
 
   <script>
-    // Initialize Supabase client
-    const SUPABASE_URL = 'https://rigsljqkzlnemypqjlbk.supabase.co.supabase.co'; // Replace with your Supabase API URL
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZ3NsanFremxuZW15cHFqbGJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NjI5NTUsImV4cCI6MjA2MTIzODk1NX0.hNdNu9fHGQfdh4WdMFx_SQAVjXvQutBIud3D5CkM9uY'; // Replace with your Supabase API Key
+    // Include the Supabase URL and Anon Key
+    const SUPABASE_URL = 'https://rigsljqkzlnemypqjlbk.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZ3NsanFremxuZW15cHFqbGJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NjI5NTUsImV4cCI6MjA2MTIzODk1NX0.hNdNu9fHGQfdh4WdMFx_SQAVjXvQutBIud3D5CkM9uY'; // Replace with your actual Anon Key
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    
-    // Form submission handler
+
     document.getElementById('memberForm').addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      // Get input values
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
 
-      // Insert data into Supabase
       const { data, error } = await supabase
-        .from('members') // Replace with your table name
+        .from('members') // Replace `members` with your actual table name
         .insert([{ name, email }]);
 
       if (error) {
@@ -43,7 +40,6 @@
       } else {
         console.log('Data inserted:', data);
         alert('Member saved successfully!');
-        // Optionally, clear the form
         document.getElementById('memberForm').reset();
       }
     });
