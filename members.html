@@ -1,56 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Register Members</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
-    <h1>Register Members</h1>
-    <form id="registerForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-        <button type="submit">Register</button>
-    </form>
+  <h1>Members Form</h1>
+  <form id="memberForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
 
-    <h2>Registered Members</h2>
-    <ul id="membersList"></ul>
+  <script>
+    // Initialize Supabase client
+    const SUPABASE_URL = 'https://your-supabase-url.supabase.co'; // Replace with your Supabase API URL
+    const SUPABASE_KEY = 'your-supabase-key'; // Replace with your Supabase API Key
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    <script>
-        // Function to save a member to Local Storage
-        function saveMember(name, email) {
-            const members = JSON.parse(localStorage.getItem('members')) || [];
-            members.push({ name, email });
-            localStorage.setItem('members', JSON.stringify(members));
-        }
+    // Form submission handler
+    document.getElementById('memberForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-        // Function to load members from Local Storage
-        function loadMembers() {
-            const members = JSON.parse(localStorage.getItem('members')) || [];
-            const membersList = document.getElementById('membersList');
-            membersList.innerHTML = ''; // Clear the list
-            members.forEach(member => {
-                const li = document.createElement('li');
-                li.textContent = `${member.name} (${member.email})`;
-                membersList.appendChild(li);
-            });
-        }
+      // Get input values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
 
-        // Handle form submission
-        document.getElementById('registerForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent page reload
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+      // Insert data into Supabase
+      const { data, error } = await supabase
+        .from('members') // Replace with your table name
+        .insert([{ name, email }]);
 
-            saveMember(name, email);
-            loadMembers();
-
-            // Clear the form
-            event.target.reset();
-        });
-
-        // Load members on page load
-        document.addEventListener('DOMContentLoaded', loadMembers);
-    </script>
+      if (error) {
+        console.error('Error inserting data:', error.message);
+        alert('Error saving member. Please try again.');
+      } else {
+        console.log('Data inserted:', data);
+        alert('Member saved successfully!');
+        // Optionally, clear the form
+        document.getElementById('memberForm').reset();
+      }
+    });
+  </script>
 </body>
 </html>
