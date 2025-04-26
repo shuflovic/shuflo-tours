@@ -25,8 +25,6 @@
 
                 <label for="trip-mapycom">Add a map from mapy.com:</label><br>               
                 <input type="text" id="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>
-                <!--<button type="button" id="updateMap">Update Map</button><br>
-                <input type="text" id="trip-mapycom" name="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>-->
 
                 <label for="trip-participants">Max number of participants:</label><br>
                 <input type="number" id="trip-participants" name="trip-participants" placeholder="How many people can join?" min="1"><br>
@@ -36,21 +34,6 @@
 
                 <label for="trip-notes">Notes:</label><br>
                 <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br>
-                
-       <!--<button type="button" id="add-map" style="color:black" class="createButton">add map</button>
-         Modal for entering map embed code 
-<div id="mapModal" class="modal">
-    <div class="modal-content">
-        <h2>Insert Code from Mapy.com</h2>
-        <input type="text" id="mapInput" placeholder="Paste embed code here..." required>
-        <div class="modal-buttons">
-            <button type="button" id="confirmMap">OK</button>
-            <button type="button" id="cancelMap">Cancel</button>
-        </div>
-    </div>
-</div>        -->
-                
-                
                 
                 <button type="button" id="add-final-countdown" style="color:black" class="createButton">add final countdown</button><button type="button" id="hashtags" style="color:black">add # tags</button>
                 
@@ -62,7 +45,7 @@
                         <option value="all">All</option>
                         <option value="bikers">Bikers</option>
                         <option value="hikers">Hikers</option>
-                        <option value="direct-members">Direct Members</option>
+                        <option value="direct-members">Selected Members</option>
                     </select>
 
                     <div id="direct-members-container" style="margin-top: 15px; display: none;">
@@ -77,13 +60,14 @@
                     </div>
                 </section>
                 
-                <!--<button type="submit" id="submit-button" class="submit">Submit</button>only for approved members<br>-->
-                 <button type="button" id="draft-button" style="color:black" class="draft">send draft for approval by mail</button>
+                <button type="submit" id="submit-button" class="submit">Submit</button>only for registered members<br>
+                
+                <!--<button type="button" id="draft-button" style="color:black" class="draft">send draft for approval by mail</button>-->
                 
             </form>
         </section><br>
         
-        <!-- Preview Section -->
+        
         <section class="preview-section">
             <h2 class="preview-title">Trip Preview</h2>
             <div class="preview-content">
@@ -125,11 +109,10 @@
 <div class="preview-item">
     <div class="preview-label">Mapy.com</div>
      <div id="preview-mapycom" class="preview-value">---</div>
-   <!-- <iframe id="preview-mapycom" style="border:none" src="https://mapy.com/" width="300" height="280" frameborder="0"></iframe>--> 
 </div>  <br>
 
 <p>confirmed participants</p><br>
-<button>i am in!</button>
+<button type="button" id="confirmation">i am in!</button>
          
 </section>
         
@@ -368,6 +351,5 @@ if (tripItinerary) {
 });
 </script>
         <script src="draft.js"></script>
-    <script src="map.js"></script>
 </body>
 </html>
