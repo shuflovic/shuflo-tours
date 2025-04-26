@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="sk-en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Trip</title>
+    <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+    <main>
+        <section class="content-section">
+            <h1>Create a new trip</h1>
+            <form id="trip-form">
+                <label for="trip-title">Trip Title:</label><br>
+                <input type="text" id="trip-title" name="trip-title" placeholder="Enter a proper name for the trip" required><br>
+
+                <label for="trip-start-date">When will we go?</label><br>
+                <input type="date" id="trip-start-date" name="trip-start-date" required><br>
+                
+                <label for="trip-end-date">When will we be back?</label><br>
+                <input type="date" id="trip-end-date" name="trip-end-date" required><br>
+                
+                <label for="trip-location">Location of the trip:</label><br>
+                <input type="text" id="trip-location" name="trip-location" placeholder="Enter location" required><br>
+
+                <label for="trip-mapycom">Add a map from mapy.com:</label><br>               
+                <input type="text" id="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>
+                <!--<button type="button" id="updateMap">Update Map</button><br>
+                <input type="text" id="trip-mapycom" name="trip-mapycom" placeholder="insert something like - https://mapy.com/s/hofujuhule"><br>-->
+
+                <label for="trip-participants">Max number of participants:</label><br>
+                <input type="number" id="trip-participants" name="trip-participants" placeholder="How many people can join?" min="1"><br>
+
+                <label for="trip-itinerary">Itinerary:</label><br>
+                <input type="string" id="trip-itinerary" name="trip-itinerary" placeholder="describe day by day itinerary"><br>
+
+                <label for="trip-notes">Notes:</label><br>
+                <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br>
+                
+       <!--<button type="button" id="add-map" style="color:black" class="createButton">add map</button>
+         Modal for entering map embed code 
+<div id="mapModal" class="modal">
+    <div class="modal-content">
+        <h2>Insert Code from Mapy.com</h2>
+        <input type="text" id="mapInput" placeholder="Paste embed code here..." required>
+        <div class="modal-buttons">
+            <button type="button" id="confirmMap">OK</button>
+            <button type="button" id="cancelMap">Cancel</button>
+        </div>
+    </div>
+</div>        -->
+                
+                
+                
+                <button type="button" id="add-final-countdown" style="color:black" class="createButton">add final countdown</button><button type="button" id="hashtags" style="color:black">add # tags</button>
+                
+                <section id="participation"><br>
+                    <h2>Choose who you would like to invite to this trip</h2>
+
+                    <label for="invitation-category">Select Invitation Category:</label>
+                    <select id="invitation-category">
+                        <option value="all">All</option>
+                        <option value="bikers">Bikers</option>
+                        <option value="hikers">Hikers</option>
+                        <option value="direct-members">Direct Members</option>
+                    </select>
+
+                    <div id="direct-members-container" style="margin-top: 15px; display: none;">
+                        <h3>Select members to invite:</h3>
+                        <ul id="direct-members-list" style="list-style-type: none; padding-left: 0;"></ul>
+                        <button type="button" id="add-participant" class="secondary-button">Add Selected Members</button>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <h3>Selected Participants:</h3>
+                        <ul id="selected-participants-list"></ul>
+                    </div>
+                </section>
+                
+                <!--<button type="submit" id="submit-button" class="submit">Submit</button>only for approved members<br>-->
+                 <button type="button" id="draft-button" style="color:black" class="draft">send draft for approval by mail</button>
+                
+            </form>
+        </section><br>
+        
+        <!-- Preview Section -->
+        <section class="preview-section">
+            <h2 class="preview-title">Trip Preview</h2>
+            <div class="preview-content">
+                <div class="preview-item">
+                    <div class="preview-label">Trip Title</div>
+                    <div id="preview-title" class="preview-value">--</div>
+                </div>
+                <div class="preview-item">
+                    <div class="preview-label">Start Date</div>
+                    <div id="preview-start-date" class="preview-value">--</div>
+                </div>
+                
+                <div class="preview-item">
+                    <div class="preview-label">End Date</div>
+                    <div id="preview-end-date" class="preview-value">--</div>
+                </div>
+
+                <div class="preview-item">
+                    <div class="preview-label">Location</div>
+                    <div id="preview-location" class="preview-value">--</div>
+                </div>
+
+                
+                <div class="preview-item">
+                    <div class="preview-label">Itinerary</div>
+                    <div id="preview-itinerary" class="preview-value">--</div>
+                </div>
+
+                <div class="preview-item">
+                    <div class="preview-label">Max Participants</div>
+                    <div id="preview-participants" class="preview-value">--</div>
+                </div><br>
+                
+                <div class="preview-item">
+                    <div class="preview-label">Notes</div>
+                    <div id="preview-notes" class="preview-value">--</div>
+                </div><br>
+
+<div class="preview-item">
+    <div class="preview-label">Mapy.com</div>
+     <div id="preview-mapycom" class="preview-value">---</div>
+   <!-- <iframe id="preview-mapycom" style="border:none" src="https://mapy.com/" width="300" height="280" frameborder="0"></iframe>--> 
+</div>  <br>
+
+<p>confirmed participants</p><br>
+<button>i am in!</button>
+         
+</section>
+        
+<section>
+</section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Shuflo Tours</p>
+    </footer>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Fetch direct members dynamically from Local Storage
+    const directMembers = JSON.parse(localStorage.getItem('members')) || [];
+
+    // Get form elements
+    const tripForm = document.getElementById('trip-form');
+    const tripTitle = document.getElementById('trip-title');
+    const tripStartDate = document.getElementById('trip-start-date');
+    const tripEndDate = document.getElementById('trip-end-date');
+    const tripLocation = document.getElementById('trip-location');
+    const tripParticipants = document.getElementById('trip-participants');
+    const tripNotes = document.getElementById('trip-notes');
+    const tripMapycom = document.getElementById('trip-mapycom');
+    const tripItinerary = document.getElementById('trip-itinerary');
+
+    // Get preview elements
+    const previewTitle = document.getElementById('preview-title');
+    const previewStartDate = document.getElementById('preview-start-date');
+    const previewEndDate = document.getElementById('preview-end-date');
+    const previewLocation = document.getElementById('preview-location');
+    const previewNotes = document.getElementById('preview-notes');
+    const previewItinerary = document.getElementById('preview-itinerary');
+    const previewParticipants = document.getElementById('preview-participants');
+    const previewMapycom = document.getElementById('preview-mapycom');
+
+    // Get participant-related elements
+    const selectedParticipantsList = document.getElementById('selected-participants-list');
+    const addParticipantButton = document.getElementById('add-participant');
+    const invitationCategory = document.getElementById('invitation-category');
+    const directMembersList = document.getElementById('direct-members-list');
+    const directMembersContainer = document.getElementById('direct-members-container');
+
+    // Populate the direct members list
+    if (directMembersList) {
+        directMembers.forEach(member => {
+            const listItem = document.createElement('li');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = member.email; // Use email or a unique identifier
+            checkbox.id = `member-${member.name.toLowerCase().replace(' ', '-')}`;
+
+            const label = document.createElement('label');
+            label.htmlFor = checkbox.id;
+            label.textContent = ` ${member.name}`; // Display the name
+
+            listItem.appendChild(checkbox);
+            listItem.appendChild(label);
+            directMembersList.appendChild(listItem);
+        });
+    }
+
+    // Show/hide direct members list based on selection
+    if (invitationCategory) {
+        invitationCategory.addEventListener('change', () => {
+            directMembersContainer.style.display =
+                invitationCategory.value === 'direct-members' ? 'block' : 'none';
+        });
+    }
+
+    // Handle adding participants
+    if (addParticipantButton) {
+        addParticipantButton.addEventListener('click', () => {
+            const selectedCategory = invitationCategory.value;
+            const selectedParticipants = [];
+
+            if (selectedCategory === 'all') {
+                // Add all direct members
+                directMembers.forEach(member => {
+                    if (!isParticipantAlreadyAdded(member.name)) {
+                        selectedParticipants.push(member.name);
+                    }
+                });
+            } else if (selectedCategory === 'direct-members') {
+                // Add manually selected direct members
+                const checkboxes = directMembersList.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked && !isParticipantAlreadyAdded(checkbox.value)) {
+                        const member = directMembers.find(m => m.email === checkbox.value);
+                        if (member) {
+                            selectedParticipants.push(member.name);
+                        }
+                    }
+                });
+            }
+
+            // Add selected participants to the list
+            selectedParticipants.forEach(participant => {
+                const listItem = document.createElement('li');
+                listItem.textContent = participant;
+                selectedParticipantsList.appendChild(listItem);
+            });
+        });
+    }
+
+    // Helper function to check if a participant is already added
+    function isParticipantAlreadyAdded(name) {
+        const existingParticipants = selectedParticipantsList.querySelectorAll('li');
+        return Array.from(existingParticipants).some(participant => participant.textContent === name);
+    }
+
+    // Function to format dates for display
+    function formatDate(dateString) {
+        if (!dateString) return '--';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    // Update preview as user types
+    if (tripTitle) {
+        tripTitle.addEventListener('input', () => {
+            previewTitle.textContent = tripTitle.value || '--';
+        });
+    } else {
+        console.error("Element with id 'trip-title' not found.");
+    }
+
+    if (tripStartDate) {
+        tripStartDate.addEventListener('input', () => {
+            previewStartDate.textContent = formatDate(tripStartDate.value);
+        });
+    }
+
+    if (tripEndDate) {
+        tripEndDate.addEventListener('input', () => {
+            previewEndDate.textContent = formatDate(tripEndDate.value);
+        });
+    }
+
+        if (tripLocation) {
+        tripLocation.addEventListener('input', () => {
+            previewLocation.textContent = tripLocation.value || '--';
+        });
+    }
+    
+    if (tripNotes) {
+        tripNotes.addEventListener('input', () => {
+            previewNotes.textContent = tripNotes.value || '--';
+        });
+    }
+
+if (tripItinerary) {
+        tripItinerary.addEventListener('input', () => {
+            previewItinerary.textContent = tripItinerary.value || '--';
+        });
+}
+    if (tripMapycom) {
+        tripMapycom.addEventListener('input', () => {
+            previewMapycom.textContent = tripMapycom.value || '--';
+        });
+}
+    if (tripParticipants) {
+        tripParticipants.addEventListener('input', () => {
+            previewParticipants.textContent = tripParticipants.value || '--';
+        });
+}
+
+    // Handle form submission
+    if (tripForm) {
+        tripForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const title = tripTitle.value;
+            const startDate = tripStartDate.value;
+            const endDate = tripEndDate.value;
+            const location = tripLocation.value;
+            const participants = tripParticipants.value;
+            const notes = tripNotes.value;
+            const itinerary = tripItinerary.value;
+            const mapycom = tripMapycom.value;
+
+            // Collect selected participants
+            const selectedParticipants = [];
+            const participantElements = selectedParticipantsList.querySelectorAll('li');
+            participantElements.forEach(element => {
+            selectedParticipants.push(element.textContent);
+            });
+
+            // Create a trip object
+            const newTrip = {
+                title: title,
+                startDate: startDate,
+                endDate: endDate,
+                location: location,
+                maxParticipants: maxParticipants,
+                notes: notes,
+                mapycom: mapycom,
+                invitedParticipants: selectedParticipants
+            };
+
+            // Retrieve existing trips from local storage
+            const existingTrips = JSON.parse(localStorage.getItem('trips')) || [];
+
+            // Add the new trip to the list
+            existingTrips.push(newTrip);
+
+            // Save the updated list back to local storage
+            localStorage.setItem('trips', JSON.stringify(existingTrips));
+
+            // Provide feedback to the user
+            alert('Trip successfully saved!');
+
+            // Optionally reset the form
+            tripForm.reset();
+            previewTitle.textContent = '--';
+            previewStartDate.textContent = '--';
+            previewEndDate.textContent = '--';
+            previewNotes.textContent = '--';
+            previewParticipants.textContent = '--';
+            previewItinerary.textContent = '--';
+            previewMapycom.textContent = '--';
+
+            // Clear selected participants list
+            selectedParticipantsList.innerHTML = '';
+        });
+    } else {
+        console.error("Element with id 'trip-form' not found.");
+    }
+});
+</script>
+        <script src="draft.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>
