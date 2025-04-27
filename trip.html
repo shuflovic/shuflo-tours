@@ -79,7 +79,9 @@
                     const formattedStartDate = new Date(trip.startDate).toLocaleDateString();
                     const formattedEndDate = new Date(trip.endDate).toLocaleDateString();
                     
-                    let html = `
+                    let html = `<head>
+                                <link rel="stylesheet" href="style.css">
+                                </head>
                             <section class="content-section"><h1>${trip.title}</h1>
                             </section><br>
                             <section class="content-section"><p><strong>Start Date:</strong> ${formattedStartDate}</p>
