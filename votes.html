@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   try {
     // Directly insert the vote (Supabase will handle the unique constraint)
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('trip_votes')
       .upsert([{
         quiz_id: currentQuizId,
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
   async function displayResults() {
     try {
       // Get the quiz data
-      const { data: quizData, error: quizError } = await supabase
+      const { data: quizData, error: quizError } = await supabaseClient
         .from('trip_quizzes')
         .select('*')
         .eq('id', currentQuizId)
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (quizError) throw quizError;
       
       // Get all votes for this quiz
-      const { data: votesData, error: votesError } = await supabase
+      const { data: votesData, error: votesError } = await supabaseClient
         .from('trip_votes')
         .select('option_id')
         .eq('quiz_id', currentQuizId);
