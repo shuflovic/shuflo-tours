@@ -12,7 +12,7 @@ async function populateTripList() {
 
     try {
         console.log("Fetching trips...");
-        const { data: trips, error } = await supabase
+        const { data: trips, error } = await supabaseClient
             .from('trips')
             .select('id, title');
 
