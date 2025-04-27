@@ -168,51 +168,43 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Submit vote handler
   submitVoteBtn.addEventListener('click', async function() {
-    if (selectedOptionId === null) {
-      alert('Please select an option before voting');
-      return;
+  if (selectedOptionId === null) {
+    alert('Please select an option before voting');
+    return;
+  }
+  
+  const userId = getCurrentUserId();
+  console.log("Submitting vote:", {
+    quiz_id: currentQuizId,
+    user_id: userId,
+    option_id: selectedOptionId
+  });
+  
+  try {
+    // Directly insert the vote (Supabase will handle the unique constraint)
+    const { data, error } = await supabase
+      .from('trip_votes')
+      .upsert([{
+        quiz_id: currentQuizId,
+        user_id: userId,
+        option_id: selectedOptionId
+      }], {
+        onConflict: 'quiz_id,user_id',
+        returning: 'minimal'
+      });
+      
+    if (error) {
+      console.error("Vote submission error:", error);
+      throw error;
     }
     
-    try {
-      // Check if user has already voted
-      const { data: existingVotes, error: checkError } = await supabase
-        .from('trip_votes')
-        .select('*')
-        .eq('quiz_id', currentQuizId)
-        .eq('user_id', getCurrentUserId()); // You'll need to implement this function
-      
-      if (checkError) throw checkError;
-      
-      if (existingVotes && existingVotes.length > 0) {
-        // Update existing vote
-        const { error: updateError } = await supabase
-          .from('trip_votes')
-          .update({ option_id: selectedOptionId })
-          .eq('id', existingVotes[0].id);
-          
-        if (updateError) throw updateError;
-        alert('Your vote has been updated!');
-      } else {
-        // Create new vote
-        const { error: insertError } = await supabase
-          .from('trip_votes')
-          .insert([{
-            quiz_id: currentQuizId,
-            user_id: getCurrentUserId(), // You'll need to implement this function
-            option_id: selectedOptionId
-          }]);
-          
-        if (insertError) throw insertError;
-        alert('Your vote has been recorded!');
-      }
-      
-      userHasVoted = true;
-      displayResults();
-    } catch (error) {
-      console.error('Error submitting vote:', error);
-      alert('Failed to submit vote. Please try again.');
-    }
-  });
+    alert('Your vote has been recorded!');
+    displayResults();
+  } catch (error) {
+    console.error('Error submitting vote:', error);
+    alert('Failed to submit vote: ' + error.message);
+  }
+});
   
   // View results handler
   viewResultsBtn.addEventListener('click', function() {
