@@ -5,39 +5,36 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // Function to fetch trips from Supabase and populate them in the "trip-list"
 async function populateTripList() {
     const tripListDiv = document.getElementById("trip-list");
-    // Check if the element exists
     if (!tripListDiv) {
         console.error("Element with ID 'trip-list' not found.");
         return;
     }
-    
+
     try {
-        // Fetch trips data from the Supabase table
+        console.log("Fetching trips...");
         const { data: trips, error } = await supabase
             .from('trips')
-            .select('id, title'); // Include `id` for linking
-        
+            .select('id, title');
+
         if (error) {
             console.error("Error fetching trips:", error.message);
             return;
         }
-        
-        console.log("Trips fetched:", trips); // Add this line to check if data is returned
-        
-        // Clear existing content
-        tripListDiv.innerHTML = "";
-        
-        if (trips.length === 0) {
+
+        console.log("Trips fetched:", trips);
+
+        tripListDiv.innerHTML = ""; // Clear existing content
+
+        if (!trips || trips.length === 0) {
             tripListDiv.innerHTML = "<p>No trips found</p>";
             return;
         }
-        
-        // Populate trips into the trip list with buttons
+
         trips.forEach(trip => {
             const tripButton = document.createElement("button");
             const tripLink = document.createElement("a");
             tripButton.className = "trip-button";
-            tripLink.href = `trip.html?id=${trip.id}`; // Link to trip details
+            tripLink.href = `trip.html?id=${trip.id}`;
             tripLink.textContent = trip.title;
             tripButton.appendChild(tripLink);
             tripListDiv.appendChild(tripButton);
@@ -46,6 +43,5 @@ async function populateTripList() {
         console.error("Unexpected error:", err.message);
     }
 }
-
 // Make sure to call the function when the page loads
 document.addEventListener('DOMContentLoaded', populateTripList);
