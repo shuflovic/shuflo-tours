@@ -21,7 +21,7 @@ async function populateTripList() {
         // Fetch trips data from the Supabase table
         const { data: trips, error } = await supabase
             .from('trips')
-            .select('title');
+            .select('id, title'); // Include `id` for linking
 
         if (error) {
             console.error("Error fetching trips:", error.message);
@@ -31,24 +31,20 @@ async function populateTripList() {
         // Clear existing content
         tripListDiv.innerHTML = "";
 
-        // Populate trips into the trip list
+        // Populate trips into the trip list with buttons
         trips.forEach(trip => {
-            const tripItemDiv = document.createElement("div");
-            tripItemDiv.className = "trip-item";
+            const tripButton = document.createElement("button");
+            const tripLink = document.createElement("a");
 
-            // Add trip title
-            const tripTitle = document.createElement("p");
-            tripTitle.textContent = trip.title;
-            tripItemDiv.appendChild(tripTitle);
+            tripButton.className = "trip-button";
+            tripLink.href = `trip.html?id=${trip.id}`; // Link to trip details
+            tripLink.textContent = trip.title;
 
-            // Append trip item to the trip list
-            tripListDiv.appendChild(tripItemDiv);
+            tripButton.appendChild(tripLink);
+            tripListDiv.appendChild(tripButton);
         });
 
     } catch (err) {
         console.error("Unexpected error:", err.message);
     }
 }
-
-// Call the function to populate trips on page load
-document.addEventListener("DOMContentLoaded", populateTripList);
