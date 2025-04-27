@@ -86,8 +86,8 @@
                             </section><br>
                             <section class="content-section"><p><strong>End Date:</strong> ${formattedEndDate}</p>
                             </section><br>
-                            <section class"content-section"><p><strong>Location:</strong> ${trip.location}</p>
-                            </section>
+                            <section class="content-section"><p><strong>Location:</strong> ${trip.location}</p>
+                            </section><br>
                     `;
                     
                     if (trip.maxParticipants) {
@@ -99,7 +99,7 @@
                     }
                     
                     if (trip.notes) {
-                        html += `<p><strong>Notes:</strong> ${trip.notes}</p>`;
+                        html += `<section class="content-section"><p><strong>Notes:</strong> ${trip.notes}</p></section>`;
                     }
                     
                     if (trip.mapycom) {
