@@ -13,7 +13,7 @@
             <h1>Create a new trip</h1>
             <form id="trip-form">
                 <label for="trip-title">Trip Title:</label><br>
-                <input type="text" id="trip-title" name="trip-title" placeholder="Enter a proper name for the trip" required><br>
+                <input type="text" id="trip-title" name="trip-title" placeholder="Enter a proper name for the trip<br> plus short description to lure more people" row="3" required><br>
 
                 <label for="trip-start-date">When will we go?</label><br>
                 <input type="date" id="trip-start-date" name="trip-start-date" required><br>
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 </head>
 <body>
     <main>
-                <section class="content-section"><h1>${trip.title}</h1>
+                <section class="content-section"><p>${trip.title}</p>
                 </section><br>
                 <section class="content-section"><p><strong>Start Date:</strong> ${formatDate(trip.startDate)}</p>
                 </section><br>
