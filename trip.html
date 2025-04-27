@@ -80,8 +80,8 @@
                     const formattedEndDate = new Date(trip.endDate).toLocaleDateString();
                     
                     let html = `
-                        <h1>${trip.title}</h1>
-                        <div>
+                            <section class="content-section"><h1>${trip.title}</h1>
+                            </section><br>
                             <section class="content-section"><p><strong>Start Date:</strong> ${formattedStartDate}</p>
                             </section><br>
                             <section class="content-section"><p><strong>End Date:</strong> ${formattedEndDate}</p>
@@ -106,7 +106,7 @@
                         html += `<p><strong>Map:</strong> <a href="${trip.mapycom}" target="_blank">View Map</a></p>`;
                     }
                     
-                    html += `</div>`;
+                    html += `q`;
                     
                     // Add the invited participants section
                     if (trip.invitedParticipants && trip.invitedParticipants.length > 0) {
