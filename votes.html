@@ -27,6 +27,13 @@
   <button id="backToQuiz" class="btn">Back to Quiz</button>
 </div>
 
+<div id="quizListContainer">
+  <h2>Available Quizzes</h2>
+  <div id="quizList"></div>
+  <button id="createNewQuiz" class="btn">Create New Quiz</button>
+<button id="backToList" class="btn">Back to All Quizzes</button> 
+</div>
+  
 <!-- Add this CSS to your stylesheet -->
 <style>
   .hidden { display: none; }
@@ -306,7 +313,147 @@ document.addEventListener('DOMContentLoaded', function() {
     return userId;
   }
 });
-
+  // New DOM references
+  const quizListContainer = document.getElementById('quizListContainer');
+  const quizList = document.getElementById('quizList');
+  const createNewQuizBtn = document.getElementById('createNewQuiz');
+  
+  // Load all quizzes on page load
+  loadAllQuizzes();
+  
+  // Create new quiz button handler
+  createNewQuizBtn.addEventListener('click', function() {
+    createNewQuiz();
+  });
+  
+  // Function to load and display all available quizzes
+  async function loadAllQuizzes() {
+    try {
+      // Clear the current list
+      quizList.innerHTML = '';
+      
+      // Get all quizzes from Supabase, ordered by creation date (newest first)
+      const { data, error } = await supabase
+        .from('trip_quizzes')
+        .select('*')
+        .order('created_at', { ascending: false });
+        
+      if (error) throw error;
+      
+      if (data && data.length > 0) {
+        // Create a card for each quiz
+        data.forEach(quiz => {
+          const quizCard = document.createElement('div');
+          quizCard.className = 'quiz-card';
+          quizCard.style.border = '1px solid #ddd';
+          quizCard.style.borderRadius = '8px';
+          quizCard.style.padding = '15px';
+          quizCard.style.margin = '10px 0';
+          quizCard.style.cursor = 'pointer';
+          
+          // Quiz title
+          const title = document.createElement('h3');
+          title.textContent = quiz.title;
+          title.style.margin = '0 0 10px 0';
+          
+          // Quiz description
+          const description = document.createElement('p');
+          description.textContent = quiz.description;
+          description.style.margin = '0 0 10px 0';
+          
+          // Quiz creation date
+          const date = document.createElement('small');
+          date.textContent = `Created: ${new Date(quiz.created_at).toLocaleString()}`;
+          date.style.color = '#666';
+          
+          // Options count
+          const optionsCount = document.createElement('div');
+          optionsCount.textContent = `Options: ${quiz.options.length}`;
+          optionsCount.style.marginTop = '5px';
+          
+          // Add elements to card
+          quizCard.appendChild(title);
+          quizCard.appendChild(description);
+          quizCard.appendChild(optionsCount);
+          quizCard.appendChild(date);
+          
+          // Click handler to open this quiz
+          quizCard.addEventListener('click', function() {
+            currentQuizId = quiz.id;
+            sessionStorage.setItem('activeQuizId', quiz.id);
+            loadExistingQuiz(quiz.id);
+            
+            // Hide the quiz list and show the quiz
+            quizListContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+          });
+          
+          // Add card to list
+          quizList.appendChild(quizCard);
+        });
+      } else {
+        // No quizzes found
+        const noQuizzes = document.createElement('p');
+        noQuizzes.textContent = 'No quizzes available. Create one to get started!';
+        quizList.appendChild(noQuizzes);
+      }
+      
+      // Show the quiz list container
+      quizListContainer.classList.remove('hidden');
+      quizContainer.classList.add('hidden');
+      resultsContainer.classList.add('hidden');
+    } catch (error) {
+      console.error('Error loading quizzes:', error);
+      alert('Failed to load quizzes. Please try again.');
+    }
+  }
+  
+  // Modify your existing quizBtn click handler
+  quizBtn.addEventListener('click', function() {
+    // Instead of creating a new quiz, show the quiz list
+    loadAllQuizzes();
+  });
+  
+  // Add a back button to quiz and results containers
+  // Add these buttons to your HTML:
+  /*
+  <button id="backToList" class="btn">Back to All Quizzes</button>
+  */
+  
+  const backToListBtn = document.getElementById('backToList');
+  if (backToListBtn) {
+    backToListBtn.addEventListener('click', function() {
+      loadAllQuizzes();
+    });
+  }
+  
+  // Modify your createNewQuiz function to update the list after creation
+  const originalCreateNewQuiz = createNewQuiz;
+  createNewQuiz = async function() {
+    await originalCreateNewQuiz();
+    // After creating a new quiz, refresh the list
+    loadAllQuizzes();
+  };
+  
+  // Modify your displayResults function to add a back to list button
+  const originalDisplayResults = displayResults;
+  displayResults = async function() {
+    await originalDisplayResults();
+    
+    // Add a back to list button if it doesn't exist
+    if (!document.getElementById('resultsBackToList')) {
+      const backBtn = document.createElement('button');
+      backBtn.id = 'resultsBackToList';
+      backBtn.className = 'btn';
+      backBtn.textContent = 'View All Quizzes';
+      backBtn.style.marginLeft = '10px';
+      backBtn.addEventListener('click', loadAllQuizzes);
+      
+      // Add it next to the "Back to Quiz" button
+      document.getElementById('backToQuiz').parentNode.appendChild(backBtn);
+    }
+  };
+});
 </script>
 </body>
 </html>
