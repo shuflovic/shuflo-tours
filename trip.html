@@ -82,9 +82,12 @@
                     let html = `
                         <h1>${trip.title}</h1>
                         <div class="trip-info">
-                            <p><strong>Start Date:</strong> ${formattedStartDate}</p>
-                            <p><strong>End Date:</strong> ${formattedEndDate}</p>
-                            <p><strong>Location:</strong> ${trip.location}</p>
+                            <section id="content-section"><p><strong>Start Date:</strong> ${formattedStartDate}</p>
+                            </section><br>
+                            <section id="content-section"><p><strong>End Date:</strong> ${formattedEndDate}</p>
+                            </section><br>
+                            <section id="content-section"><p><strong>Location:</strong> ${trip.location}</p>
+                            </section>
                     `;
                     
                     if (trip.maxParticipants) {
