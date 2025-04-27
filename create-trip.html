@@ -330,10 +330,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         <section class="trip-details">
             <h1>${trip.title}</h1>
             <div class="trip-info">
-                <p><strong>Start Date:</strong> ${formatDate(trip.startDate)}</p>
-                <p><strong>End Date:</strong> ${formatDate(trip.endDate)}</p>
-                <p><strong>Location:</strong> ${trip.location}</p>
-                <p><strong>Max Participants:</strong> ${trip.maxParticipants || 'Unlimited'}</p>
+                <section class="content-section"><p><strong>Start Date:</strong> ${formatDate(trip.startDate)}</p></section><br>
+                <section class="content-section"><p><strong>End Date:</strong> ${formatDate(trip.endDate)}</p></section><br>
+                <section class="content-section"><p><strong>Location:</strong> ${trip.location}</p></section><br>
+                <section class="content-section"><p><strong>Max Participants:</strong> ${trip.maxParticipants || 'Unlimited'}</p></section><br>
                 ${trip.itinerary ? `<p><strong>Itinerary:</strong> ${trip.itinerary}</p>` : ''}
                 ${trip.notes ? `<p><strong>Notes:</strong> ${trip.notes}</p>` : ''}
                 ${trip.mapycom ? `<p><strong>Map:</strong> <a href="${trip.mapycom}" target="_blank">View Map</a></p>` : ''}
