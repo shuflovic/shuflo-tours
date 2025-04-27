@@ -327,17 +327,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 </head>
 <body>
     <main>
-        <section class="trip-details">
-            <h1>${trip.title}</h1>
-            <div class="trip-info">
-                <section class="content-section"><p><strong>Start Date:</strong> ${formatDate(trip.startDate)}</p></section><br>
-                <section class="content-section"><p><strong>End Date:</strong> ${formatDate(trip.endDate)}</p></section><br>
-                <section class="content-section"><p><strong>Location:</strong> ${trip.location}</p></section><br>
-                <section class="content-section"><p><strong>Max Participants:</strong> ${trip.maxParticipants || 'Unlimited'}</p></section><br>
-                ${trip.itinerary ? `<p><strong>Itinerary:</strong> ${trip.itinerary}</p>` : ''}
-                ${trip.notes ? `<p><strong>Notes:</strong> ${trip.notes}</p>` : ''}
-                ${trip.mapycom ? `<p><strong>Map:</strong> <a href="${trip.mapycom}" target="_blank">View Map</a></p>` : ''}
-            </div>
+                <section class="content-section"><h1>${trip.title}</h1>
+                </section><br>
+                <section class="content-section"><p><strong>Start Date:</strong> ${formatDate(trip.startDate)}</p>
+                </section><br>
+                <section class="content-section"><p><strong>End Date:</strong> ${formatDate(trip.endDate)}</p>
+                </section><br>
+                <section class="content-section"><p><strong>Location:</strong> ${trip.location}</p>
+                </section><br>
+                <section class="content-section"><p><strong>Max Participants:</strong> ${trip.maxParticipants || 'Unlimited'}</p>
+                </section><br>
+                <section class="content-section">${trip.itinerary ? `<p><strong>Itinerary:</strong> ${trip.itinerary}</p>` : ''}
+                </section><br>
+                <section class="content-section">${trip.notes ? `<p><strong>Notes:</strong> ${trip.notes}</p>` : ''}</section><br>
+                <section class="content-section">${trip.mapycom ? `<p><strong>Map:</strong> <a href="${trip.mapycom}" target="_blank">View Map</a></p>` : ''}</section><br>
+            
             
             <div class="participants">
                 <h2>Invited Participants</h2>
@@ -345,7 +349,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ${trip.invitedParticipants.map(participant => `<li>${participant}</li>`).join('')}
                 </ul>
             </div>
-        </section>
+        
     </main>
     <footer>
         <p>&copy; 2025 Shuflo Tours</p>
