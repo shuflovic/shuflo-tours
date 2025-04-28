@@ -385,6 +385,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Get form data
             const title = tripTitle.value;
+            const description = tripDescription.value;
             const startDate = tripStartDate.value;
             const endDate = tripEndDate.value;
             const location = tripLocation.value;
@@ -403,6 +404,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Create a trip object
             const newTrip = {
                 title: title,
+                description: description;
                 startDate: startDate,
                 endDate: endDate,
                 location: location,
@@ -438,6 +440,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // Reset the form
                 tripForm.reset();
                 previewTitle.textContent = '--';
+                previewDescription.textContent = '--';
                 previewStartDate.textContent = '--';
                 previewEndDate.textContent = '--';
                 previewLocation.textContent = '--';
