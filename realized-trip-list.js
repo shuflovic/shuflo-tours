@@ -32,10 +32,10 @@ async function populateRTripList() {
             const rTripButton = document.createElement("button");
             const rTripLink = document.createElement("a");
             rTripButton.className = "trip-button";
-            rTipLink.href = `trip.html?id=${trip.id}`;
+            rTipLink.href = `rtrip.html?id=${trip.id}`;
             rTripLink.textContent = trip.title;
-            rTripButton.appendChild(tripLink);
-            tTripListDiv.appendChild(tripButton);
+            rTripButton.appendChild(rTripLink);
+            tTripListDiv.appendChild(rTripButton);
         });
     } catch (err) {
         console.error("Unexpected error:", err.message);
