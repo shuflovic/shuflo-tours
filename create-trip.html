@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // All your other event listeners for preview updates...
     if (tripDescription) {
         tripDescription.addEventListener('input', () => {
-            previewDescription.textContent = formatDate(tripSDescription.value);
+            previewDescription.textContent = formatDate(tripDescription.value);
         });
     }
     
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <p><strong>End Date:</strong> ${formatDate(trip.endDate)}</p>
                 </section><br>
                 <section class="content-section"><p><strong>Location:</strong> ${trip.location}</p><br>
-                ${trip.mapycom ? `<p><strong>Map:</strong> <a href="${trip.mapycom}" target="_blank">View Map</a></p>` : ''}
+                <p><strong>Mapy.com:</strong> <a href="${trip.mapycom}" target="_blank">View Map</a></p>
                 </section><br>
                 <section class="content-section"><p><strong>Max Participants:</strong> ${trip.maxParticipants || 'Unlimited'}</p>
                 </section><br>
