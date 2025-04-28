@@ -32,7 +32,7 @@ async function populateRTripList() {
             const rTripButton = document.createElement("button");
             const rTripLink = document.createElement("a");
             rTripButton.className = "trip-button";
-            rTipLink.href = `rtrip.html?id=${trip.id}`;
+            rTripLink.href = `rtrip.html?id=${trip.id}`;
             rTripLink.textContent = trip.title;
             rTripButton.appendChild(rTripLink);
             tTripListDiv.appendChild(rTripButton);
