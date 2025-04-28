@@ -1,7 +1,7 @@
 
         
 // Function to fetch trips from Supabase and populate them in the "trip-list"
-async function populateTripList() {
+async function populateRTripList() {
     const rTripListDiv = document.getElementById("realized-trip-list");
     if (!rTripListDiv) {
         console.error("Element with ID 'realized-trip-list' not found.");
