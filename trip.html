@@ -146,7 +146,7 @@
 async function updateStatus(tripId, newStatus) {
     try {
         const { data, error } = await supabaseClient
-            .from('trip')
+            .from('trips')
             .update({ status: newStatus })
             .eq('id', tripId);
 
