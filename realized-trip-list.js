@@ -35,7 +35,7 @@ async function populateRTripList() {
             rTripLink.href = `rtrip.html?id=${trip.id}`;
             rTripLink.textContent = trip.title;
             rTripButton.appendChild(rTripLink);
-            tTripListDiv.appendChild(rTripButton);
+            rTripListDiv.appendChild(rTripButton);
         });
     } catch (err) {
         console.error("Unexpected error:", err.message);
