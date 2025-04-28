@@ -372,14 +372,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
 <br><br>
 
-            <h3>${trip.name}</h3>
-            <label for="status-${trip.id}">Status:</label>
-            <select id="status-${trip.id}" name="status" onchange="updateStatus(${trip.id}, this.value)">
-                <option value="upcoming" ${trip.status === 'upcoming' ? 'selected' : ''}>upcoming</option>
-                <option value="realized" ${trip.status === 'realized' ? 'selected' : ''}>realized</option>
-                <option value="cancelled" ${trip.status === 'cancelled' ? 'selected' : ''}>cancelled</option>
-                <option value="postponed" ${trip.status === 'postponed' ? 'selected' : ''}>postponed</option>
-            </select>
+
+    <p><strong>Created At:</strong> ${new Date(trip.created_at).toLocaleString()}</p>
+    <label for="status-${trip.created_at}">Actual Trip Status:</label>
+    <select id="status-${trip.created_at}" name="status" onchange="updateStatus('${trip.created_at}', this.value)">
+        <option value="upcoming" ${trip.status === 'upcoming' ? 'selected' : ''}>upcoming</option>
+        <option value="realized" ${trip.status === 'realized' ? 'selected' : ''}>realized</option>
+        <option value="cancelled" ${trip.status === 'cancelled' ? 'selected' : ''}>cancelled</option>
+        <option value="postponed" ${trip.status === 'postponed' ? 'selected' : ''}>postponed</option>
+    </select>
+
+
         </div>
     </main>
     <footer>
