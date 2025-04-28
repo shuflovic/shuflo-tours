@@ -405,6 +405,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const notes = tripNotes.value;
             const itinerary = tripItinerary.value;
             const mapycom = tripMapycom.value;
+            const status = "upcomming";
 
             // Collect selected participants
             const selectedParticipants = [];
@@ -422,6 +423,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 location: location,
                 maxParticipants: maxParticipants,
                 notes: notes,
+                status: status,
                 itinerary: itinerary,
                 mapycom: mapycom,
                 invitedParticipants: selectedParticipants,
