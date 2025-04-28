@@ -15,7 +15,7 @@ async function populateTripList() {
         const { data: trips, error } = await supabaseClient
             .from('trips')
             .select('id, title');
-            .eq('status', 'upcoming');
+            
 
         if (error) {
             console.error("Error fetching trips:", error.message);
