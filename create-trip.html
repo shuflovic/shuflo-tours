@@ -369,8 +369,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ${trip.invitedParticipants.map(participant => `<li>${participant}</li>`).join('')}
                 </ul>
             </div>
-<p>actual trip status</><br><br>
-    <label for="status">Select Status:</label>
+<br><br>
+    <label for="status">Actual Trip Status:</label>
     <select id="status" name="status">
         <option value="upcoming" selected>Upcoming</option>
         <option value="realized">Realized</option>
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const notes = tripNotes.value;
             const itinerary = tripItinerary.value;
             const mapycom = tripMapycom.value;
-            const status = "upcomming";
+            const status = "upcoming";
 
             // Collect selected participants
             const selectedParticipants = [];
