@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // All your other event listeners for preview updates...
     if (tripDescription) {
         tripDescription.addEventListener('input', () => {
-            previewDescription.textContent = formatDate(tripDescription.value);
+            previewDescription.textContent = tripDescription.value || '--' ;
         });
     }
     
