@@ -19,7 +19,7 @@ async function populateRTripList() {
             return;
         }
 
-        console.log("Realized rips fetched:", realized_trips);
+        console.log("Realized trips fetched:", realized_trips);
 
         rTripListDiv.innerHTML = ""; // Clear existing content
 
@@ -28,12 +28,12 @@ async function populateRTripList() {
             return;
         }
 
-        realized_trips.forEach(realized_trip => {
+        realized_trips.forEach(rTrip => {
             const rTripButton = document.createElement("button");
             const rTripLink = document.createElement("a");
             rTripButton.className = "trip-button";
-            rTripLink.href = `rtrip.html?id=${trip.id}`;
-            rTripLink.textContent = trip.title;
+            rTripLink.href = `rtrip.html?id=${rTrip.id}`;
+            rTripLink.textContent = rTrip.title;
             rTripButton.appendChild(rTripLink);
             rTripListDiv.appendChild(rTripButton);
         });
