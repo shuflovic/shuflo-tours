@@ -370,13 +370,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </ul>
             </div>
 <br><br>
-    <label for="status">Actual Trip Status:</label>
-    <select id="status" name="status">
-        <option value="upcoming" selected>Upcoming</option>
-        <option value="realized">Realized</option>
-        <option value="cancelled">Cancelled</option>
-        <option value="postponed">Postponed</option>
-    </select>
+
+            <h3>${trip.name}</h3>
+            <label for="status-${trip.id}">Status:</label>
+            <select id="status-${trip.id}" name="status" onchange="updateStatus(${trip.id}, this.value)">
+                <option value="upcoming" ${trip.status === 'upcoming' ? 'selected' : ''}>upcoming</option>
+                <option value="realized" ${trip.status === 'realized' ? 'selected' : ''}>realized</option>
+                <option value="cancelled" ${trip.status === 'cancelled' ? 'selected' : ''}>cancelled</option>
+                <option value="postponed" ${trip.status === 'postponed' ? 'selected' : ''}>postponed</option>
+            </select>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 Shuflo Tours</p>
