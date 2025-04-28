@@ -142,6 +142,30 @@
         
         // Load trip details when the page loads
         document.addEventListener('DOMContentLoaded', loadTripDetails);
+
+async function updateStatus() {
+            // Get the selected status
+            const dropdown = document.getElementById('status');
+            const newStatus = dropdown.value;
+
+            // Define the trip ID (replace with your logic to get the ID dynamically)
+            const tripId = getUrlParameter('id');
+
+            // Update the status column in the trip table
+            const { data, error } = await supabaseClient
+                .from('trip')
+                .update({ status: newStatus })
+                .eq('id', tripId);
+
+            if (error) {
+                console.error('Error updating status:', error);
+                alert('Failed to update status.');
+            } else {
+                console.log('Status updated successfully:', data);
+                alert('Status updated successfully!');
+            }
+        }
+        
     </script>
 </body>
 </html>
