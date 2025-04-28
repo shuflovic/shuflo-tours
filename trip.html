@@ -143,12 +143,12 @@
         // Load trip details when the page loads
         document.addEventListener('DOMContentLoaded', loadTripDetails);
 
-async function updateStatus(tripId, newStatus) {
+async function updateStatus(createdAt, newStatus) {
     try {
         const { data, error } = await supabaseClient
             .from('trips')
             .update({ status: newStatus })
-            .eq('id', tripId);
+            .eq('created_at', createdAt); // Match the exact timestamp
 
         if (error) {
             console.error('Error updating status:', error);
@@ -162,6 +162,7 @@ async function updateStatus(tripId, newStatus) {
         alert('An unexpected error occurred.');
     }
 }
+
         
     </script>
 </body>
