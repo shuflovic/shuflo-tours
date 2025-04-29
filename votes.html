@@ -480,7 +480,8 @@
             showViewQuizScreen();
         }
 
-        let votesArray = [];
+       let votesArray = Array(quiz.options.length).fill(0);
+
 
         function renderQuizOptions(quiz) {
             quizOptionsContainer.innerHTML = '';
