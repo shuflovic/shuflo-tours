@@ -537,8 +537,7 @@ if (quizData) {
     votesArray = JSON.parse(quizData.votes || '[]'); // Ensure votesArray is updated
 }
 
-                
-                if (fetchError) throw fetchError;
+
                 
 // Update the selected option's vote count
 votesArray[selectedOptionIndex] += 1;
