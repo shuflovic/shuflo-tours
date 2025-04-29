@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>votes</title>
+    <title>WhatsApp-style Quiz App</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         * {
@@ -185,12 +185,9 @@
 </head>
 <body>
 
-    .. this page is in progress, do not use it until this text will be removed,..
-thanks for understanding..<br><br><br><hr><br>
-
-    
+    ..page in progress..<br><br>
     <div class="container">
-        <h1>vote for a trip details</h1>
+        <h1>WhatsApp-style Quiz App</h1>
         
         <div id="message" class="message hidden"></div>
         
@@ -262,8 +259,9 @@ thanks for understanding..<br><br><br><hr><br>
             </div>
         </div>
     </div>
-    
-<script src="supabase.js"></script>
+
+
+    <script src="supabase.js"></script>
     <script>
 
         
@@ -314,7 +312,7 @@ thanks for understanding..<br><br><br><hr><br>
         // Functions
         async function fetchQuizzes() {
             try {
-                const { data, error } = await supabaseClient
+                const { data, error } = await supabase
                     .from('trip_quizzes')
                     .select('*');
                 
@@ -389,17 +387,19 @@ thanks for understanding..<br><br><br><hr><br>
             showMessage('', '');
             
             try {
-                // Initialize votes array with zeros for each option
-                const votes = new Array(validOptions.length).fill(0);
+                // Create individual vote counters instead of an array
+                // This assumes your table has a votes column as a smallint (single number)
+                // And we'll store the current total votes as a single number
+                const votes = 0; // Start with 0 votes
                 
-                const { data, error } = await supabaseClient
+                const { data, error } = await supabase
                     .from('trip_quizzes')
                     .insert([
                         {
                             name: quizName,
                             question: question,
                             options: validOptions,
-                            votes: votes,
+                            votes: votes, // This is now a single integer
                             user_name: userName || 'Anonymous'
                         }
                     ]);
@@ -455,11 +455,12 @@ thanks for understanding..<br><br><br><hr><br>
                 optionDiv.className = 'option-radio';
                 
                 const id = `option-${index}`;
-                const votes = quiz.votes && quiz.votes[index] ? quiz.votes[index] : 0;
+                // Use the total votes for all options since we're storing it as a single integer
+                const votes = quiz.votes || 0;
                 
                 optionDiv.innerHTML = `
                     <input type="radio" id="${id}" name="quiz-option" value="${index}">
-                    <label for="${id}">${option} <span class="vote-count">(${votes} votes)</span></label>
+                    <label for="${id}">${option} <span class="vote-count">(${votes} total votes)</span></label>
                 `;
                 
                 const radioInput = optionDiv.querySelector('input[type="radio"]');
@@ -499,9 +500,8 @@ thanks for understanding..<br><br><br><hr><br>
                 
                 if (fetchError) throw fetchError;
                 
-                // Update votes
-                const newVotes = [...quizData.votes];
-                newVotes[selectedOptionIndex] += 1;
+                // Update votes - simply increment the total votes counter
+                const newVotes = (quizData.votes || 0) + 1;
                 
                 // Update in database
                 const { error: updateError } = await supabase
