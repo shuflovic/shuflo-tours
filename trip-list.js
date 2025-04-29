@@ -46,5 +46,51 @@ async function populateTripList() {
         console.error("Unexpected error:", err.message);
     }
 }
-// Make sure to call the function when the page loads
-document.addEventListener('DOMContentLoaded', populateTripList);
+
+async function populateRTripList() {
+    const rTripListDiv = document.getElementById("rtrip-list");
+    if (!rTripListDiv) {
+        console.error("Element with ID 'rtrip-list' not found.");
+        return;
+    }
+
+    try {
+        console.log("Fetching realized trips...");
+        const { data: trips, error } = await supabaseClient
+            .from('trips')
+            .select('id, title')
+            .eq('status', 'realized');
+
+        if (error) {
+            console.error("Error fetching realized trips:", error.message);
+            return;
+        }
+
+        console.log("Realized trips fetched:", trips);
+
+        rTripListDiv.innerHTML = ""; // Clear existing content
+
+        if (!trips || trips.length === 0) {
+            rTripListDiv.innerHTML = "<p>No realized trips found</p>";
+            return;
+        }
+
+        trips.forEach(trip => {
+            const tripButton = document.createElement("button");
+            const tripLink = document.createElement("a");
+            tripButton.className = "trip-button";
+            tripLink.href = `trip.html?id=${trip.id}`;
+            tripLink.textContent = trip.title;
+            tripButton.appendChild(tripLink);
+            rTripListDiv.appendChild(tripButton);
+        });
+    } catch (err) {
+        console.error("Unexpected error:", err.message);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    populateTripList(); // For "trip-list"
+    populateRTripList(); // For "rtrip-list"
+});
+            
