@@ -552,13 +552,14 @@ const { error: updateError } = await supabaseClient
     .eq('id', currentQuiz.id);
 
 
+
                 
                 if (updateError) throw updateError;
                 
                 showMessage('Vote submitted successfully!', 'success');
                 
                 // Update current quiz and re-render options
-                currentQuiz.votes = newVotes;
+                currentQuiz.votes = newVotesString;
                 renderQuizOptions(currentQuiz);
                 
                 // Reset selection
