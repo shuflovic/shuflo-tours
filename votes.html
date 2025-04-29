@@ -553,12 +553,6 @@ const { error: updateError } = await supabaseClient
     .eq('id', currentQuiz.id);
 
 
-        
-                // Update in database
-                const { error: updateError } = await supabaseClient
-                    .from('trip_quizzes')
-                    .update({ votes: newVotes })
-                    .eq('id', currentQuiz.id);
                 
                 if (updateError) throw updateError;
                 
