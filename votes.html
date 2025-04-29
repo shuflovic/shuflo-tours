@@ -312,7 +312,7 @@
         // Functions
         async function fetchQuizzes() {
             try {
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('trip_quizzes')
                     .select('*');
                 
@@ -392,7 +392,7 @@
                 // And we'll store the current total votes as a single number
                 const votes = 0; // Start with 0 votes
                 
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('trip_quizzes')
                     .insert([
                         {
@@ -492,7 +492,7 @@
             
             try {
                 // Get current quiz data
-                const { data: quizData, error: fetchError } = await supabase
+                const { data: quizData, error: fetchError } = await supabaseClient
                     .from('trip_quizzes')
                     .select('votes')
                     .eq('id', currentQuiz.id)
@@ -504,7 +504,7 @@
                 const newVotes = (quizData.votes || 0) + 1;
                 
                 // Update in database
-                const { error: updateError } = await supabase
+                const { error: updateError } = await supabaseClient
                     .from('trip_quizzes')
                     .update({ votes: newVotes })
                     .eq('id', currentQuiz.id);
