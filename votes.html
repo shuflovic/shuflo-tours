@@ -547,11 +547,12 @@ votesArray[selectedOptionIndex] += 1;
 
 // Convert back to string for storage
 
-const newVotesString = JSON.stringify(votesArray);
+const newVotes = votesArray; // Directly use votesArray for JSONB field
+
 
 const { error: updateError } = await supabaseClient
     .from('trip_quizzes')
-    .update({ votes: newVotesString })
+    .update({ votes: newVotes }) // Directly pass the updated array
     .eq('id', currentQuiz.id);
 
 
@@ -562,7 +563,8 @@ const { error: updateError } = await supabaseClient
                 showMessage('Vote submitted successfully!', 'success');
                 
                 // Update current quiz and re-render options
-                currentQuiz.votes = newVotesString;
+                currentQuiz.votes = votesArray;
+
                 renderQuizOptions(currentQuiz);
                 
                 // Reset selection
