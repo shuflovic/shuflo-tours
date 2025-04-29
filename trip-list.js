@@ -14,7 +14,7 @@ async function populateTripList() {
         console.log("Fetching trips...");
         const { data: trips, error } = await supabaseClient
             .from('trips')
-            .select('id, title');
+            .select('id, title')
             .eq('status', 'upcoming');
                    
             
