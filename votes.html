@@ -1,312 +1,562 @@
 <!DOCTYPE html>
-<html lang="sk-en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votes</title>
-    <link rel="stylesheet" href="style.css">  
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <title>votes</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #128C7E;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .message.error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .message.success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        button {
+            cursor: pointer;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        button.primary {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        button.primary:hover {
+            background-color: #128C7E;
+        }
+        
+        button.secondary {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        
+        button.secondary:hover {
+            background-color: #bdbdbd;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #25D366;
+        }
+        
+        .option-item {
+            margin-bottom: 10px;
+        }
+        
+        .add-option-btn {
+            display: flex;
+            align-items: center;
+            color: #128C7E;
+            background: none;
+            padding: 5px;
+            font-size: 14px;
+        }
+        
+        .add-option-btn:before {
+            content: '+';
+            margin-right: 5px;
+            font-size: 18px;
+        }
+        
+        .quiz-list {
+            list-style: none;
+        }
+        
+        .quiz-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .quiz-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .quiz-title {
+            color: #128C7E;
+            font-weight: 500;
+        }
+        
+        .option-radio {
+            margin-bottom: 10px;
+        }
+        
+        .option-radio label {
+            display: inline;
+            margin-left: 8px;
+        }
+        
+        .vote-count {
+            font-size: 12px;
+            color: #757575;
+            margin-left: 5px;
+        }
+        
+        .button-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .button-row button {
+            flex: 1;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>vote for a trip details</h1>
+        
+        <div id="message" class="message hidden"></div>
+        
+        <div id="home-screen">
+            <button id="quizz" class="primary btn-block">Create New Quiz</button>
+            
+            <div class="card">
+                <h2>Available Quizzes</h2>
+                <p id="no-quizzes-msg">No quizzes available. Create one!</p>
+                <ul id="quiz-list" class="quiz-list"></ul>
+            </div>
+        </div>
+        
+        <div id="create-quiz-screen" class="hidden">
+            <div class="card">
+                <h2>Create New Quiz</h2>
+                
+                <div class="input-group">
+                    <label for="user-name">Your Name</label>
+                    <input type="text" id="user-name" placeholder="Enter your name">
+                </div>
+                
+                <div class="input-group">
+                    <label for="quiz-name">Quiz Name</label>
+                    <input type="text" id="quiz-name" placeholder="Name your quiz">
+                </div>
+                
+                <div class="input-group">
+                    <label for="quiz-question">Question</label>
+                    <input type="text" id="quiz-question" placeholder="Enter question">
+                </div>
+                
+                <div class="input-group">
+                    <label>Options</label>
+                    <div id="options-container">
+                        <div class="option-item">
+                            <input type="text" class="option-input" placeholder="Enter option 1">
+                        </div>
+                        <div class="option-item">
+                            <input type="text" class="option-input" placeholder="Enter option 2">
+                        </div>
+                    </div>
+                    <button id="add-option" class="add-option-btn">Add option</button>
+                </div>
+                
+                <div class="button-row">
+                    <button id="create-quiz-btn" class="primary">Create Quiz</button>
+                    <button id="cancel-create" class="secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="view-quiz-screen" class="hidden">
+            <div class="card">
+                <h2 id="quiz-title"></h2>
+                <p id="quiz-question-display"></p>
+                
+                <div class="input-group">
+                    <label for="voter-name">Your Name</label>
+                    <input type="text" id="voter-name" placeholder="Enter your name">
+                </div>
+                
+                <div id="quiz-options-container"></div>
+                
+                <div class="button-row">
+                    <button id="submit-vote" class="primary">Submit Vote</button>
+                    <button id="back-to-list" class="secondary">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script src="supabase.js"
+    <script>
 
-    <p>.. this page is in progress, do not use it until this text will be removed,..<br>thanks for understanding<br><br><br></p>
-  <button id="quizz">vote for trip</button>
-<div id="quizContainer" class="hidden">
-  <h2 id="quizTitle">Vote for Trip Details</h2>
-  <p id="quizDescription">Please select your preference:</p>
-  <div id="optionsContainer"></div>
-  <div class="quiz-buttons">
-    <button id="submitVote" class="btn">Submit Vote</button>
-    <button id="viewResults" class="btn">View Results</button>
-  </div>
-</div>
-
-<div id="resultsContainer" class="hidden">
-  <h2>Voting Results</h2>
-  <div id="resultsDisplay"></div>
-  <button id="backToQuiz" class="btn">Back to Quiz</button>
-</div>
-
-<!-- Add this CSS to your stylesheet -->
-<style>
-  .hidden { display: none; }
-  .option-card {
-    border: 1px solid #ddd;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .option-card.selected {
-    border-color: #4a90e2;
-    background-color: #e3f2fd;
-  }
-  .results-bar {
-    background-color: #4a90e2;
-    height: 24px;
-    margin: 5px 0;
-    border-radius: 4px;
-    transition: width 0.5s ease-in-out;
-  }
-  .quiz-buttons {
-    margin-top: 15px;
-  }
-  .btn {
-    padding: 8px 16px;
-    margin-right: 10px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .btn:hover {
-    background-color: #3a7bc8;
-  }
-</style>
-
-<script>
-const SUPABASE_URL = 'https://rigsljqkzlnemypqjlbk.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZ3NsanFremxuZW15cHFqbGJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NjI5NTUsImV4cCI6MjA2MTIzODk1NX0.hNdNu9fHGQfdh4WdMFx_SQAVjXvQutBIud3D5CkM9uY';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Quiz state
-  let currentQuizId = null;
-  let selectedOptionId = null;
-  let userHasVoted = false;
-  
-  // Reference DOM elements
-  const quizBtn = document.getElementById('quizz');
-  const quizContainer = document.getElementById('quizContainer');
-  const optionsContainer = document.getElementById('optionsContainer');
-  const quizTitle = document.getElementById('quizTitle');
-  const quizDescription = document.getElementById('quizDescription');
-  const submitVoteBtn = document.getElementById('submitVote');
-  const viewResultsBtn = document.getElementById('viewResults');
-  const resultsContainer = document.getElementById('resultsContainer');
-  const resultsDisplay = document.getElementById('resultsDisplay');
-  const backToQuizBtn = document.getElementById('backToQuiz');
-  
-  // Quiz button click handler - opens the quiz modal
-  quizBtn.addEventListener('click', function() {
-    createNewQuiz();
-  });
-  
-  // Create a new quiz with options
-  async function createNewQuiz() {
-    const quizType = prompt("What are we voting on? (Enter 'dates' or 'places')");
-    if (!quizType) return;
-    
-    let numOptions = parseInt(prompt("How many options to choose from? (2-5)"));
-    if (isNaN(numOptions) || numOptions < 2 || numOptions > 5) {
-      alert("Please enter a number between 2 and 5");
-      return;
-    }
-    
-    const quizOptions = [];
-    for (let i = 0; i < numOptions; i++) {
-      const optionText = prompt(`Enter option ${i + 1}:`);
-      if (!optionText) return;
-      quizOptions.push(optionText);
-    }
-    
-    // Create quiz in database
-    try {
-      const { data, error } = await supabaseClient
-        .from('trip_quizzes')
-        .insert([{
-          type: quizType,
-          title: `Vote for Trip ${quizType.charAt(0).toUpperCase() + quizType.slice(1)}`,
-          description: `Please select your preferred ${quizType}:`,
-          options: quizOptions,
-          created_at: new Date().toISOString()
-        }])
-        .select();
         
-      if (error) throw error;
-      
-      currentQuizId = data[0].id;
-      displayQuiz(data[0]);
-    } catch (error) {
-      console.error('Error creating quiz:', error);
-      alert('Failed to create quiz. Please try again.');
-    }
-  }
-  
-  // Display the quiz to the user
-  function displayQuiz(quiz) {
-    quizTitle.textContent = quiz.title;
-    quizDescription.textContent = quiz.description;
-    
-    // Clear previous options
-    optionsContainer.innerHTML = '';
-    
-    // Add options
-    quiz.options.forEach((option, index) => {
-      const optionCard = document.createElement('div');
-      optionCard.className = 'option-card';
-      optionCard.dataset.optionId = index;
-      optionCard.textContent = option;
-      
-      optionCard.addEventListener('click', function() {
-        // Remove selection from all options
-        document.querySelectorAll('.option-card').forEach(card => {
-          card.classList.remove('selected');
-        });
+        // DOM elements
+        const homeScreen = document.getElementById('home-screen');
+        const createQuizScreen = document.getElementById('create-quiz-screen');
+        const viewQuizScreen = document.getElementById('view-quiz-screen');
+        const messageEl = document.getElementById('message');
+        const quizList = document.getElementById('quiz-list');
+        const noQuizzesMsg = document.getElementById('no-quizzes-msg');
+        const optionsContainer = document.getElementById('options-container');
+        const quizOptionsContainer = document.getElementById('quiz-options-container');
         
-        // Select this option
-        this.classList.add('selected');
-        selectedOptionId = index;
-      });
-      
-      optionsContainer.appendChild(optionCard);
-    });
-    
-    // Show quiz container
-    quizContainer.classList.remove('hidden');
-    resultsContainer.classList.add('hidden');
-  }
-  
-  // Submit vote handler
-  submitVoteBtn.addEventListener('click', async function() {
-  if (selectedOptionId === null) {
-    alert('Please select an option before voting');
-    return;
-  }
-  
-  const userId = getCurrentUserId();
-  console.log("Submitting vote:", {
-    quiz_id: currentQuizId,
-    user_id: userId,
-    option_id: selectedOptionId
-  });
-  
-  try {
-    // Directly insert the vote (Supabase will handle the unique constraint)
-    const { data, error } = await supabaseClient
-      .from('trip_votes')
-      .upsert([{
-        quiz_id: currentQuizId,
-        user_id: userId,
-        option_id: selectedOptionId
-      }], {
-        onConflict: 'quiz_id,user_id',
-        returning: 'minimal'
-      });
-      
-    if (error) {
-      console.error("Vote submission error:", error);
-      throw error;
-    }
-    
-    alert('Your vote has been recorded!');
-    displayResults();
-  } catch (error) {
-    console.error('Error submitting vote:', error);
-    alert('Failed to submit vote: ' + error.message);
-  }
-});
-  
-  // View results handler
-  viewResultsBtn.addEventListener('click', function() {
-    displayResults();
-  });
-  
-  // Back to quiz handler
-  backToQuizBtn.addEventListener('click', function() {
-    quizContainer.classList.remove('hidden');
-    resultsContainer.classList.add('hidden');
-  });
-  
-  // Display voting results
-  async function displayResults() {
-    try {
-      // Get the quiz data
-      const { data: quizData, error: quizError } = await supabaseClient
-        .from('trip_quizzes')
-        .select('*')
-        .eq('id', currentQuizId)
-        .single();
+        // Buttons
+        const createQuizBtn = document.getElementById('quizz');
+        const addOptionBtn = document.getElementById('add-option');
+        const submitQuizBtn = document.getElementById('create-quiz-btn');
+        const cancelCreateBtn = document.getElementById('cancel-create');
+        const submitVoteBtn = document.getElementById('submit-vote');
+        const backToListBtn = document.getElementById('back-to-list');
         
-      if (quizError) throw quizError;
-      
-      // Get all votes for this quiz
-      const { data: votesData, error: votesError } = await supabaseClient
-        .from('trip_votes')
-        .select('option_id')
-        .eq('quiz_id', currentQuizId);
+        // Form elements
+        const userNameInput = document.getElementById('user-name');
+        const quizNameInput = document.getElementById('quiz-name');
+        const quizQuestionInput = document.getElementById('quiz-question');
+        const voterNameInput = document.getElementById('voter-name');
         
-      if (votesError) throw votesError;
-      
-      // Count votes for each option
-      const voteCounts = {};
-      quizData.options.forEach((_, index) => {
-        voteCounts[index] = 0;
-      });
-      
-      votesData.forEach(vote => {
-        voteCounts[vote.option_id]++;
-      });
-      
-      // Calculate total votes
-      const totalVotes = votesData.length;
-      
-      // Clear previous results
-      resultsDisplay.innerHTML = '';
-      
-      // Display results
-      quizData.options.forEach((option, index) => {
-        const votes = voteCounts[index] || 0;
-        const percentage = totalVotes > 0 ? (votes / totalVotes) * 100 : 0;
+        // Display elements
+        const quizTitleEl = document.getElementById('quiz-title');
+        const quizQuestionDisplay = document.getElementById('quiz-question-display');
         
-        const resultItem = document.createElement('div');
-        resultItem.className = 'result-item';
+        // App state
+        let currentQuiz = null;
+        let selectedOptionIndex = null;
+        let isSubmitting = false;
         
-        const label = document.createElement('div');
-        label.textContent = `${option}: ${votes} vote${votes !== 1 ? 's' : ''} (${percentage.toFixed(1)}%)`;
+        // Initialize the app
+        fetchQuizzes();
         
-        const barContainer = document.createElement('div');
-        barContainer.style.width = '100%';
-        barContainer.style.backgroundColor = '#eee';
-        barContainer.style.borderRadius = '4px';
+        // Event listeners
+        createQuizBtn.addEventListener('click', showCreateQuizScreen);
+        addOptionBtn.addEventListener('click', addOption);
+        submitQuizBtn.addEventListener('click', handleCreateQuiz);
+        cancelCreateBtn.addEventListener('click', showHomeScreen);
+        submitVoteBtn.addEventListener('click', handleVote);
+        backToListBtn.addEventListener('click', showHomeScreen);
         
-        const bar = document.createElement('div');
-        bar.className = 'results-bar';
-        bar.style.width = `${percentage}%`;
+        // Functions
+        async function fetchQuizzes() {
+            try {
+                const { data, error } = await supabase
+                    .from('trip_quizzes')
+                    .select('*');
+                
+                if (error) throw error;
+                
+                renderQuizList(data || []);
+            } catch (error) {
+                console.error('Error fetching quizzes:', error);
+                showMessage('Failed to load quizzes', 'error');
+            }
+        }
         
-        barContainer.appendChild(bar);
-        resultItem.appendChild(label);
-        resultItem.appendChild(barContainer);
+        function renderQuizList(quizzes) {
+            quizList.innerHTML = '';
+            
+            if (quizzes.length === 0) {
+                noQuizzesMsg.classList.remove('hidden');
+                return;
+            }
+            
+            noQuizzesMsg.classList.add('hidden');
+            
+            quizzes.forEach(quiz => {
+                const li = document.createElement('li');
+                li.className = 'quiz-item';
+                li.innerHTML = `<span class="quiz-title">${quiz.name}</span>`;
+                li.addEventListener('click', () => viewQuiz(quiz));
+                quizList.appendChild(li);
+            });
+        }
         
-        resultsDisplay.appendChild(resultItem);
-      });
-      
-      // Show results container
-      quizContainer.classList.add('hidden');
-      resultsContainer.classList.remove('hidden');
-    } catch (error) {
-      console.error('Error displaying results:', error);
-      alert('Failed to display results. Please try again.');
-    }
-  }
-  
-  // Helper function to get current user ID
-  // Replace this with your own user authentication logic
-  function getCurrentUserId() {
-    // If you have user authentication, get the user ID from there
-    // For example: return supabase.auth.user().id;
-    
-    // For testing, you can use a random ID or retrieve from localStorage
-    let userId = localStorage.getItem('trip_voter_id');
-    if (!userId) {
-      userId = 'user_' + Math.random().toString(36).substring(2, 15);
-      localStorage.setItem('trip_voter_id', userId);
-    }
-    return userId;
-  }
-});
-
-</script>
+        function addOption() {
+            const optionItems = document.querySelectorAll('.option-input');
+            const optionCount = optionItems.length;
+            
+            const optionItem = document.createElement('div');
+            optionItem.className = 'option-item';
+            optionItem.innerHTML = `
+                <input type="text" class="option-input" placeholder="Enter option ${optionCount + 1}">
+            `;
+            
+            optionsContainer.appendChild(optionItem);
+        }
+        
+        async function handleCreateQuiz() {
+            if (isSubmitting) return;
+            
+            const quizName = quizNameInput.value.trim();
+            const question = quizQuestionInput.value.trim();
+            const userName = userNameInput.value.trim();
+            
+            if (!quizName) {
+                showMessage('Please enter a quiz name', 'error');
+                return;
+            }
+            
+            if (!question) {
+                showMessage('Please enter a question', 'error');
+                return;
+            }
+            
+            const optionInputs = document.querySelectorAll('.option-input');
+            const options = Array.from(optionInputs).map(input => input.value.trim());
+            const validOptions = options.filter(opt => opt !== '');
+            
+            if (validOptions.length < 2) {
+                showMessage('Please enter at least two options', 'error');
+                return;
+            }
+            
+            isSubmitting = true;
+            showMessage('', '');
+            
+            try {
+                // Initialize votes array with zeros for each option
+                const votes = new Array(validOptions.length).fill(0);
+                
+                const { data, error } = await supabase
+                    .from('trip_quizzes')
+                    .insert([
+                        {
+                            name: quizName,
+                            question: question,
+                            options: validOptions,
+                            votes: votes,
+                            user_name: userName || 'Anonymous'
+                        }
+                    ]);
+                
+                if (error) throw error;
+                
+                showMessage('Quiz created successfully!', 'success');
+                
+                // Reset form
+                quizNameInput.value = '';
+                quizQuestionInput.value = '';
+                optionsContainer.innerHTML = `
+                    <div class="option-item">
+                        <input type="text" class="option-input" placeholder="Enter option 1">
+                    </div>
+                    <div class="option-item">
+                        <input type="text" class="option-input" placeholder="Enter option 2">
+                    </div>
+                `;
+                
+                // Show home screen and refresh quizzes
+                setTimeout(() => {
+                    showHomeScreen();
+                    fetchQuizzes();
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error creating quiz:', error);
+                showMessage('Failed to create quiz', 'error');
+            } finally {
+                isSubmitting = false;
+            }
+        }
+        
+        function viewQuiz(quiz) {
+            currentQuiz = quiz;
+            selectedOptionIndex = null;
+            
+            quizTitleEl.textContent = quiz.name;
+            quizQuestionDisplay.textContent = quiz.question;
+            voterNameInput.value = userNameInput.value || '';
+            
+            renderQuizOptions(quiz);
+            
+            showViewQuizScreen();
+        }
+        
+        function renderQuizOptions(quiz) {
+            quizOptionsContainer.innerHTML = '';
+            
+            quiz.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option-radio';
+                
+                const id = `option-${index}`;
+                const votes = quiz.votes && quiz.votes[index] ? quiz.votes[index] : 0;
+                
+                optionDiv.innerHTML = `
+                    <input type="radio" id="${id}" name="quiz-option" value="${index}">
+                    <label for="${id}">${option} <span class="vote-count">(${votes} votes)</span></label>
+                `;
+                
+                const radioInput = optionDiv.querySelector('input[type="radio"]');
+                radioInput.addEventListener('change', () => {
+                    selectedOptionIndex = index;
+                });
+                
+                quizOptionsContainer.appendChild(optionDiv);
+            });
+        }
+        
+        async function handleVote() {
+            if (isSubmitting) return;
+            
+            const userName = voterNameInput.value.trim();
+            
+            if (!userName) {
+                showMessage('Please enter your name before voting', 'error');
+                return;
+            }
+            
+            if (selectedOptionIndex === null) {
+                showMessage('Please select an option', 'error');
+                return;
+            }
+            
+            isSubmitting = true;
+            showMessage('', '');
+            
+            try {
+                // Get current quiz data
+                const { data: quizData, error: fetchError } = await supabase
+                    .from('trip_quizzes')
+                    .select('votes')
+                    .eq('id', currentQuiz.id)
+                    .single();
+                
+                if (fetchError) throw fetchError;
+                
+                // Update votes
+                const newVotes = [...quizData.votes];
+                newVotes[selectedOptionIndex] += 1;
+                
+                // Update in database
+                const { error: updateError } = await supabase
+                    .from('trip_quizzes')
+                    .update({ votes: newVotes })
+                    .eq('id', currentQuiz.id);
+                
+                if (updateError) throw updateError;
+                
+                showMessage('Vote submitted successfully!', 'success');
+                
+                // Update current quiz and re-render options
+                currentQuiz.votes = newVotes;
+                renderQuizOptions(currentQuiz);
+                
+                // Reset selection
+                selectedOptionIndex = null;
+                
+                // Refresh quizzes in background
+                fetchQuizzes();
+                
+            } catch (error) {
+                console.error('Error submitting vote:', error);
+                showMessage('Failed to submit vote', 'error');
+            } finally {
+                isSubmitting = false;
+            }
+        }
+        
+        function showHomeScreen() {
+            homeScreen.classList.remove('hidden');
+            createQuizScreen.classList.add('hidden');
+            viewQuizScreen.classList.add('hidden');
+            showMessage('', '');
+        }
+        
+        function showCreateQuizScreen() {
+            homeScreen.classList.add('hidden');
+            createQuizScreen.classList.remove('hidden');
+            viewQuizScreen.classList.add('hidden');
+            showMessage('', '');
+        }
+        
+        function showViewQuizScreen() {
+            homeScreen.classList.add('hidden');
+            createQuizScreen.classList.add('hidden');
+            viewQuizScreen.classList.remove('hidden');
+            showMessage('', '');
+        }
+        
+        function showMessage(message, type) {
+            if (!message) {
+                messageEl.classList.add('hidden');
+                return;
+            }
+            
+            messageEl.textContent = message;
+            messageEl.className = `message ${type}`;
+            messageEl.classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
