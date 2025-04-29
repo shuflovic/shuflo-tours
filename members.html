@@ -41,6 +41,7 @@
       } else {
         console.log('Data inserted:', data);
         alert('Member saved successfully!');
+        fetchMembers();
         document.getElementById('memberForm').reset();
       }
     });
