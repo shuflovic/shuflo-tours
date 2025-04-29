@@ -494,6 +494,7 @@
                 const id = `option-${index}`;
                 // Use the total votes for all options since we're storing it as a single integer
                 const votes = votesArray[index] || 0;
+                console.log(votes);
                 
                 optionDiv.innerHTML = `
                     <input type="radio" id="${id}" name="quiz-option" value="${index}">
@@ -538,6 +539,7 @@
 if (quizData) {
     votesArray = JSON.parse(quizData.votes || '[]'); // Ensure votesArray is updated
     console.log(votesArray);
+    console.log(votes);
 }
 
 
@@ -548,7 +550,7 @@ votesArray[selectedOptionIndex] += 1;
 // Convert back to string for storage
 
 const newVotes = votesArray; // Directly use votesArray for JSONB field
-
+console.log(votes);
 
 const { error: updateError } = await supabaseClient
     .from('trip_quizzes')
