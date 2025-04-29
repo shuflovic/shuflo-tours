@@ -185,7 +185,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>WhatsApp-style Quiz App</h1>
+        <h1>hlasujeme!/h1>
         
         <div id="message" class="message hidden"></div>
         
@@ -258,11 +258,8 @@
         </div>
     </div>
 
+    <script supabase.js></script>
     <script>
-        // Initialize Supabase client
-        const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
-        const SUPABASE_KEY = 'your-supabase-key';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         
         // DOM elements
         const homeScreen = document.getElementById('home-screen');
@@ -311,7 +308,7 @@
         // Functions
         async function fetchQuizzes() {
             try {
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('trip_quizzes')
                     .select('*');
                 
@@ -412,7 +409,7 @@
                 // And we'll store the current total votes as a single number
                 const votes = 0; // Start with 0 votes
                 
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('trip_quizzes')
                     .insert([
                         {
@@ -528,7 +525,7 @@
             
             try {
                 // Get current quiz data
-                const { data: quizData, error: fetchError } = await supabase
+                const { data: quizData, error: fetchError } = await supabaseClient
                     .from('trip_quizzes')
                     .select('votes')
                     .eq('id', currentQuiz.id)
@@ -540,7 +537,7 @@
                 const newVotes = (quizData.votes || 0) + 1;
                 
                 // Update in database
-                const { error: updateError } = await supabase
+                const { error: updateError } = await supabaseClient
                     .from('trip_quizzes')
                     .update({ votes: newVotes })
                     .eq('id', currentQuiz.id);
