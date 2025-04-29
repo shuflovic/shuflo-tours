@@ -7,7 +7,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+  
   <h1>Members Form</h1>
+  
   <form id="memberForm">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
@@ -16,17 +18,16 @@
     <input type="email" id="email" name="email" required><br>
     <br>
     <button type="submit">Submit</button><br><br>
-
-    <div id="membersList"></div>
+    
   </form>
+
+  <p>approved members</p>
+  <div id="membersList"></div>
+  
+  <script src="supabase.js"></script>
+  
   <script>
-    // Include the Supabase URL and Anon Key
-    const SUPABASE_URL = 'https://rigsljqkzlnemypqjlbk.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZ3NsanFremxuZW15cHFqbGJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NjI5NTUsImV4cCI6MjA2MTIzODk1NX0.hNdNu9fHGQfdh4WdMFx_SQAVjXvQutBIud3D5CkM9uY'; // Replace with your actual Anon Key
-    
-    // Create the Supabase client correctly
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    
+
     document.getElementById('memberForm').addEventListener('submit', async (event) => {
       event.preventDefault();
       const name = document.getElementById('name').value;
@@ -43,6 +44,36 @@
         document.getElementById('memberForm').reset();
       }
     });
+
+    async function fetchMembers() {
+      const { data, error } = await supabaseClient
+        .from('members')
+        .select('*');
+      
+      if (error) {
+        console.error('Error fetching members:', error.message);
+        return;
+      }
+      
+      // Display members
+      const membersList = document.getElementById('membersList');
+      membersList.innerHTML = '<h2>Members List</h2>';
+      
+      if (data.length === 0) {
+        membersList.innerHTML += '<p>No members found.</p>';
+      } else {
+        const list = document.createElement('ul');
+        data.forEach(member => {
+          const item = document.createElement('li');
+          item.textContent = `${member.name} (${member.email})`;
+          list.appendChild(item);
+        });
+        membersList.appendChild(list);
+      }
+    }
+    
+    // Call the function when page loads
+    document.addEventListener('DOMContentLoaded', fetchMembers);
   </script>
 </body>
 </html>
