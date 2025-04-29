@@ -184,8 +184,6 @@
     </style>
 </head>
 <body>
-
-    ..page in progress..<br><br>
     <div class="container">
         <h1>WhatsApp-style Quiz App</h1>
         
@@ -260,10 +258,11 @@
         </div>
     </div>
 
-
-    <script src="supabase.js"></script>
     <script>
-
+        // Initialize Supabase client
+        const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
+        const SUPABASE_KEY = 'your-supabase-key';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         
         // DOM elements
         const homeScreen = document.getElementById('home-screen');
@@ -312,13 +311,34 @@
         // Functions
         async function fetchQuizzes() {
             try {
-                const { data, error } = await supabaseClient
+                const { data, error } = await supabase
                     .from('trip_quizzes')
                     .select('*');
                 
                 if (error) throw error;
                 
-                renderQuizList(data || []);
+                // Process each quiz to ensure options is an array
+                const processedData = (data || []).map(quiz => {
+                    // If options is a string, try to parse it
+                    if (typeof quiz.options === 'string') {
+                        try {
+                            quiz.options = JSON.parse(quiz.options);
+                        } catch (e) {
+                            console.error("Error parsing options for quiz:", quiz.id, e);
+                            quiz.options = [];
+                        }
+                    }
+                    
+                    // Ensure options is an array
+                    if (!Array.isArray(quiz.options)) {
+                        console.warn("Options is not an array for quiz:", quiz.id);
+                        quiz.options = [];
+                    }
+                    
+                    return quiz;
+                });
+                
+                renderQuizList(processedData);
             } catch (error) {
                 console.error('Error fetching quizzes:', error);
                 showMessage('Failed to load quizzes', 'error');
@@ -392,7 +412,7 @@
                 // And we'll store the current total votes as a single number
                 const votes = 0; // Start with 0 votes
                 
-                const { data, error } = await supabaseClient
+                const { data, error } = await supabase
                     .from('trip_quizzes')
                     .insert([
                         {
@@ -441,6 +461,22 @@
             quizTitleEl.textContent = quiz.name;
             quizQuestionDisplay.textContent = quiz.question;
             voterNameInput.value = userNameInput.value || '';
+            
+            // Parse options if it's stored as a string
+            if (typeof quiz.options === 'string') {
+                try {
+                    quiz.options = JSON.parse(quiz.options);
+                } catch (e) {
+                    console.error("Error parsing options:", e);
+                    quiz.options = [];
+                }
+            }
+            
+            // Ensure options is an array
+            if (!Array.isArray(quiz.options)) {
+                console.warn("Options is not an array, converting to empty array");
+                quiz.options = [];
+            }
             
             renderQuizOptions(quiz);
             
@@ -492,7 +528,7 @@
             
             try {
                 // Get current quiz data
-                const { data: quizData, error: fetchError } = await supabaseClient
+                const { data: quizData, error: fetchError } = await supabase
                     .from('trip_quizzes')
                     .select('votes')
                     .eq('id', currentQuiz.id)
@@ -504,7 +540,7 @@
                 const newVotes = (quizData.votes || 0) + 1;
                 
                 // Update in database
-                const { error: updateError } = await supabaseClient
+                const { error: updateError } = await supabase
                     .from('trip_quizzes')
                     .update({ votes: newVotes })
                     .eq('id', currentQuiz.id);
