@@ -359,16 +359,26 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </section><br>
                 <section class="content-section">${trip.notes ? `<p><strong>Notes:</strong> ${trip.notes}</p>` : ''}</section><br>
 
-                        
             <div class="participants">
                 <h4>Invited Participants</h4>
                 <p>hikers, bikers, all of them</p><br>
-                <p>prihlasujem sa na tento výlet:<button type="button" style="color: #3498DB" id="i-am-in">i am in !!</button></p>
-                <div id="i-am-in-list">---</div>
-                <hr><br>
-                <ul>
+                                <ul>
                     ${trip.invitedParticipants.map(participant => `<li>${participant}</li>`).join('')}
-                </ul>
+            </ul>
+            
+            <section class="content-section"> 
+                <p>prihlasujem sa na tento výlet:<button type="button" style="color: #3498DB" id="i-am-in">i am in !!</button></p><br>
+                <div id="i-am-in-list">---</div>
+            </section><br>
+            
+            <section class="content-section"> 
+                <p>comments section: <button id="add-commentButton" type="button">add comment</button></p><br>
+                
+                <div id="comments">---</div>
+                
+            </section><br>
+
+
             </div>
 <br><br>
 
