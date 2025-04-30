@@ -47,7 +47,7 @@ async function loadComments(commentsSection, tripId) {
       const commentsHTML = data.comments
         .map(comment => `
           <div class="comment"><hr>
-      <strong>${escapeHTML(comment.name)}:</strong> ${escapeHTML(comment.text)}
+      <strong style="color: darkblue;">${escapeHTML(comment.name)}:</strong> ${escapeHTML(comment.text)}
       <br><small>${comment.date || 'Unknown date'}</small>
           </div>
         `)
