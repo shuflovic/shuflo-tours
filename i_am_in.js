@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update the database
     try {
       // First, get current participants
-      const { data, error: fetchError } = await supabase
+      const { data, error: fetchError } = await supabaseClient
         .from('trip')
         .select('i_am_in')
         .eq('id', tripId)
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       // Update the database
-      const { error: updateError } = await supabase
+      const { error: updateError } = await supabaseClient
         .from('trip')
         .update({ i_am_in: participants })
         .eq('id', tripId);
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from('trip')
         .select('i_am_in')
         .eq('id', tripId)
