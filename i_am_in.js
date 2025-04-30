@@ -1,5 +1,4 @@
 // i_am_in.js
-// Use event delegation to handle dynamically created elements
 document.addEventListener('DOMContentLoaded', () => {
   // Get trip ID from URL
   const tripId = new URLSearchParams(window.location.search).get('id');
@@ -9,13 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
   
-  // Initialize Supabase client (assuming it's already included in your HTML)
-  // const supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
+  // Set up a periodic check for both the button and participants list
+  const checkElementsInterval = setInterval(() => {
+    // Continue checking until we find both elements
+    const participantsList = document.getElementById('i-am-in-list');
+    
+    if (participantsList) {
+      loadParticipants();
+      clearInterval(checkElementsInterval);
+      
+      // Set up a refresh interval once we found the list element
+      setInterval(loadParticipants, 30000); // Refresh every 30 seconds
+    }
+  }, 500); // Check every half second
   
-  // Load participants list on page load
-  loadParticipants();
-  
-  // Use event delegation to handle clicks on the dynamically created button
+  // Use event delegation for the button
   document.addEventListener('click', async (event) => {
     // Check if the clicked element is our button or a child of it
     const button = event.target.closest('#i-am-in');
@@ -59,8 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (updateError) throw updateError;
       
-      // Reload the participants list
-      loadParticipants();
+      // Reload the participants list - make sure it exists before trying to update it
+      const list = document.getElementById('i-am-in-list');
+      if (list) {
+        loadParticipants();
+      }
       
     } catch (error) {
       console.error('Error updating participants:', error);
@@ -70,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Function to load participants from database and display them
   async function loadParticipants() {
-    // Try to get the participants list element
+    // Get the participants list element - it should exist at this point
     const participantsList = document.getElementById('i-am-in-list');
     if (!participantsList) {
-      console.error('Participants list element not found');
+      console.error('Participants list element still not found');
       return;
     }
     
@@ -101,18 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
       participantsList.innerHTML = '<p>Unable to load participants.</p>';
     }
   }
-  
-  // Also periodically check if we need to load participants (in case the list is added dynamically)
-  const checkInterval = setInterval(() => {
-    const participantsList = document.getElementById('i-am-in-list');
-    if (participantsList) {
-      loadParticipants();
-      // Once we've found it, we can reduce the frequency of checks
-      clearInterval(checkInterval);
-      // Set up a slower refresh interval
-      setInterval(loadParticipants, 30000); // Refresh every 30 seconds
-    }
-  }, 1000); // Check every second initially
   
   // Helper function to prevent XSS
   function escapeHTML(str) {
