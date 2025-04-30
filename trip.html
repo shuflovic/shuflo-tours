@@ -22,7 +22,7 @@
 
      <script>   
         // Function to get URL parameter
-        /*function getUrlParameter(name) {
+        function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             const results = regex.exec(location.search);
@@ -138,7 +138,7 @@
         }
         
         // Load trip details when the page loads
-        document.addEventListener('DOMContentLoaded', loadTripDetails);*/
+        document.addEventListener('DOMContentLoaded', loadTripDetails);
 
 async function updateStatus(createdAt, newStatus) {
     try {
@@ -159,8 +159,6 @@ async function updateStatus(createdAt, newStatus) {
         alert('An unexpected error occurred.');
     }
 }
-//console.log(`Dropdown ID: ${createdAt}`);
-console.log(`Database Timestamp: ${formattedCreatedAt}`);
 
 const inner_html = inner.innerHTML;
 
