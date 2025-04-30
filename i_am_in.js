@@ -1,8 +1,7 @@
 // i_am_in.js
+// Use event delegation to handle dynamically created elements
 document.addEventListener('DOMContentLoaded', () => {
-  // Get elements and trip ID from URL
-  const iAmInButton = document.getElementById('i-am-in');
-  const participantsList = document.getElementById('i-am-in-list');
+  // Get trip ID from URL
   const tripId = new URLSearchParams(window.location.search).get('id');
   
   if (!tripId) {
@@ -16,8 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load participants list on page load
   loadParticipants();
   
-  // Add click event listener to the button
-  iAmInButton.addEventListener('click', async () => {
+  // Use event delegation to handle clicks on the dynamically created button
+  document.addEventListener('click', async (event) => {
+    // Check if the clicked element is our button or a child of it
+    const button = event.target.closest('#i-am-in');
+    if (!button) return; // Not our button, exit handler
+    
     // Create a simple modal for name input
     const name = prompt('Please enter your name:');
     
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update the database
     try {
       // First, get current participants
-      const { data, error: fetchError } = await supabaseClient
+      const { data, error: fetchError } = await supabase
         .from('trip')
         .select('i_am_in')
         .eq('id', tripId)
@@ -67,8 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Function to load participants from database and display them
   async function loadParticipants() {
+    // Try to get the participants list element
+    const participantsList = document.getElementById('i-am-in-list');
+    if (!participantsList) {
+      console.error('Participants list element not found');
+      return;
+    }
+    
     try {
-      const { data, error } = await supabaseClient
+      const { data, error } = await supabase
         .from('trip')
         .select('i_am_in')
         .eq('id', tripId)
@@ -91,6 +101,18 @@ document.addEventListener('DOMContentLoaded', () => {
       participantsList.innerHTML = '<p>Unable to load participants.</p>';
     }
   }
+  
+  // Also periodically check if we need to load participants (in case the list is added dynamically)
+  const checkInterval = setInterval(() => {
+    const participantsList = document.getElementById('i-am-in-list');
+    if (participantsList) {
+      loadParticipants();
+      // Once we've found it, we can reduce the frequency of checks
+      clearInterval(checkInterval);
+      // Set up a slower refresh interval
+      setInterval(loadParticipants, 30000); // Refresh every 30 seconds
+    }
+  }, 1000); // Check every second initially
   
   // Helper function to prevent XSS
   function escapeHTML(str) {
