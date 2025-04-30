@@ -50,8 +50,11 @@
 
                 </section><br>
               <section class="content-section">
-            <h2>cancelled trips</h2><br>
-<div id="ctrip-list">--</div>
+                    <h2>cancelled trips</h2><br>
+                <div id="ctrip-list">--</div><br>
+                
+                    <h2>postponed trips</h2><br>
+                <div id="ctrip-list">--</div>
 
         </section>
         
@@ -61,5 +64,11 @@
     </footer>
 <script src="supabase.js"></script>
 <script src="trip-list.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    populateList("ctrip-list", "cancelled");
+    populateList("ptrip-list", "postponed");
+});
+    </script>
 </body>
 </html>
