@@ -44,7 +44,6 @@ async function populateList(listId, statusFilter) {
 
 // Make sure to call the function twice with appropriate parameters when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    populateList("trip-list", "upcoming");  // For "trip-list" with "upcoming" filter
+    populateList("trip-list", "upcoming");
     populateList("rtrip-list", "realized");
-    populateList("ctrip-list", "cancelled");// For "rtrip-list" with "realized" filter
 });
