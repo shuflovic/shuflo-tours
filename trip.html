@@ -22,7 +22,7 @@
 
      <script>   
         // Function to get URL parameter
-        function getUrlParameter(name) {
+        /*function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             const results = regex.exec(location.search);
@@ -77,7 +77,7 @@
                     const formattedEndDate = new Date(trip.endDate).toLocaleDateString();
                     
                     //let html = `<head>
-                         /*       <link rel="stylesheet" href="style.css">
+                               <link rel="stylesheet" href="style.css">
                                 </head>
                             <section class="content-section"><h1>${trip.title}</h1>
                             </section><br>
@@ -86,8 +86,8 @@
                             <section class="content-section"><p><strong>End Date:</strong> ${formattedEndDate}</p>
                             </section><br>
                             <section class="content-section"><p><strong>Location:</strong> ${trip.location}</p>
-                            </section><br>*/
-                    //`;
+                            </section><br>
+                    `;
                     
                     if (trip.maxParticipants) {
                         html += `<p><strong>Max Participants:</strong> ${trip.maxParticipants}</p>`;
@@ -138,7 +138,7 @@
         }
         
         // Load trip details when the page loads
-        document.addEventListener('DOMContentLoaded', loadTripDetails);
+        document.addEventListener('DOMContentLoaded', loadTripDetails);*/
 
 async function updateStatus(createdAt, newStatus) {
     try {
