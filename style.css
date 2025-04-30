@@ -8,6 +8,9 @@ body {
   color: white;
   ont-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 }
+#trip-container a{
+  color: #3498DB;
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Ensures it stays in place */
