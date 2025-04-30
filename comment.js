@@ -48,7 +48,7 @@ async function loadComments(commentsSection, tripId) {
         .map(comment => `
           <div class="comment">
       <strong>${escapeHTML(comment.name)}:</strong> ${escapeHTML(comment.text)}
-      <br><small>${comment.date || 'Unknown date'}</small>
+      <br><small>${comment.date || 'Unknown date'}</small><hr>
           </div>
         `)
         .join('');
