@@ -69,9 +69,7 @@
         <a href="https://www.flickr.com/photos/shuflovic/"><img src="pictures/flickr.png" class="icon1" title="old flickr-996pics"/></a>   
         <a href="https://www.flickr.com/photos/127234209@N02/"><img src="pictures/flickr.png" class="icon1" title="very old flickr-4000+pics"/></a></p><hr>
         
-        <button id="develop"><a href="development.html">page development</a></button><br><hr>
-        <p>cancelled trips</p>
-          <div id="ctrip-list">..loading trips..</div>
+        <button id="develop"><a href="development.html">page development</a></button><br>
         
     </section>
         </div>
@@ -83,6 +81,14 @@
     
 <script src="supabase.js"></script>    
 <script src="trip-list.js"></script>
+
+    <script>
+// Make sure to call the function twice with appropriate parameters when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    populateList("trip-list", "upcoming");
+    populateList("rtrip-list", "realized");
+});
+    </script>
         
 </body>
 </html>
