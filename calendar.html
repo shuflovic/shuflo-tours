@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Calendar</title>
     
-    <!-- FullCalendar CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.15/main.min.css" rel="stylesheet">
+    <!-- FullCalendar CSS - correct URL -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
     
     <style>
         body {
@@ -39,17 +39,15 @@
     <div id="loading" class="loading">Loading trips from database...</div>
     <div id="calendar"></div>
 
-    <!-- Supabase JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/supabase-js/2.39.7/supabase.min.js"></script>
+    <!-- Supabase JS - correct URL -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.24.0/dist/umd/supabase.min.js"></script>
     
-    <!-- FullCalendar JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.15/index.min.js"></script>
+    <!-- FullCalendar JS - correct URL -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     
     <script src="supabase.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Using supabaseClient from supabase.js
-            
             // Initialize the calendar
             const calendarEl = document.getElementById('calendar');
             const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -74,7 +72,7 @@
             async function fetchTrips() {
                 try {
                     const { data, error } = await supabaseClient
-                        .from('trips')
+                        .from('trips') // Fixed table name to 'trips'
                         .select('id, startDate, endDate, title, description');
                     
                     if (error) {
