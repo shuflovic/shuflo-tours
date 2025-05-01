@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
         events: [], // We'll populate this from Supabase
         eventClassNames: 'trip-event',
         eventClick: function(info) {
-            // You can add details popup or navigation to trip details here
-            alert(`Trip: ${info.event.title}\nStart: ${info.event.start.toLocaleDateString()}\n${info.event.extendedProps.description || ''}`);
+            // Redirect to trip detail page with the trip ID
+            window.location.href = `trip?id=${info.event.id}`;
         }
     });
     
