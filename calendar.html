@@ -6,7 +6,7 @@
     <title>Trip Calendar</title>
     
     <!-- FullCalendar CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-calendar/2.3.4/github-calendar-responsive.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.15/main.min.css" rel="stylesheet">
     
     <style>
         body {
@@ -44,9 +44,11 @@
     
     <!-- FullCalendar JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.15/index.min.js"></script>
+    
     <script src="supabase.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Using supabaseClient from supabase.js
             
             // Initialize the calendar
             const calendarEl = document.getElementById('calendar');
@@ -61,7 +63,7 @@
                 eventClassNames: 'trip-event',
                 eventClick: function(info) {
                     // You can add details popup or navigation to trip details here
-                    alert(`Trip ID: ${info.event.id}\nStart: ${info.event.start}`);
+                    alert(`Trip: ${info.event.title}\nStart: ${info.event.start.toLocaleDateString()}\n${info.event.extendedProps.description || ''}`);
                 }
             });
             
@@ -72,9 +74,8 @@
             async function fetchTrips() {
                 try {
                     const { data, error } = await supabaseClient
-                        .from('trip')
-                        .select('id, startDate, title, description')
-                        // You can add more fields as needed
+                        .from('trips')
+                        .select('id, startDate, endDate, title, description');
                     
                     if (error) {
                         throw error;
