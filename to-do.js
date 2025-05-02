@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function loadTasks() {
         try {
             const { data, error } = await supabaseClient
-                .from('to_to_list')
+                .from('to_do_list')
                 .select('*');
                 
             if (error) throw error;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             // First, clear the table
             const { error: deleteError } = await supabaseClient
-                .from('to_to_list')
+                .from('to_do_list')
                 .delete()
                 .neq('id', 0); // Delete all records
                 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Insert all tasks
             if (tasks.length > 0) {
                 const { error: insertError } = await supabaseClient
-                    .from('to_to_list')
+                    .from('to_do_list')
                     .insert(tasks);
                     
                 if (insertError) throw insertError;
