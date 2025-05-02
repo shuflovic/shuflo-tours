@@ -77,8 +77,8 @@ function createCommentForm(commentsSection, tripId) {
       <textarea id="comment-text" placeholder="Add your comment" required></textarea>
     </div>
     <div class="form-buttons">
-      <button type="button" id="submit-comment">OK</button>
-      <button type="button" id="cancel-comment">Cancel</button>
+      <button type="button" style="color: black" id="submit-comment">OK</button>
+      <button type="button" style="color: black" id="cancel-comment">Cancel</button>
     </div>
   `;
   
