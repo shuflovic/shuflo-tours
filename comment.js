@@ -128,7 +128,7 @@ async function submitComment(form, commentsSection, tripId) {
     }
     
     // Add new comment
-    comments.push({
+    comments.unshift({
       name: name,
       text: text,
       date: new Date().toLocaleString()
