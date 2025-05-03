@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const todoInput = document.getElementById("TDL");
-    const addButton = document.getElementById("TDLButton");
+    //const addButton = document.getElementById("TDLButton");
     const todoTable = document.getElementById("guestDataTableBody1");
     
     // Initialize Supabase client - Assume this is already set up elsewhere in your code
