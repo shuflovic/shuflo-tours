@@ -149,26 +149,30 @@ newRow.appendChild(noteCell);
     }
     
     // Function to add a new task
-    function addNewTask() {
-        const taskText = todoInput.value.trim();
-        if (taskText === "") return;
-        
-        // Save new task to database and then to UI
-        saveNewTask(taskText);
-        todoInput.value = ""; // Clear input field
+
+const addButton = document.getElementById("add-new-task"); 
+
+function addNewTask() {
+    const taskText = todoInput.value.trim();
+    if (taskText === "") return;
+
+    // Save new task to database and then to UI
+    saveNewTask(taskText);
+    todoInput.value = ""; // Clear input field
+}
+
+// Add new task on button click
+addButton.addEventListener("click", addNewTask);
+
+// Add new task when Enter key is pressed in the input field
+todoInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Prevent form submission if within a form
+        addNewTask();
     }
-    
-    // Add new task on button click
-    addButton.addEventListener("click", addNewTask);
-    
-    // Add new task when Enter key is pressed in the input field
-    todoInput.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault(); // Prevent form submission if within a form
-            addNewTask();
-        }
-    });
-    
-    // Load tasks on page load
+});
+
+// Load tasks on page load
+document.addEventListener("DOMContentLoaded", function() {
     loadTasks();
 });
