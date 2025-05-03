@@ -14,9 +14,34 @@
     <p>actual success - Database works!!</p>
     <p>i am in button works!!</p>
 </section><br>
+
+<section class="content-section">
+    <div class="container">
+        <div class="input-section">
+            <input type="text" id="TDL" placeholder="Add a new task...">
+            <button type="button" id="TDLButton">Add Task</button>
+        </div>
         
-        <section class="content-section">
-            <h2>To do list</h2><br>
+        <div class="todo-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Completed</th>
+                        <th>Notes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="guestDataTableBody1">
+    
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </section><br>
+
+<section class="content-section">
+
 <ul>
   <li>real to do list here</li>
     <li>backend/frontend solution via supabase</li>
@@ -63,42 +88,21 @@
         </section>
         
     </main>
+    
     <footer>
         <p>&copy; 2025 Shuflo Tours</p>
     </footer>
 
- <section class="content-section">
-    <div class="container">
-        <div class="input-section">
-            <input type="text" id="TDL" placeholder="Add a new task...">
-            <button type="button" id="TDLButton">Add Task</button>
-        </div>
-        
-        <div class="todo-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Task</th>
-                        <th>Completed</th>
-                        <th>Notes</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="guestDataTableBody1">
-    
-                </tbody>
-            </table>
-        </div>
-    </div>
- </section>
 <script src="to-do.js"></script>    
 <script src="supabase.js"></script>
 <script src="trip-list.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
     populateList("ctrip-list", "cancelled");
     populateList("ptrip-list", "postponed");
 });
-    </script>
+</script>
+
 </body>
 </html>
