@@ -142,13 +142,19 @@ document.addEventListener("DOMContentLoaded", function () {
         checkboxCell.appendChild(checkbox);
         newRow.appendChild(checkboxCell);
         
-        // Note Column
-        const noteCell = document.createElement("td");
-        const noteInput = document.createElement("input");
-        noteInput.type = "text";
-        noteInput.placeholder = "Write a note";
-        noteInput.value = noteText;
-        noteInput.classList.add("task-note");
+
+// Note Column
+const noteCell = document.createElement("td");
+const noteInput = document.createElement("textarea");  // Changed to textarea
+noteInput.placeholder = "Write a note";
+noteInput.value = noteText;
+noteInput.classList.add("task-note");
+noteInput.rows = 2;  // Set default number of rows
+noteInput.style.width = "100%";  // Make it use full cell width
+noteInput.style.resize = "vertical";  // Allow vertical resizing only
+
+// Add to the cell
+noteCell.appendChild(noteInput);
 
         // Use 'input' to save changes in real-time
         noteInput.addEventListener("input", function() {
