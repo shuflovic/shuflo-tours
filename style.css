@@ -259,7 +259,7 @@ footer {
         grid-template-columns: 1fr;
   }
   #add-new-task {
-    display: block;
+    display: block !important;
   }
     .menu {
                 /*display: none;*/
