@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     // Add new task on button click
-    addButton.addEventListener("click", addNewTask);
+    //addButton.addEventListener("click", addNewTask);
     
     // Add new task when Enter key is pressed in the input field
     todoInput.addEventListener("keypress", function(event) {
