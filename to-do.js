@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Remove Button Column
         const removeCell = document.createElement("td");
         const removeButton = document.createElement("button");
-        removeButton.textContent = "Remove";
+        removeButton.textContent = "X";
         removeButton.classList.add("remove-task");
         removeButton.addEventListener("click", function () {
             // Delete from database first, then remove from UI
