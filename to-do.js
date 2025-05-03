@@ -110,22 +110,24 @@ document.addEventListener("DOMContentLoaded", function () {
         newRow.appendChild(checkboxCell);
         
         // Note Column
-        const noteCell = document.createElement("td");
-        const noteInput = document.createElement("input");
-        noteInput.type = "text";
-        noteInput.placeholder = "Write a note";
-        noteInput.value = noteText;
-        noteInput.classList.add("task-note");
-        noteInput.addEventListener("change", function() { // Change to 'change' instead of 'input' to reduce API calls
-            // Update task in database when note changes
-            updateTask(
-                taskId, 
-                newRow.querySelector(".task-checkbox").checked, 
-                noteInput.value
-            );
-        });
-        noteCell.appendChild(noteInput);
-        newRow.appendChild(noteCell);
+const noteCell = document.createElement("td");
+const noteInput = document.createElement("input");
+noteInput.type = "text";
+noteInput.placeholder = "Write a note";
+noteInput.value = noteText;
+noteInput.classList.add("task-note");
+
+// Use 'input' to save changes in real-time
+noteInput.addEventListener("input", function() {
+    console.log('Note updated:', noteInput.value); // Debug log
+    updateTask(
+        taskId,
+        newRow.querySelector(".task-checkbox").checked,
+        noteInput.value
+    );
+});
+noteCell.appendChild(noteInput);
+newRow.appendChild(noteCell);
         
         // Remove Button Column
         const removeCell = document.createElement("td");
