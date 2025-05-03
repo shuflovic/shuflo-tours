@@ -159,10 +159,10 @@ newRow.appendChild(noteCell);
     }
     
     // Add new task on button click
-    //addButton.addEventListener("click", addNewTask);
+    addButton.addEventListener("click", addNewTask);
     
     // Add new task when Enter key is pressed in the input field
-    todoInput.addEventListener("keyup", function(event) {
+    todoInput.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             event.preventDefault(); // Prevent form submission if within a form
             addNewTask();
