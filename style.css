@@ -175,7 +175,7 @@ main {
     transform: scale(1.02);
 }
 
-.trip-item:hover {
+.trip-item:hover, .remove-task:hover {
   transform: scale(1.03);
   background-color: #3498DB;
   color: aliceblue;
@@ -189,7 +189,7 @@ main {
   justify-content: center;
 }
 
-.trip-item, .blink-button {
+.trip-item, .blink-button. .remove-task {
   background-color: lightblue;
   padding: 4px 6px;
   text-decoration: none;
