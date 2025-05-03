@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const todoInput = document.getElementById("TDL");
-    //const addButton = document.getElementById("TDLButton");
+    const addButton = document.getElementById("add-new-task");
     const todoTable = document.getElementById("guestDataTableBody1");
     
     // Initialize Supabase client - Assume this is already set up elsewhere in your code
@@ -149,9 +149,6 @@ newRow.appendChild(noteCell);
     }
     
     // Function to add a new task
-
-const addButton = document.getElementById("add-new-task"); 
-
 function addNewTask() {
     const taskText = todoInput.value.trim();
     if (taskText === "") return;
