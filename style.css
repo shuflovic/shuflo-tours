@@ -255,9 +255,12 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .content-grid {
+  .content-grid {
         grid-template-columns: 1fr;
-    }
+  }
+  #add-new-task {
+    display: block;
+  }
     .menu {
                 /*display: none;*/
                 flex-direction: column;
