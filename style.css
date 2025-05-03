@@ -12,7 +12,9 @@ body {
   color: #3498DB;
 }
 
-
+.remove-task {
+  color: black;
+}
 
 .task-checkbox {
     width: 20px;
