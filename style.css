@@ -12,7 +12,7 @@ body {
   color: #3498DB;
 }
 
-.remove-task {
+.remove-task, #add-new-task {
   color: black;
 }
 
