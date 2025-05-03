@@ -12,9 +12,7 @@ body {
   color: #3498DB;
 }
 
-.remove-task {
-  color: black;
-}
+
 
 .task-checkbox {
     width: 20px;
@@ -193,7 +191,7 @@ main {
   justify-content: center;
 }
 
-.trip-item, .blink-button. .remove-task {
+.trip-item, .blink-button, .remove-task {
   background-color: lightblue;
   padding: 4px 6px;
   text-decoration: none;
