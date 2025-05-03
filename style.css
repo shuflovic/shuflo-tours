@@ -11,6 +11,11 @@ body {
 #trip-container a{
   color: #3498DB;
 }
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Ensures it stays in place */
