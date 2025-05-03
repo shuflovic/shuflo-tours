@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const { data, error } = await supabaseClient
                 .from('to_do_list')
-                .select('*');
+                .select('*')
+                .order('checked', {ascending: true});
                 
             if (error) throw error;
             
