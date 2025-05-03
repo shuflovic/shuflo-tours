@@ -173,3 +173,4 @@ todoInput.addEventListener("keypress", function(event) {
 document.addEventListener("DOMContentLoaded", function() {
     loadTasks();
 });
+});
