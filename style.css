@@ -85,25 +85,6 @@ input, textarea, select {
   transform: scale(1.03);
 }
 
-#develop {
-  background-color: lightblue;
-  color: black;
-  transition: all 0.2s ease;
-  border-radius: 5px;
-}
-#develop:hover {
-  background-color: #3498DB;
-  color: aliceblue;
-  transform: scale(1.03);
-}
-#develop a {
-  color: black;
-  font-size: 0,95em;
-}
-#develop a:hover {
-  color: aliceblue;
-}
-
 .split {
   width: 75%;
   text-align: center;
@@ -214,7 +195,7 @@ main {
   font-size: 0,95em;
 }
 
-.blink-button a:hover {
+.blink-button a:hover, .blink-button {
   color: white;
   background-color: #3498DB;
 }
@@ -231,6 +212,7 @@ main {
                 opacity: 0.4;
             }
         }
+
 
 .gallery-images {
   display: flex;
