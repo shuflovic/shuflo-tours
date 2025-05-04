@@ -181,6 +181,69 @@
         .hidden {
             display: none;
         }
+
+         .quiz-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .quiz-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .vote-btn, .results-btn {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    .vote-btn {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .results-btn {
+        background-color: #2196F3;
+        color: white;
+    }
+    
+    .result-item {
+        margin-bottom: 15px;
+    }
+    
+    .result-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+    
+    .result-bar-container {
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        height: 20px;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .result-bar {
+        background-color: #4CAF50;
+        height: 100%;
+        transition: width 0.5s ease;
+    }
+    
+    .total-votes {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: right;
+    }
+    
+    .hidden {
+        display: none;
+    }
     </style>
 </head>
 <body>
@@ -238,23 +301,23 @@
             </div>
         </div>
         
-        <div id="view-quiz-screen" class="hidden">
-            <div class="card">
-                <h2 id="quiz-title"></h2>
-                <p id="quiz-question-display"></p>
-                
-                <div class="input-group">
-                    <label for="voter-name">Your Name</label>
-                    <input type="text" id="voter-name" placeholder="Enter your name">
-                </div>
-                
-                <div id="quiz-options-container"></div>
-                
-                <div class="button-row">
-                    <button id="submit-vote" class="primary">Submit Vote</button>
-                    <button id="back-to-list" class="secondary">Back</button>
-                </div>
-            </div>
+<div id="view-quiz-screen" class="screen hidden">
+    <h2 id="quiz-title">Quiz Title</h2>
+    <p id="quiz-question-display">Quiz question will appear here</p>
+    
+    <div id="quiz-options-container">
+        <!-- Options will be added here dynamically -->
+    </div>
+    
+    <div id="voter-input-container">
+        <input type="text" id="voter-name" placeholder="Enter your name">
+    </div>
+    
+    <div class="button-container">
+        <button id="submit-vote" class="btn">Submit Vote</button>
+        <button id="back-to-list" class="btn">Back to Quizzes</button>
+    </div>
+</div>
         </div>
     </div>
 
