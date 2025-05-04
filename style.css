@@ -342,13 +342,6 @@ nav a {
 
 .content-section a, .kcontent-section {
   text-decoration: none;
-  /*color: black;
-  font-weight: bold;*/
-}
-/*.kcontent-section a {
-  text-decoration: none;
-  color: blue;
-  font-weight: bold;*/
 }
 
 #kam a, #info a, #ako a, #car a, #cestaspat a {
@@ -437,6 +430,7 @@ font-size: 1.1em;
 
 .trip-item:hover {
   background-color: aliceblue;
+  color: #3498DB;
 }
 
 
