@@ -9,77 +9,68 @@
 </head>
 <body>
     <div class="container">
-        <h1>hlasujeme!</h1>
-        
         <div id="message" class="message hidden"></div>
         
-        <div id="home-screen">
-            <button id="quizz" class="primary btn-block">Create New Quiz</button><br>
-            <p>or check</p>
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen card">
+            <h1>Hlasujeme!!</h1>
+            <div class="input-group">
+                <label for="user-name">Your Name</label>
+                <input type="text" id="user-name" placeholder="Enter your name">
+            </div>
+            <button id="quizz" class="btn-block">Create New Quiz</button>
+            <h2>Available Quizzes</h2>
+            <ul id="quiz-list" class="quiz-list">
+                <!-- Quiz items will be added here dynamically -->
+            </ul>
+            <p id="no-quizzes-msg" class="hidden">No quizzes available. Create one!</p>
+        </div>
+        
+        <!-- Create Quiz Screen -->
+        <div id="create-quiz-screen" class="screen card hidden">
+            <h1>Create New Quiz</h1>
+            <div class="input-group">
+                <label for="quiz-name">Quiz Name</label>
+                <input type="text" id="quiz-name" placeholder="Enter quiz name">
+            </div>
+            <div class="input-group">
+                <label for="quiz-question">Question</label>
+                <input type="text" id="quiz-question" placeholder="Enter your question">
+            </div>
+            <h3>Options</h3>
+            <div id="options-container">
+                <div class="option-item">
+                    <input type="text" class="option-input" placeholder="Enter option 1">
+                </div>
+                <div class="option-item">
+                    <input type="text" class="option-input" placeholder="Enter option 2">
+                </div>
+            </div>
+            <button id="add-option">Add Option</button>
+            <div class="button-row">
+                <button id="create-quiz-btn">Create Quiz</button>
+                <button id="cancel-create">Cancel</button>
+            </div>
+        </div>
+        
+        <!-- View Quiz Screen -->
+        <div id="view-quiz-screen" class="screen card hidden">
+            <h2 id="quiz-title">Quiz Title</h2>
+            <p id="quiz-question-display">Quiz question will appear here</p>
             
-            <div class="card">
-                <h2>Available Quizzes</h2>
-                <p id="no-quizzes-msg">No quizzes available. Create one!</p>
-                <ul id="quiz-list" class="quiz-list"></ul>
+            <div id="quiz-options-container">
+                <!-- Options will be added here dynamically -->
             </div>
-        </div>
-        
-        <div id="create-quiz-screen" class="hidden">
-            <div class="card">
-                <h2>Create New Quiz</h2>
-                
-                <div class="input-group">
-                    <label for="user-name">Your Name</label>
-                    <input type="text" id="user-name" placeholder="Enter your name">
-                </div>
-                
-                <div class="input-group">
-                    <label for="quiz-name">Quiz Name</label>
-                    <input type="text" id="quiz-name" placeholder="Name your quiz">
-                </div>
-                
-                <div class="input-group">
-                    <label for="quiz-question">Question</label>
-                    <input type="text" id="quiz-question" placeholder="Enter question">
-                </div>
-                
-                <div class="input-group">
-                    <label>Options</label>
-                    <div id="options-container">
-                        <div class="option-item">
-                            <input type="text" class="option-input" placeholder="Enter option 1">
-                        </div>
-                        <div class="option-item">
-                            <input type="text" class="option-input" placeholder="Enter option 2">
-                        </div>
-                    </div>
-                    <button id="add-option" class="add-option-btn">Add option</button>
-                </div>
-                
-                <div class="button-row">
-                    <button id="create-quiz-btn" class="primary">Create Quiz</button>
-                    <button id="cancel-create" class="secondary">Cancel</button>
-                </div>
+            
+            <div id="voter-input-container" class="input-group">
+                <label for="voter-name">Your Name</label>
+                <input type="text" id="voter-name" placeholder="Enter your name">
             </div>
-        </div>
-        
-<div id="view-quiz-screen" class="screen hidden">
-    <h2 id="quiz-title">Quiz Title</h2>
-    <p id="quiz-question-display">Quiz question will appear here</p>
-    
-    <div id="quiz-options-container">
-        <!-- Options will be added here dynamically -->
-    </div>
-    
-    <div id="voter-input-container">
-        <input type="text" id="voter-name" placeholder="Enter your name">
-    </div>
-    
-    <div class="button-container">
-        <button id="submit-vote" class="btn">Submit Vote</button>
-        <button id="back-to-list" class="btn">Back to Quizzes</button>
-    </div>
-</div>
+            
+            <div class="button-row">
+                <button id="submit-vote">Submit Vote</button>
+                <button id="back-to-list">Back to Quizzes</button>
+            </div>
         </div>
     </div>
 
