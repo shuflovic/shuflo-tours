@@ -12,6 +12,10 @@ body {
   color: #3498DB;
 }
 
+hr {
+  border: 1px solid #3498DB;
+}
+
 .remove-task, #add-new-task {
   color: black;
 }
