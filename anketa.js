@@ -221,104 +221,116 @@
         console.log(votesArray);
 
 
-        function renderQuizOptions(quiz) {
-            quizOptionsContainer.innerHTML = '';
-            
-            quiz.options.forEach((option, index) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'option-radio';
-                
-                const id = `option-${index}`;
-                // Use the total votes for all options since we're storing it as a single integer
-                const votes = votesArray[index] || 0;
-                console.log(votes);
-                
-                optionDiv.innerHTML = `
-                    <input type="radio" id="${id}" name="quiz-option" value="${index}">
-                    <label for="${id}">${option} <span class="vote-count">(${votes} votes)</span> </label>
-                `;
-                
-                const radioInput = optionDiv.querySelector('input[type="radio"]');
-                radioInput.addEventListener('change', () => {
-                    selectedOptionIndex = index;
-                });
-                
-                quizOptionsContainer.appendChild(optionDiv);
-            });
+function renderQuizOptions(quiz) {
+    quizOptionsContainer.innerHTML = '';
+    
+    // Ensure we have a proper votes array
+    let voteData = [];
+    
+    if (typeof quiz.votes === 'string') {
+        try {
+            voteData = JSON.parse(quiz.votes);
+        } catch (e) {
+            console.error("Error parsing votes:", e);
+            voteData = new Array(quiz.options.length).fill(0);
+        }
+    } else if (Array.isArray(quiz.votes)) {
+        voteData = quiz.votes;
+    } else {
+        voteData = new Array(quiz.options.length).fill(0);
+    }
+    
+    // Ensure votesArray is updated globally
+    votesArray = voteData;
+    
+    quiz.options.forEach((option, index) => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = 'option-radio';
+        
+        const id = `option-${index}`;
+        const votes = votesArray[index] || 0;
+        
+        optionDiv.innerHTML = `
+            <input type="radio" id="${id}" name="quiz-option" value="${index}">
+            <label for="${id}">${option} <span class="vote-count">(${votes} votes)</span> </label>
+        `;
+        
+        const radioInput = optionDiv.querySelector('input[type="radio"]');
+        radioInput.addEventListener('change', () => {
+            selectedOptionIndex = index;
+        });
+        
+        quizOptionsContainer.appendChild(optionDiv);
+    });
+}
+        
+async function handleVote() {
+    if (isSubmitting) return;
+    
+    const userName = voterNameInput.value.trim();
+    
+    if (!userName) {
+        showMessage('Please enter your name before voting', 'error');
+        return;
+    }
+    
+    if (selectedOptionIndex === null) {
+        showMessage('Please select an option', 'error');
+        return;
+    }
+    
+    isSubmitting = true;
+    showMessage('', '');
+    
+    try {
+        // Get current quiz data
+        const { data: quizData, error: fetchError } = await supabaseClient
+            .from('trip_quizzes')
+            .select('votes')
+            .eq('id', currentQuiz.id)
+            .single();
+        
+        if (fetchError) throw fetchError;
+        
+        // Parse votes if necessary
+        if (typeof quizData.votes === 'string') {
+            votesArray = JSON.parse(quizData.votes || '[]');
+        } else if (Array.isArray(quizData.votes)) {
+            votesArray = quizData.votes;
+        } else {
+            votesArray = new Array(currentQuiz.options.length).fill(0);
         }
         
-        async function handleVote() {
-            if (isSubmitting) return;
-            
-            const userName = voterNameInput.value.trim();
-            
-            if (!userName) {
-                showMessage('Please enter your name before voting', 'error');
-                return;
-            }
-            
-            if (selectedOptionIndex === null) {
-                showMessage('Please select an option', 'error');
-                return;
-            }
-            
-            isSubmitting = true;
-            showMessage('', '');
-            
-            try {
-                // Get current quiz data
-                const quizData = await supabaseClient
-    .from('trip_quizzes')
-    .select('votes')
-    .eq('id', currentQuiz.id)
-    .single();
-
-if (quizData) {
-    votesArray = JSON.parse(quizData.votes || '[]'); // Ensure votesArray is updated
-    console.log(votesArray);
-
+        // Update the selected option's vote count
+        votesArray[selectedOptionIndex] = (votesArray[selectedOptionIndex] || 0) + 1;
+        
+        // Update in the database
+        const { error: updateError } = await supabaseClient
+            .from('trip_quizzes')
+            .update({ votes: votesArray })
+            .eq('id', currentQuiz.id);
+        
+        if (updateError) throw updateError;
+        
+        showMessage('Vote submitted successfully!', 'success');
+        
+        // Update current quiz and re-render options
+        currentQuiz.votes = votesArray;
+        renderQuizOptions(currentQuiz);
+        
+        // Reset selection
+        selectedOptionIndex = null;
+        
+        // Refresh quizzes in background
+        fetchQuizzes();
+        
+    } catch (error) {
+        console.error('Error submitting vote:', error);
+        showMessage('Failed to submit vote', 'error');
+    } finally {
+        isSubmitting = false;
+    }
 }
-
-
-                
-// Update the selected option's vote count
-votesArray[selectedOptionIndex] += 1;
-
-// Convert back to string for storage
-
-const newVotes = votesArray; // Directly use votesArray for JSONB field
-console.log(votes);
-
-const { error: updateError } = await supabaseClient
-    .from('trip_quizzes')
-    .update({ votes: newVotes }) // Directly pass the updated array
-    .eq('id', currentQuiz.id);
-
-
-
-                
-                if (updateError) throw updateError;
-                
-                showMessage('Vote submitted successfully!', 'success');
-                
-                // Update current quiz and re-render options
-                currentQuiz.votes = votesArray;
-
-                renderQuizOptions(currentQuiz);
-                
-                // Reset selection
-                selectedOptionIndex = null;
-                
-                // Refresh quizzes in background
-                fetchQuizzes();
-                
-            } catch (error) {
-                console.error('Error submitting vote:', error);
-                showMessage('Failed to submit vote', 'error');
-            } finally {
-                isSubmitting = false;
-            }
-        }
         
         function showHomeScreen() {
             homeScreen.classList.remove('hidden');
