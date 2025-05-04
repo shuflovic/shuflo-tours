@@ -52,7 +52,7 @@ hr {
 }
 
 input, textarea, select {
-            width: 75%;
+            /*width: 75%;*/
             padding: 8px;
             margin-top: 5px;
             margin-bottom: 15px;
