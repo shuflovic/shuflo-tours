@@ -44,7 +44,7 @@
                 <label for="trip-notes">Notes:</label><br>
                 <textarea id="trip-notes" name="trip-notes" placeholder="Add any additional notes here..." rows="5"></textarea><br>
 </section><br>
-                <button type="button" id="add-final-countdown" style="color:black" class="createButton">add final countdown</button><button type="button" id="hashtags" style="color:black">add # tags</button>
+                <button type="button" id="add-final-countdown" class="trip-item">add final countdown</button><button type="button" id="hashtags" class="trip-item">add # tags</button>
                 
                 <section id="participation"><br>
                     <h2>Choose who you would like to invite to this trip</h2>
@@ -69,7 +69,7 @@
                     </div>
                 </section>
                 
-                <button type="submit" id="submit-button" class="submit" style="color: black">Submit</button><p>later only for registered members</p><br>
+                <button type="submit" id="submit-button" class="trip-item">Submit</button><p>later only for registered members</p><br>
                 
             </form>
       <br>
@@ -124,7 +124,7 @@
                 </div>  <br>
 
 <p>participants</p><br>
-<button type="button" id="confirmation">i am in!</button>
+<button type="button" id="confirmation" class="trip-item">i am in!</button>
          
 </section>
         
@@ -367,12 +367,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             </ul>
             
             <section class="content-section"> 
-                <p>prihlasujem sa na tento výlet:<button type="button" style="color: black" id="i-am-in">i am in !!</button></p><br>
+                <p>prihlasujem sa na tento výlet:<button type="button" class="trip-item" id="i-am-in">i am in !!</button></p><br>
                 <div id="i-am-in-list">---</div>
             </section><br>
             
             <section class="content-section"> 
-                <p>comments section: <button id="add-commentButton" type="button" style="color: black">add comment</button></p>
+                <p>comments section: <button id="add-commentButton" type="button" class="trip-item">add comment</button></p>
                 
                 <div id="comments">---</div>
                 
