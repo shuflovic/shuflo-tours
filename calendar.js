@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         headerToolbar: {
             left: 'prev,next',/*today after next with gap*/
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,listMonth'
+            //right: 'dayGridMonth,timeGridWeek,listMonth'
         },
         events: [], // We'll populate this from Supabase
         eventClassNames: 'trip-event',
