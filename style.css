@@ -52,7 +52,6 @@ hr {
 }
 
 input, textarea, select {
-            /*width: 75%;*/
             padding: 8px;
             margin-top: 5px;
             margin-bottom: 15px;
@@ -60,11 +59,13 @@ input, textarea, select {
             border-radius: 4px;
             box-sizing: border-box;
         }
+
 .createButton {
   background-color: lightblue;
   transition: all 0.2s ease;
   border-radius: 5px;
 }
+
 .createButton:hover {
   color: aliceblue;
   background-color: #3498DB;
@@ -74,11 +75,13 @@ input, textarea, select {
 .kmail a {
   color: #3498DB;
 }
+
 .submit, #submit {
   background-color: lightblue;
   transition: all 0.2s ease;
   border-radius: 5px;
 }
+
 .submit:hover, #submit:hover {
   background-color: #3498DB;
   color: white;
@@ -150,7 +153,7 @@ main {
   gap: 15px;
 }
 
-.content-section,.kcontent-section {
+.content-section, .kcontent-section {
   font-size: 0,95em;
   padding: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -186,13 +189,13 @@ main {
   justify-content: center;
 }
 
- .blink-button, .remove-task, {
+ .remove-task, {
   background-color: lightblue;
   padding: 4px 6px;
   text-decoration: none;
   border-radius: 5px;
   border: 0;
-  font-size: 0,95em;
+  /*font-size: 0,95em;*/
 }
 
 .blink-button a:hover, .blink-button {
@@ -257,7 +260,6 @@ footer {
     display: block !important;
   }
     .menu {
-                /*display: none;*/
                 flex-direction: column;
                 position: absolute;
                 top: 60px;
@@ -290,7 +292,6 @@ th, td {
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
 }
-
 
 th {
   background-color: #3498DB;
@@ -333,11 +334,12 @@ nav a {
 button {
   border: 0;
   padding: 4px;
-  border-radius: 10px;
-  margin:3px;
+  border-radius: 5px;
+  margin: 3px;
   background-color: lightblue;
   color: white;
   }
+
 button a{
      color: black;
  }
@@ -361,9 +363,11 @@ button:hover a{
   color: white;
   transform: scale(1.05);
 }
+
 a:hover {
 font-size: 1.1em;  
 }
+
 .preview-section {
             background-color: black;
             border: 1px solid #3498DB;
@@ -372,29 +376,29 @@ font-size: 1.1em;
             margin-top: 30px;
             color: white;
         }
-        .preview-title {
+.preview-title {
             color: aliceblue;
             margin-bottom: 15px;
         }
-        .preview-content {
+.preview-content {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             color: darkblue;
         }
-        .preview-item {
+.preview-item {
             background-color: white;
             border-radius: 4px;
             padding: 10px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             flex-grow: 1;
         }
-        .preview-label {
+.preview-label {
             font-weight: bold;
             color: black;
             font-size: 0.9em;
         }
-        .preview-value {
+.preview-value {
             font-size: 1.1em;
             margin-top: 5px;
         }
@@ -414,7 +418,6 @@ font-size: 1.1em;
   background-color: aliceblue;
   color: #3498DB;
 }
-
 
 /* Quiz Container and Elements */
 .container {
