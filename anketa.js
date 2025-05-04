@@ -188,35 +188,38 @@
             }
         }
         
-        function viewQuiz(quiz) {
-            currentQuiz = quiz;
-            selectedOptionIndex = null;
-            
-            quizTitleEl.textContent = quiz.name;
-            quizQuestionDisplay.textContent = quiz.question;
-            voterNameInput.value = userNameInput.value || '';
-            
-            // Parse options if it's stored as a string
-            if (typeof quiz.options === 'string') {
-                try {
-                    quiz.options = JSON.parse(quiz.options);
-                } catch (e) {
-                    console.error("Error parsing options:", e);
-                    quiz.options = [];
-                }
-            }
-            
-            // Ensure options is an array
-            if (!Array.isArray(quiz.options)) {
-                console.warn("Options is not an array, converting to empty array");
-                quiz.options = [];
-            }
-            
-            renderQuizOptions(quiz);
-            
-            showViewQuizScreen();
+       function viewQuiz(quiz) {
+    currentQuiz = quiz;
+    selectedOptionIndex = null;
+    
+    quizTitleEl.textContent = quiz.name;
+    quizQuestionDisplay.textContent = quiz.question;
+    voterNameInput.value = userNameInput.value || '';
+    
+    // Parse options if it's stored as a string
+    if (typeof quiz.options === 'string') {
+        try {
+            quiz.options = JSON.parse(quiz.options);
+        } catch (e) {
+            console.error("Error parsing options:", e);
+            quiz.options = [];
         }
-
+    }
+    
+    // Ensure options is an array
+    if (!Array.isArray(quiz.options)) {
+        console.warn("Options is not an array, converting to empty array");
+        quiz.options = [];
+    }
+    
+    renderQuizOptions(quiz);
+    
+    // Show voter input and submit button, hide back button
+    document.getElementById('voter-input-container').classList.remove('hidden');
+    submitVoteBtn.classList.remove('hidden');
+    
+    showViewQuizScreen();
+}
        let votesArray = [];
         console.log(votesArray);
 
@@ -316,13 +319,12 @@ async function handleVote() {
         
         // Update current quiz and re-render options
         currentQuiz.votes = votesArray;
-        renderQuizOptions(currentQuiz);
         
-        // Reset selection
-        selectedOptionIndex = null;
-        
-        // Refresh quizzes in background
-        fetchQuizzes();
+        // Return to home screen with a delay to show the success message
+        setTimeout(() => {
+            showHomeScreen();
+            fetchQuizzes(); // Refresh the quiz list
+        }, 1500);
         
     } catch (error) {
         console.error('Error submitting vote:', error);
@@ -330,6 +332,123 @@ async function handleVote() {
     } finally {
         isSubmitting = false;
     }
+}
+
+// Modify the renderQuizList function to include "See Results" buttons
+function renderQuizList(quizzes) {
+    quizList.innerHTML = '';
+    
+    if (quizzes.length === 0) {
+        noQuizzesMsg.classList.remove('hidden');
+        return;
+    }
+    
+    noQuizzesMsg.classList.add('hidden');
+    
+    quizzes.forEach(quiz => {
+        const li = document.createElement('li');
+        li.className = 'quiz-item';
+        li.innerHTML = `
+            <div class="quiz-row">
+                <span class="quiz-title">${quiz.name}</span>
+                <div class="quiz-actions">
+                    <button class="vote-btn">Vote</button>
+                    <button class="results-btn">See Results</button>
+                </div>
+            </div>
+        `;
+        
+        // Add event listeners for vote and results buttons
+        const voteBtn = li.querySelector('.vote-btn');
+        voteBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the li click event
+            viewQuiz(quiz);
+        });
+        
+        const resultsBtn = li.querySelector('.results-btn');
+        resultsBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the li click event
+            viewResults(quiz);
+        });
+        
+        quizList.appendChild(li);
+    });
+}
+
+// Add a new function to view results
+function viewResults(quiz) {
+    currentQuiz = quiz;
+    
+    quizTitleEl.textContent = quiz.name + " - Results";
+    quizQuestionDisplay.textContent = quiz.question;
+    
+    // Parse options and votes if needed
+    if (typeof quiz.options === 'string') {
+        try {
+            quiz.options = JSON.parse(quiz.options);
+        } catch (e) {
+            quiz.options = [];
+        }
+    }
+    
+    let voteData = [];
+    if (typeof quiz.votes === 'string') {
+        try {
+            voteData = JSON.parse(quiz.votes);
+        } catch (e) {
+            voteData = new Array(quiz.options.length).fill(0);
+        }
+    } else if (Array.isArray(quiz.votes)) {
+        voteData = quiz.votes;
+    } else {
+        voteData = new Array(quiz.options.length).fill(0);
+    }
+    
+    // Ensure votesArray is updated globally
+    votesArray = voteData;
+    
+    // Render results
+    renderQuizResults(quiz);
+    
+    // Hide voter input and submit button, show only back button
+    document.getElementById('voter-input-container').classList.add('hidden');
+    submitVoteBtn.classList.add('hidden');
+    backToListBtn.classList.remove('hidden');
+    
+    showViewQuizScreen();
+}
+
+// Add a new function to render results with percentages and a visual bar
+function renderQuizResults(quiz) {
+    quizOptionsContainer.innerHTML = '';
+    
+    // Calculate total votes
+    const totalVotes = votesArray.reduce((sum, count) => sum + (count || 0), 0);
+    
+    quiz.options.forEach((option, index) => {
+        const votes = votesArray[index] || 0;
+        const percentage = totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0;
+        
+        const resultDiv = document.createElement('div');
+        resultDiv.className = 'result-item';
+        resultDiv.innerHTML = `
+            <div class="result-label">
+                <span class="option-text">${option}</span>
+                <span class="vote-stats">${votes} votes (${percentage}%)</span>
+            </div>
+            <div class="result-bar-container">
+                <div class="result-bar" style="width: ${percentage}%"></div>
+            </div>
+        `;
+        
+        quizOptionsContainer.appendChild(resultDiv);
+    });
+    
+    // Add total votes info
+    const totalDiv = document.createElement('div');
+    totalDiv.className = 'total-votes';
+    totalDiv.textContent = `Total votes: ${totalVotes}`;
+    quizOptionsContainer.appendChild(totalDiv);
 }
         
         function showHomeScreen() {
