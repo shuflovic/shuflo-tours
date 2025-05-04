@@ -154,7 +154,7 @@ header {
   font-style: italic;
   font-weight: bold;
   margin-top: 10px;  
-  color: lightblue;
+  color: #3498DB;
 }
 
 main {
@@ -262,8 +262,9 @@ footer {
   padding: 5px 0;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  border: 1px solid white;
+  border: 1px solid #3498DB;
   color: white;
+  width: 95%;
 }
 
 @media (max-width: 768px) {
@@ -390,11 +391,11 @@ font-size: 1.1em;
 }
 .preview-section {
             background-color: black;
-            border: 1px solid #ddd;
+            border: 1px solid #3498DB;
             border-radius: 5px;
             padding: 20px;
             margin-top: 30px;
-            color: aliceblue;
+            color: white;
         }
         .preview-title {
             color: aliceblue;
@@ -541,8 +542,8 @@ input[type="text"], textarea {
     border: 1px solid #444;
     border-radius: 5px;
     font-size: 16px;
-    /*background-color: #222;*/
-    color: white;
+    /*background-color: #222;
+    color: white;*/
     margin-bottom: 15px;
 }
 
