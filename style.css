@@ -201,7 +201,7 @@ main {
   justify-content: center;
 }
 
-.trip-item, .blink-button, .remove-task {
+.trip-item, .blink-button, .remove-task, .trip-button {
   background-color: lightblue;
   padding: 4px 6px;
   text-decoration: none;
