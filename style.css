@@ -191,7 +191,7 @@ main {
     transform: scale(1.02);
 }
 
-.trip-item:hover, .remove-task:hover {
+.remove-task:hover {
   transform: scale(1.03);
   background-color: #3498DB;
   color: aliceblue;
@@ -205,7 +205,7 @@ main {
   justify-content: center;
 }
 
-.trip-item, .blink-button, .remove-task, .trip-button {
+ .blink-button, .remove-task, .trip-button {
   background-color: lightblue;
   padding: 4px 6px;
   text-decoration: none;
@@ -428,7 +428,15 @@ font-size: 1.1em;
   color: black;
 }
 
+.trip-item {
+  color: aliceblue;
+  background-color: #3498DB;
+  border-radius: 5px;
+}
 
+.trip-item:hover {
+  background-color: aliceblue;
+}
 
 
 /* Quiz Container and Elements */
