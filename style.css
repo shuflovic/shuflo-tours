@@ -58,6 +58,8 @@ input, textarea, select {
         }
 .createButton {
   background-color: lightblue;
+  transition: all 0.2s ease;
+  border-radius: 5px;
 }
 .createButton:hover {
   color: aliceblue;
@@ -70,6 +72,8 @@ input, textarea, select {
 }
 .submit, #submit {
   background-color: lightblue;
+  transition: all 0.2s ease;
+  border-radius: 5px;
 }
 .submit:hover, #submit:hover {
   background-color: #3498DB;
@@ -80,6 +84,8 @@ input, textarea, select {
 #develop {
   background-color: lightblue;
   color: black;
+  transition: all 0.2s ease;
+  border-radius: 5px;
 }
 #develop:hover {
   background-color: #3498DB;
@@ -110,6 +116,7 @@ input, textarea, select {
   border-radius: 5px;
   padding: 8px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 .button2 {
   background-color: darkred;
@@ -117,6 +124,7 @@ input, textarea, select {
   border-radius: 5px;
   padding: 8px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .button2:hover {
@@ -161,11 +169,11 @@ main {
   font-size: 0,95em;
   padding: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.05);
   text-align: center;
   overflow: auto;
-  border: 1px solid aliceblue;
+  border: 1px solid #3498DB;
   color: white;
 }
 
@@ -197,7 +205,7 @@ main {
   background-color: lightblue;
   padding: 4px 6px;
   text-decoration: none;
-  border-radius: 15px;
+  border-radius: 5px;
   border: 0;
   font-size: 0,95em;
 }
