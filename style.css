@@ -421,9 +421,9 @@ font-size: 1.1em;
 
 /* Quiz Container and Elements */
 .container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     min-height: 100vh;
     background-color: black;
     color: white;
