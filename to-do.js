@@ -151,7 +151,7 @@ noteInput.value = noteText;
 noteInput.classList.add("task-note");
 noteInput.rows = 2;  // Set default number of rows
 noteInput.style.width = "100%"; // Make it use full cell width
-noteInput.style.textSize = 8px;
+noteInput.style.fontSize = 8px;
 noteInput.style.resize = "vertical";  // Allow vertical resizing only
 
 // Add to the cell
