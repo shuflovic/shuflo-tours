@@ -144,9 +144,10 @@ header {
 }
 
 main {
-  width: 95%;
+  justify-content: center;
   max-width: 1200px;
   margin: 20px auto;
+  
 }
 
 .content-grid {
