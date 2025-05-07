@@ -73,7 +73,8 @@ input, textarea, select {
 }
 
 .kmail a {
-  color: blue;
+  color: #3498DB;
+  
 }
 
 .submit, #submit {
@@ -204,14 +205,14 @@ main {
 }
 
 .blink-button {
-  background-color: aliceblue;
+    background-color: lightblue;
     animation: blink 1.5s infinite;
     padding: 5px 10px;
     border: none;
-    border-radius: 5px; /* Match your other button styles */
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s ease;
-        }
+}
 
         @keyframes blink {
             0%, 100% {
@@ -239,12 +240,12 @@ main {
 }
 .whatsappButton:hover{
   transform: scale(1.05);
-  color: white;
-  background-color: black;
+  color: aliceblue;
+  background-color: #3498DB;
   border: 1px solid white;
 }
 .whatsappButton:active{
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: black;
 }
 
