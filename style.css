@@ -6,8 +6,9 @@ body {
   padding:10px;
   background-color: black;
   color: white;
-  ont-family: ui-monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  justify-content: center;
 }
+
 #trip-container a{
   color: #3498DB;
 }
