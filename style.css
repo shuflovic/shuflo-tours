@@ -256,8 +256,8 @@ footer {
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   border: 1px solid #3498DB;
-  color: white;
-  width: 95%;
+  color: aliceblue;
+  /*width: 95%;*/
 }
 
 @media (max-width: 768px) {
