@@ -198,13 +198,14 @@ main {
   /*font-size: 0,95em;*/
 }
 
-.blink-button a:hover, .blink-button {
+.blink-button a:hover, .blink-button:hover {
   color: white;
   background-color: #3498DB;
 }
 
 .blink-button {
-            animation: blink 1.5s infinite;
+  background-color: aliceblue;
+    animation: blink 1.5s infinite;
     padding: 5px 10px;
     border: none;
     border-radius: 5px; /* Match your other button styles */
