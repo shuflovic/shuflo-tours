@@ -73,7 +73,7 @@ input, textarea, select {
 }
 
 .kmail a {
-  color: #3498DB;
+  color: blue;
 }
 
 .submit, #submit {
@@ -205,6 +205,11 @@ main {
 
 .blink-button {
             animation: blink 1.5s infinite;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px; /* Match your other button styles */
+    cursor: pointer;
+    transition: all 0.2s ease;
         }
 
         @keyframes blink {
@@ -365,7 +370,7 @@ button:hover a{
 }
 
 a:hover {
-font-size: 1.1em;  
+font-size: 1.05em;  
 }
 
 .preview-section {
