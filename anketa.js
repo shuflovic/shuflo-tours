@@ -381,6 +381,13 @@ function viewResults(quiz) {
     
     quizTitleEl.textContent = quiz.name + " - Results";
     quizQuestionDisplay.textContent = quiz.question;
+quizQuestionDisplay.style.color = "lightblue"; // Change color
+quizQuestionDisplay.style.textAlign = "center"; // Center text
+quizQuestionDisplay.style.position = "absolute";
+quizQuestionDisplay.style.top = "50%";
+quizQuestionDisplay.style.left = "50%";
+quizQuestionDisplay.style.transform = "translate(-50%, -50%)";
+quizQuestionDisplay.style.fontSize = "20px"; // Adjust size
     
     // Parse options and votes if needed
     if (typeof quiz.options === 'string') {
