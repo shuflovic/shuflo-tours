@@ -100,6 +100,11 @@ input, textarea, select {
   width: 30px;
 }
 
+.screen {
+  height: 300px;
+
+}
+
 .button1 {
   background-color: darkblue;
   color: white;
