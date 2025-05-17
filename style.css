@@ -100,8 +100,10 @@ input, textarea, select {
   width: 30px;
 }
 
-.screen {
-  max-width: 400px;
+.screen img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .button1 {
