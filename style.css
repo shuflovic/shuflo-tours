@@ -101,8 +101,7 @@ input, textarea, select {
 }
 
 .screen {
-  height: 250px;
-
+  width: 250px;
 }
 
 .button1 {
