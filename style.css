@@ -261,10 +261,9 @@ footer {
   text-align: center;
   padding: 5px 0;
   background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #3498DB;
   color: aliceblue;
-  /*width: 95%;*/
 }
 
 @media (max-width: 768px) {
@@ -406,7 +405,7 @@ font-size: 1.05em;
         }
 .preview-item {
             background-color: white;
-            border-radius: 4px;
+            border-radius: 8px;
             padding: 10px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             flex-grow: 1;
