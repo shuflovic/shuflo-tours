@@ -8,6 +8,28 @@ body {
   color: white;
   justify-content: center;
 }
+.logo {
+      display: flex;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    }
+      
+    .logo-part1 {
+      background-color: lightblue;
+      padding: 10px 15px;
+      color: black;
+      border-top: 3px solid lightblue;
+      border-bottom: 3px solid lightblue;
+    }
+    .logo-part2 {
+      color: lightblue;
+      padding: 10px 15px;
+      border-top: 3px solid lightblue;
+      border-bottom: 3px solid lightblue;
+      margin-left: 4px;
 
 #trip-container a{
   color: #3498DB;
